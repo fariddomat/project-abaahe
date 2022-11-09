@@ -64,4 +64,8 @@
                         </div>
                     </div>
                 </div>
-            </
+            </div>
+        </div>
+    </section>
+    <!-- Property Section Two End -->
+@endsection
