@@ -49,12 +49,14 @@ return [
     'all_projects'=>'كل المشاريع',
 
 
+    'details'=>'خصائص',
     'properties'=>'الخصائص',
     'propertie'=>'خاصية',
     'all_properties'=>'كل الخصائص',
 
     'scheme_name'=>'اسم المخطط',
     'floors_count'=>'عدد الأدوار',
+    'apartments'=>'الشقق',
     'apartments_count'=>'عدد الشقق',
     'front_apartments_count'=>'عدد الشقق الأمامية في الطابق',
     'back_apartments_count'=>'عدد الشقق الخلفية في الطابق',

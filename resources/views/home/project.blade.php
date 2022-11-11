@@ -7,8 +7,8 @@
         <div class="container-fluid">
             <div class="container-max">
                 <div class="inner-title">
-                    <span>PROPERTY DETAILS</span>
-                    <h2>Roof Houses Details</h2>
+                    <span>تفاصيل المشروع</span>
+                    <h2>{{ $project->name }}</h2>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
     <!-- Inner Banner End -->
 
     <!-- Property Details -->
-    <div class="property-details">
+    {{-- <div class="property-details">
         <div class="container">
             <div class="property-details-list">
                 <ul>
@@ -52,22 +52,41 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Property Details  End -->
+    <div class="property-details">
+        <div class="container">
+            <div class="property-details-list">
+                <ul>
+                    <li>
+                        <i class="bx bx-map"></i>
+                        <span>العنوان: </span>
+                        <a href="">{{ $project->address }}</a>
+                    </li>
 
+                    <li>
+                        <i class="bx bx-world"></i>
+                        <span>المخطط: </span>
+                        <a href="#">{{ $project->scheme_name }}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- House Details Area -->
     <div class="house-details-area">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="house-content margin-left">
-                        <span>HOUSES</span>
-                        <h2>Roof Houses Details You Need To Know?</h2>
+                        <span> {{ $project->id }}المشروع</span>
+                        <h2>المعلومات التي ترغب بمعرفتها عن المشروع:</h2>
                         <ul class="house-list">
-                            <li>PARKING <b>01</b></li>
-                            <li>BATHROOM <b>02</b></li>
-                            <li>BEDROOM <b>03</b></li>
-                            <li>SUNNY SIDE <b>Available</b></li>
+                            <li>عدد الأدوار <b>{{ $project->floors_count }}</b></li>
+                            <li>عدد الشقق الأمامية <b>{{ $project->front_apartments_count }}</b></li>
+                            <li>عدد الشقق الخلفية <b>{{ $project->back_apartments_count }}</b></li>
+                            <li>عدد الملاحق <b>{{ $project->appendix_count }}</b></li>
                         </ul>
                         <a href="project-details.html" class="default-btn default-sante-fe">
                             Visit Details

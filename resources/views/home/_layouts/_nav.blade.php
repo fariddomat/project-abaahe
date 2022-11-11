@@ -60,7 +60,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="about.html" class="nav-link">
-                                        تواصل بنا
+                                        اتصل بنا
                                         <i class="bx bx-phone"></i>
                                     </a>
                                 </li>

@@ -35,4 +35,14 @@ class Project extends Model
     {
         return $this->hasMany(Propertie::class);
     }
+
+    public function apartments()
+    {
+        return $this->hasMany(Apartment::class);
+    }
+
+    public function facilities()
+    {
+        return $this->hasMany(Facility::class);
+    }
 }

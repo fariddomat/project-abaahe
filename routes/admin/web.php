@@ -15,5 +15,6 @@ Route::prefix('admin')
         Route::resource('categories', 'CategoryController');
         Route::resource('projects', 'ProjectController');
         Route::resource('properties', 'PropertieController');
+        Route::resource('apartments', 'ApartmentController');
         }
     );

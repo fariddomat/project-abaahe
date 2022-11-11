@@ -108,7 +108,7 @@ class ProjectController extends Controller
         $request->validate([
 
             'category'=>'required',
-            'name' => 'required|unique:projects,name',
+            'name'=>'required|unique:projects,name,' . $id,
             'address' => 'required',
             'scheme_name' => 'required',
             'floors_count' => 'required|numeric|min:1',

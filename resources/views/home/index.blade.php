@@ -6,20 +6,21 @@
         <div class="home-slider-area">
             <div class="container-fluid m-0 p-0">
                 <div class="home-slider owl-carousel owl-theme" data-slider-id="1">
+                    
                     <div class="slider-item">
                         <div class="row align-items-center">
                             <div class="col-lg-5">
                                 <div class="home-slider-content">
-                                    <span>Conformable Place</span>
-                                    <h1>Home Might Be <b>Place Of Comfort</b></h1>
+                                    <span>أباهي للتمليك</span>
+                                    <h1>اختيارك لمنزلك هو <b>اختيار مكان راحتك</b></h1>
                                     <p>Lorem ipsum dolor sit ame consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna </p>
                                     <div class="home-slider-btn">
-                                        <a href="#" class="default-btn">
-                                            Check Appointment
+                                        <a href="{{ route('projects') }}" class="default-btn">
+                                            تصفح المشاريع
                                             <i class='bx bx-right-arrow-alt'></i>
                                         </a>
                                         <a href="contact.html" class="default-btn active">
-                                            Contact Us
+                                            اتصل بنا
                                             <i class='bx bx-right-arrow-alt'></i>
                                         </a>
                                     </div>
@@ -28,69 +29,12 @@
 
                             <div class="col-lg-7 pl-0">
                                 <div class="home-slider-img">
-                                    <img src="assets/img/home1/1.jpg" alt="Images">
+                                    <img src="{{ asset('home.PNG') }}" alt="Images">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="slider-item">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="home-slider-content">
-                                    <span>Conformable Place</span>
-                                    <h1>Find Your Dream <b>Home In Here</b></h1>
-                                    <p>Lorem ipsum dolor sit ame consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna </p>
-
-                                    <div class="home-slider-btn">
-                                        <a href="#" class="default-btn">
-                                            Check Appointment
-                                            <i class='bx bx-right-arrow-alt'></i>
-                                        </a>
-                                        <a href="contact.html" class="default-btn active">
-                                            Contact Us
-                                            <i class='bx bx-right-arrow-alt'></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-7 pl-0">
-                                <div class="home-slider-img">
-                                    <img src="assets/img/home1/2.jpg" alt="Images">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="slider-item">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="home-slider-content">
-                                    <span>Conformable Place</span>
-                                    <h1>Find Your Lovely & <b>Comfort Home</b></h1>
-                                    <p>Lorem ipsum dolor sit ame consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna </p>
-
-                                    <div class="home-slider-btn">
-                                        <a href="#" class="default-btn">
-                                            Check Appointment
-                                            <i class='bx bx-right-arrow-alt'></i>
-                                        </a>
-                                        <a href="contact.html" class="default-btn active">
-                                            Contact Us
-                                            <i class='bx bx-right-arrow-alt'></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-7 pl-0">
-                                <div class="home-slider-img">
-                                    <img src="assets/img/home1/3.jpg" alt="Images">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
         data-img="theme-assets/images/backgrounds/02.jpg">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.home') }}">
                     <i class="fa fa-tachometer"></i>
                         <h3 class="brand-text">@lang('site.Admin_panel')</h3>
                     </a></li>
