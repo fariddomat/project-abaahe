@@ -41,7 +41,7 @@
                                             <h3>{{ $item->name }}</h3>
                                         </a>
                                         <p>{{ $item->category->name }}</p>
-                                        <a href=""{{ route('project', $item->id) }}" class="learn-more-btn">
+                                        <a href="{{ route('project', $item->id) }}" class="learn-more-btn">
                                             <i class='bx bx-right-arrow-alt'></i>
                                             تصفح المشروع
                                         </a>

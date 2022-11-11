@@ -109,36 +109,6 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 p-0 m-0">
-                    <div class="house-slider-two owl-carousel owl-theme">
-                        <div class="house-details-item">
-                            <img src="assets/img/house-details/h-1.jpg" alt="Images">
-                        </div>
-                        <div class="house-details-item">
-                            <img src="assets/img/house-details/h-2.jpg" alt="Images">
-                        </div>
-                        <div class="house-details-item">
-                            <img src="assets/img/house-details/h-3.jpg" alt="Images">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="house-content house-margin">
-                        <span>HOUSES</span>
-                        <h2>Roof Houses Details You Need To Know?</h2>
-                        <ul class="house-list">
-                            <li>SUNNY SIDE <b>Available</b></li>
-                            <li>BEDROOM <b>03</b></li>
-                            <li>BATHROOM <b>02</b></li>
-                            <li>PARKING <b>01</b></li>
-                        </ul>
-                        <a href="project-details.html" class="default-btn default-sante-fe">
-                            Visit Details
-                            <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -512,90 +482,5 @@
     </div>
     <!-- Room Details Area End -->
 
-    <!-- Apartment Area -->
-    <div class="apartment-area pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-title-two">
-                        <span class="section-span-bg">TYPE OF APARTMENT</span>
-                        <h2>Numberous Type OF <b class="section-color">Property You Like!</b>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="apartment-btn">
-                        <a href="#" class="default-btn default-sante-fe">
-                            Discover More
-                            <i class='bx bx-right-arrow-alt'></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row pt-45">
-                <div class="col-lg-4">
-                    <div class="apartment-list">
-                        <ul>
-                            <li>STUDIO <span>01</span></li>
-                            <li class="active">DUPLEX <span>02</span></li>
-                            <li>BATHROOM <span>03</span></li>
-                            <li>BEDROOM<span>04</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-8">
-                    <div class="apartment-slider owl-carousel owl-theme">
-                        <div class="apartment-item">
-                            <img src="assets/img/apartment/1.jpg" alt="Images">
-                            <ul>
-                                <li>
-                                    <a href="#">DUPLUX Home</a>
-                                </li>
-                                <li>/February 2020</li>
-                            </ul>
-                            <h3>30 sq / East Northan</h3>
-                            <p>
-                                Lorem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor incididunt ut
-                                labore et dolore magnaenim  minim veniaquis nostrud exercitation
-                            </p>
-                        </div>
-
-                        <div class="apartment-item">
-                            <img src="assets/img/apartment/2.jpg" alt="Images">
-                            <ul>
-                                <li>
-                                    <a href="#">STUDIO Home</a>
-                                </li>
-                                <li>/July 2020</li>
-                            </ul>
-                            <h3>50 sq / East Northan</h3>
-                            <p>
-                                Lorem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor incididunt ut
-                                labore et dolore magnaenim  minim veniaquis nostrud exercitation
-                            </p>
-                        </div>
-
-                        <div class="apartment-item">
-                            <img src="assets/img/apartment/3.jpg" alt="Images">
-                            <ul>
-                                <li>
-                                    <a href="#">Pent Home</a>
-                                </li>
-                                <li>/August 2020</li>
-                            </ul>
-                            <h3>70 sq / South Northan</h3>
-                            <p>
-                                Lorem ipsum dolor sit ame consectetur adipisicing eli sed usmod tempor incididunt ut
-                                labore et dolore magnaenim  minim veniaquis nostrud exercitation
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Apartment Area End -->
 
 @endsection

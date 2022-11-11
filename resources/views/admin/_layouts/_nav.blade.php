@@ -39,8 +39,19 @@
                                         @lang('site.myInbox')</a><a class="dropdown-item" href="#"><i
                                             class="ft-check-square"></i> @lang('site.task')</a><a class="dropdown-item"
                                         href="#"><i class="ft-message-square"></i> @lang('site.chats')</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-power"></i> @lang('site.logout')</a>
+                                    <div class="dropdown-divider"></div>
+
+
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
+                                    <i class="ft-power"></i> @lang('site.logout')
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </li>

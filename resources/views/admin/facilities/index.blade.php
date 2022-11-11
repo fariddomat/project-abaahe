@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">@lang('site.all_projects')</h4>
+                    <h4 class="card-title">ضمانات المشروع</h4>
                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -20,8 +20,9 @@
                 <div class="card-content collapse show">
                     <div class="card-body " style="float: right">
 
-                        <a href="{{ route('admin.projects.create') }}" class="btn btn-icon btn-info mr-1">@lang('site.create')
-                            <i class="fa fa-plus" style="position: relative"></i></a>
+                        <a href="{{ route('admin.facilities.create', ['projectId' => $project->id]) }}"
+                            class="btn btn-icon btn-info mr-1">@lang('site.create') <i class="fa fa-plus"
+                                style="position: relative"></i></a>
 
                     </div>
                     <form action="" class="col-md-12">
@@ -37,7 +38,7 @@
 
                     </form>
 
-                    @if ($projects->count() == 0)
+                    @if ($facilities->count() == 0)
                         <div class="table-responsive">
                             <h3 class="mr-3 mb-3" dir="rtl" style="text-align: right">@lang('site.no_data_found')</h3>
                         </div>
@@ -47,44 +48,32 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">@lang('site.category')</th>
-                                        <th scope="col">@lang('site.name')</th>
-                                        <th scope="col">@lang('site.address')</th>
-                                        <th scope="col">الشقق</th>
-                                        <th scope="col">الضمانات</th>
+                                        <th scope="col">العنوان</th>
+                                        <th scope="col">الوصف</th>
                                         <th scope="col">@lang('site.action')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($projects as $index => $project)
+                                    @foreach ($facilities as $index => $facility)
                                         <tr dir="rtl" style=" text-align: right;">
                                             <th scope="row">{{ $index + 1 }}</th>
-                                            <td dir="rtl">{{ $project->category->name }}</td>
-                                            <td dir="rtl">{{ $project->name }}</td>
-                                            <td>{{ $project->address }}</td>
-                                            <td><a href="{{ route('admin.apartments.index', ['projectId' => $project->id]) }}"
-                                                    type="button" class="btn btn-icon btn-success"
-                                                    style="  min-width: 100px;">إدارة <i class="fa fa-edit"
-                                                        style="position: relative;"></i></a></td>
-                                            <td><a href="{{ route('admin.facilities.index', ['projectId' => $project->id]) }}"
-                                                    type="button" class="btn btn-icon btn-primary"
-                                                    style="  min-width: 100px;">إدارة <i class="fa fa-edit"
-                                                        style="position: relative;"></i></a></td>
+                                            <td>{{ $facility->title }}</td>
+                                            <td>{{ $facility->details }}</td>
                                             <td class="form-group">
 
-                                                <a href="{{ route('admin.projects.edit', $project->id) }}" type="button"
-                                                    class="btn btn-icon btn-warning mr-1"
+                                                <a href="{{ route('admin.facilities.edit', $facility->id) }}"
+                                                    type="button" class="btn btn-icon btn-warning mr-1"
                                                     style="  min-width: 100px;">@lang('site.edit') <i class="fa fa-edit"
                                                         style="position: relative;"></i></a>
 
-                                                <form action="{{ route('admin.projects.destroy', $project->id) }}"
+                                                <form action="{{ route('admin.facilities.destroy', $facility->id) }}"
                                                     method="POST" style="display: inline-block">
                                                     @csrf
                                                     @method('delete')
 
                                                     <button type="submit" class="btn btn-icon btn-danger mr-1"
-                                                        style="  min-width: 102px;">@lang('site.delete') <i
-                                                            class="fa fa-trash" style="position: relative;"></i></button>
+                                                        style="  min-width: 102px;">@lang('site.delete') <i class="fa fa-trash"
+                                                            style="position: relative;"></i></button>
                                                 </form>
 
                                             </td>
@@ -94,7 +83,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="text-center m-auto">{{ $projects->appends(request()->query())->links() }}
+                        <div class="text-center m-auto">{{ $facilities->appends(request()->query())->links() }}
                         </div>
                     @endif
 
