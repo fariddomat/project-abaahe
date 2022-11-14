@@ -16,8 +16,8 @@
         <div class="navbar-area">
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
-                <a href="index.html" class="logo">
-                    <img src="{{ asset('home/assets/img/logos/footer-logo.png') }}" alt="Logo">
+                <a href="{{ route('home') }}" class="logo">
+                    <img src="{{ asset('logo.png') }}" alt="Logo">
                 </a>
             </div>
 
@@ -25,8 +25,8 @@
             <div class="main-nav">
                 <div class="container-fluid">
                     <nav class="container-max navbar navbar-expand-md navbar-light ">
-                        <a class="navbar-brand" href="index.html">
-                            <img src="{{ asset('logo.png') }}" alt="Logo" style="max-height: 100px">
+                        <a class="navbar-brand" href="{{ route('home') }}">
+                            <img src="{{ asset('logo.png') }}" alt="Logo" style="max-height: 60px">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">

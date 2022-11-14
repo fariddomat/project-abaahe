@@ -20,13 +20,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('type'); // 1 => front, 2 => back, 3 => appendix
             $table->integer('area');
             $table->integer('price');
-            $table->integer('living_rooms');
-            $table->integer('bed_rooms');
-            $table->integer('dining_rooms');
-            $table->integer('kitchens');
-            $table->integer('servant_rooms');
-            $table->integer('bathrooms');
-            $table->integer('parking');
+            $table->text('details');
             $table->string('img');
             $table->timestamps();
         });

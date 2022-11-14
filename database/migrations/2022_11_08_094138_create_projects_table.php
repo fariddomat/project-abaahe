@@ -23,7 +23,7 @@ class CreateProjectsTable extends Migration
             $table->integer('back_apartments_count');
             $table->integer('appendix_count');
             $table->text('details')->nullable();
-            $table->string('img');
+            // $table->string('img');
             $table->string('status')->default('pending');
             $table->bigInteger('category_id');
             $table->timestamps();

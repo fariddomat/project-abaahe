@@ -64,20 +64,15 @@ class ApartmentController extends Controller
             'type' => 'required|numeric|min:0',
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
-            'living_rooms' => 'required|numeric|min:0',
-            'bed_rooms' => 'required|numeric|min:0',
-            'dining_rooms' => 'required|numeric|min:0',
-            'kitchens' => 'required|numeric|min:0',
-            'servant_rooms' => 'required|numeric|min:0',
-            'bathrooms' => 'required|numeric|min:0',
-            'parking' => 'required|numeric|min:0',
+            'details' => 'required',
             'img' => 'required',
         ]);
 
         $request_data = $request->except(['img']);
 
-        $img = Image::make($request->img)
-            ->resize(570, 370)
+        $img = Image::make($request->img)->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })
             ->encode('jpg');
 
         Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
@@ -129,7 +124,7 @@ class ApartmentController extends Controller
     {
         $try = Apartment::where('project_id', $request->project_id)->where('type', $request->type)->get();
 
-        $apartment=Apartment::find($id);
+        $apartment = Apartment::find($id);
         if ($try->count() > 0 && $try[0]->id != $apartment->id) {
             return Redirect::back()->withInput($request->input())->withErrors(['msg' => 'نوع الشقق هذا موجود مسبقا']);
         }
@@ -137,33 +132,27 @@ class ApartmentController extends Controller
             'type' => 'required|numeric|min:0',
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
-            'living_rooms' => 'required|numeric|min:0',
-            'bed_rooms' => 'required|numeric|min:0',
-            'dining_rooms' => 'required|numeric|min:0',
-            'kitchens' => 'required|numeric|min:0',
-            'servant_rooms' => 'required|numeric|min:0',
-            'bathrooms' => 'required|numeric|min:0',
-            'parking' => 'required|numeric|min:0',
+            'details' => 'required',
         ]);
 
-        $apartment=Apartment::find($id);
+        $apartment = Apartment::find($id);
         $request_data = $request->except(['img']);
         if ($request->img) {
             Storage::disk('local')->delete('public/images/' . $apartment->img);
 
-            $img = Image::make($request->img)
-                ->resize(570, 370)
+            $img = Image::make($request->img)->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })
                 ->encode('jpg');
 
             Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
-
         }
 
         $apartment->update($request_data);
 
-        Session::flash('success','Successfully updated !');
-        return redirect()->route('admin.apartments.index', ['projectId'=>$apartment->project_id]);
+        Session::flash('success', 'Successfully updated !');
+        return redirect()->route('admin.apartments.index', ['projectId' => $apartment->project_id]);
     }
 
     /**

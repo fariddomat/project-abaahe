@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Storage;
+
 class Project extends Model
 {
     //
-    protected $guarded=[];
+    protected $guarded = [];
     public function getNameAttribute($value)
     {
         return ucfirst($value);
@@ -16,14 +17,9 @@ class Project extends Model
 
     public function scopeWhenSearch($query, $search)
     {
-        return $query->when($search,function($q) use ($search){
-            return $q->where('name','like',"%$search%");
+        return $query->when($search, function ($q) use ($search) {
+            return $q->where('name', 'like', "%$search%");
         });
-    }
-
-    public function getImagePathAttribute()
-    {
-        return Storage::url('images/'.$this->img);
     }
 
     public function category()
@@ -31,9 +27,9 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function prperties()
+    public function propertie()
     {
-        return $this->hasMany(Propertie::class);
+        return $this->hasOne(Propertie::class);
     }
 
     public function apartments()
@@ -41,8 +37,59 @@ class Project extends Model
         return $this->hasMany(Apartment::class);
     }
 
-    public function facilities()
+    public function facility()
     {
-        return $this->hasMany(Facility::class);
+        return $this->hasOne(Facility::class);
+    }
+
+    public function getFrontApartmentAttribute()
+    {
+        $q = $this->apartments()->where('type', '1')->get();
+        if ($q->count() > 0) {
+            return $q[0];
+        }
+        return false;
+    }
+
+    public function getBackApartmentAttribute()
+    {
+        $q = $this->apartments()->where('type', '2')->get();
+        if ($q->count() > 0) {
+            return $q[0];
+        }
+        return false;
+    }
+
+    public function getAppendixApartmentAttribute()
+    {
+        $q = $this->apartments()->where('type', '3')->get();
+        if ($q->count() > 0) {
+            return $q[0];
+        }
+        return false;
+    }
+
+    public function projectImages()
+    {
+        return $this->hasMany(ProjectImage::class);
+    }
+
+    public function getImagePathAttribute()
+    {
+        if ($this->projectImages()->exists()) {
+            foreach ($this->projectImages as $key => $value) {
+                return Storage::url('images/' . $this->id . '/' . $value->img);
+            }
+        }
+    }
+    public function getImagesPathAttribute()
+    {
+        $array = [];
+        if ($this->projectImages()->exists()) {
+            foreach ($this->projectImages as $key => $value) {
+                    array_push($array, Storage::url('images/' . $this->id . '/' . $value->img));
+            }
+        }
+        return $array;
     }
 }

@@ -17,9 +17,11 @@ class CreateFacilitiesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->string('title');
-            $table->string('details');
-            $table->string('img')->nullable();
+            $table->string('f1');//الهيكل الانشائي
+            $table->string('f2');//القواطع والأفياش
+            $table->string('f3');//الكهرباء والسباكة
+            $table->string('f4');//اتحاد الملاك
+            $table->string('f5')->nullable();//ضمانات إضافية
             $table->timestamps();
         });
     }

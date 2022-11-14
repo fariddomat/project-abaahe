@@ -50,8 +50,6 @@
                                         <th scope="col">@lang('site.category')</th>
                                         <th scope="col">@lang('site.name')</th>
                                         <th scope="col">@lang('site.address')</th>
-                                        <th scope="col">الشقق</th>
-                                        <th scope="col">الضمانات</th>
                                         <th scope="col">@lang('site.action')</th>
                                     </tr>
                                 </thead>
@@ -62,14 +60,6 @@
                                             <td dir="rtl">{{ $project->category->name }}</td>
                                             <td dir="rtl">{{ $project->name }}</td>
                                             <td>{{ $project->address }}</td>
-                                            <td><a href="{{ route('admin.apartments.index', ['projectId' => $project->id]) }}"
-                                                    type="button" class="btn btn-icon btn-success"
-                                                    style="  min-width: 100px;">إدارة <i class="fa fa-edit"
-                                                        style="position: relative;"></i></a></td>
-                                            <td><a href="{{ route('admin.facilities.index', ['projectId' => $project->id]) }}"
-                                                    type="button" class="btn btn-icon btn-primary"
-                                                    style="  min-width: 100px;">إدارة <i class="fa fa-edit"
-                                                        style="position: relative;"></i></a></td>
                                             <td class="form-group">
 
                                                 <a href="{{ route('admin.projects.edit', $project->id) }}" type="button"

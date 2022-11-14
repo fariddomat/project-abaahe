@@ -33,39 +33,15 @@
                                         <input value="{{ old('price') }}" name="price" type="number" min="0"
                                             class="form-control" id="basicInput" required>
 
-                                        <h5 class="mt-2">غرف المعيشة</h5>
-                                        <input value="{{ old('living_rooms') }}" name="living_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">غرف النوم</h5>
-                                        <input value="{{ old('bed_rooms') }}" name="bed_rooms" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">غرف الطعام</h5>
-                                        <input value="{{ old('dining_rooms') }}" name="dining_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
+                                            <h5 class="mt-2"> التفاصيل</h5>
+                                            <textarea name="details" class="form-control" id="" cols="30" rows="10">
+                                                {{ old('details') }}
+                                            </textarea>
+                                            <h5 class="mt-2">@lang('site.image')</h5>
+                                            <input name="img" type="file" class="form-control" id="basicInput" required>
 
                                     </div>
-                                    <div class="col-lg-6">
-                                        <h5 class="mt-2">المطابخ</h5>
-                                        <input value="{{ old('kitchens') }}" name="kitchens" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
 
-                                        <h5 class="mt-2">غرف الخدم</h5>
-                                        <input value="{{ old('servant_rooms') }}" name="servant_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">دورات مياه</h5>
-                                        <input value="{{ old('bathrooms') }}" name="bathrooms" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">موقف خاص</h5>
-                                        <input value="{{ old('parking') }}" name="parking" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">@lang('site.image')</h5>
-                                        <input name="img" type="file" class="form-control" id="basicInput" required>
-                                    </div>
                                     <div class="col-lg-12">
 
                                         <button class="btn btn-icon btn-info mr-1 mt-2">@lang('site.create') <i

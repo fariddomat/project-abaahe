@@ -96,6 +96,7 @@
 
             .card .card-title {
                 float: right;
+                margin-right: 50px;
             }
 
             .card .heading-elements {

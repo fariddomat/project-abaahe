@@ -11,7 +11,7 @@ This files table contents are outlined below>>>>>
 
 *******************************************
 *******************************************
-** - Default Btn Style 
+** - Default Btn Style
 ** - Section Title Style
 ** - Navbar Area Style
 ** - Home Slider Area Style
@@ -154,7 +154,7 @@ img {
 }
 
 /*================================
-Default Btn Style 
+Default Btn Style
 ===================================*/
 .default-btn {
   padding: 12px 27px;
@@ -276,7 +276,7 @@ Default Btn Style
 Default Btn Style End
 ===================================*/
 /*================================
-Section Title Style 
+Section Title Style
 ===================================*/
 .section-title span {
   color: #6f7c8a;
@@ -1277,7 +1277,7 @@ Inner Banner
 Inner Banner End
 ====================================*/
 /*=================================
-Property Details 
+Property Details
 ====================================*/
 .property-details {
   padding: 50px 0;
@@ -1587,7 +1587,7 @@ Service Area
 Service Area End
 ====================================*/
 /*=================================
-Service Details Area 
+Service Details Area
 ====================================*/
 .service-details-area .section-title {
   margin-bottom: 40px;
@@ -1794,7 +1794,7 @@ Gallery Area
 Gallery Area End
 ====================================*/
 /*=================================
-Property Area 
+Property Area
 ====================================*/
 .property-img {
   margin-bottom: 30px;
@@ -2082,7 +2082,7 @@ Property Section End
 Property Section End
 ====================================*/
 /*=================================
-Project Area 
+Project Area
 ====================================*/
 .project-area {
   background-position: center center;
@@ -2173,7 +2173,7 @@ Project Area
 Project Area End
 ====================================*/
 /*=================================
-Development Area 
+Development Area
 ====================================*/
 .development-card {
   margin-bottom: 30px;
@@ -2205,7 +2205,7 @@ Development Area
 Development Area End
 ====================================*/
 /*=================================
-Development Section 
+Development Section
 ====================================*/
 .development-section {
   background-image: url(../img/project-details/shape.png);
@@ -2276,7 +2276,7 @@ Development Section
 Development Section End
 ====================================*/
 /*=================================
-Orgin Area 
+Orgin Area
 ====================================*/
 .orgin-title {
   text-align: center;
@@ -2338,7 +2338,7 @@ Orgin Area
 Orgin Area End
 ====================================*/
 /*=================================
-Room Details 
+Room Details
 ====================================*/
 .room-details-tab {
   margin-top: 30px;
@@ -2565,7 +2565,7 @@ Room Details
 }
 
 .room-details-item .room-details-slider .room-details-content {
-  padding: 30px 15px;
+  padding: 15px 15px;
   text-align: center;
   max-width: 585px;
   margin-left: auto;
@@ -2619,7 +2619,7 @@ Room Details
 Room Details End
 ====================================*/
 /*=================================
-Innovation Section 
+Innovation Section
 ====================================*/
 .innovation-content .section-title h2 {
   max-width: 575px;
@@ -2714,7 +2714,7 @@ Innovation Section
 Innovation Section End
 ====================================*/
 /*=================================
-Efficiency Card 
+Efficiency Card
 ====================================*/
 .efficiency-card {
   background-color: #ffffff;
@@ -2779,7 +2779,7 @@ Efficiency Card
 Efficiency Card End
 ====================================*/
 /*==================================
-Product Are CSS 
+Product Are CSS
 ====================================*/
 .product-area .section-title-two h2 {
   font-size: 35px;
@@ -3183,7 +3183,7 @@ Cart Wraps Area
 Cart Wraps Area End
 ===================================*/
 /*=================================
-Checkout Area 
+Checkout Area
 ===================================*/
 .checkout-area .checkout-user {
   -webkit-box-shadow: 0 5px 35px 0 rgba(0, 0, 0, 0.08);
@@ -3576,7 +3576,7 @@ Checkout Area
 Checkout Area End
 ===================================*/
 /*==================================
-Shop Details 
+Shop Details
 ====================================*/
 .shop-detls-image {
   margin-bottom: 30px;
@@ -4089,7 +4089,7 @@ Testimonial Area
 Testimonial Area End
 ====================================*/
 /*=================================
-Forward Area 
+Forward Area
 ====================================*/
 .forward-area {
   position: relative;
@@ -4157,7 +4157,7 @@ Forward Area
 Forward Area End
 ====================================*/
 /*=================================
-About Area 
+About Area
 ====================================*/
 .about-content .section-title-two {
   margin-bottom: 30px;
@@ -4297,7 +4297,7 @@ Team Area End
 Team Area End
 ====================================*/
 /*=================================
-Apartment Area 
+Apartment Area
 ====================================*/
 .apartment-btn {
   margin-top: 70px;
@@ -4493,7 +4493,7 @@ Counter Area
 Counter Area End
 ====================================*/
 /*=================================
-Apartment Offer 
+Apartment Offer
 ====================================*/
 .apartment-offer-two {
   position: relative;
@@ -4757,7 +4757,7 @@ House Details Area
 }
 
 .house-content .house-list li b {
-  position: absolute;
+  /* position: absolute; */
   right: 10px;
   top: 2px;
   font-weight: 500;
@@ -5053,7 +5053,7 @@ House Area
 House Area End
 ====================================*/
 /*=================================
-Blog Area 
+Blog Area
 ====================================*/
 .blog-area {
   padding-top: 100px;
@@ -5651,7 +5651,7 @@ Blog Details Area
 Blog Details Area End
 ====================================*/
 /*=================================
-newsletter Area 
+newsletter Area
 ====================================*/
 .newsletter-area {
   background-color: #fbf3e9;
@@ -5734,7 +5734,7 @@ newsletter Area
 newsletter Area End
 ====================================*/
 /*=================================
-Map Area 
+Map Area
 ====================================*/
 .map-area {
   position: relative;
@@ -6267,7 +6267,7 @@ Faq Area Style
 Faq Area Style End
 ====================================*/
 /*=================================
-Contact Area 
+Contact Area
 ====================================*/
 .contact-area {
   background-image: url(../img/contact-bg.jpg);
@@ -6379,7 +6379,7 @@ Contact Area
 Contact Area End
 ====================================*/
 /*==============================
-User All CSS 
+User All CSS
 =================================*/
 .user-all-content {
   margin-bottom: 30px;
@@ -6524,7 +6524,7 @@ User All CSS
 }
 
 /*==============================
-User All CSS 
+User All CSS
 =================================*/
 /*=================================
 404 Error Area
@@ -6586,8 +6586,8 @@ User All CSS
 /*=================================
 404 Error Area End
 ===================================*/
-/*================================== 
-Coming Soon Area 
+/*==================================
+Coming Soon Area
 ====================================*/
 .coming-soon-area {
   position: relative;
@@ -6774,7 +6774,7 @@ Coming Soon Area
   color: #dc3545 !important;
 }
 
-/*================================== 
+/*==================================
 Coming Soon Area End
 ====================================*/
 .single-content {
@@ -6834,7 +6834,7 @@ Preloader CSS
 Preloader CSS End
 =================================*/
 /*==================================
-Back To Top Button 
+Back To Top Button
 =====================================*/
 #toTop {
   position: fixed;
@@ -6869,10 +6869,10 @@ Back To Top Button
 }
 
 /*==============================
-Back To Top Button 
+Back To Top Button
 =================================*/
 /*==============================
-Animation  CSS 
+Animation  CSS
 =================================*/
 @-webkit-keyframes circle-in {
   0%, 80%, 100% {
