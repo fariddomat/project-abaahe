@@ -349,26 +349,40 @@ class ProjectController extends Controller
                     'img' => $request->aimg->hashName(),
                 ]);
             }
-           if ($apA->count() > 0 ) {
-            $apA->update([
-                'area' => $request->aarea,
-                'price' => $request->aprice,
-                'details' => $request->adetails,
-            ]);
-           } else {
-            $apA = Apartment::create([
-                'project_id' => $project->id,
-                'type' => 3,
-                'area' => $request->aarea,
-                'price' => $request->aprice,
-                'details' => $request->adetails,
-                'img' => $request->aimg->hashName(),
-            ]);
-           }
-
+            if ($apA->count() > 0) {
+                $apA->update([
+                    'area' => $request->aarea,
+                    'price' => $request->aprice,
+                    'details' => $request->adetails,
+                ]);
+            } else {
+                $apA = Apartment::create([
+                    'project_id' => $project->id,
+                    'type' => 3,
+                    'area' => $request->aarea,
+                    'price' => $request->aprice,
+                    'details' => $request->adetails,
+                    'img' => $request->aimg->hashName(),
+                ]);
+            }
         }
 
+          // prpertie
 
+          $propertie = Propertie::where('project_id',$project->id);
+          $propertie->update([
+            'details' => $request->pdetails,
+        ]);
+
+        // facility
+        $facility = Facility::where('project_id',$project->id);
+        $facility->update([
+            'f1' => $request->f1,
+            'f2' => $request->f2,
+            'f3' => $request->f3,
+            'f4' => $request->f4,
+            'f5' => $request->f5,
+        ]);
 
         Session::flash('success', 'Successfully updated !');
         return redirect()->route('admin.projects.index');

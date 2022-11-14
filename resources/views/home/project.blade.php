@@ -45,10 +45,10 @@
                                 <b class="section-color2">مخطط {{ $project->scheme_name }}</b>
                             </h2>
                             <h3>
-                                <i class="bx bx-map"></i>{{ $project->address }}
+                                <i class="bx bx-map"></i>{!! $project->address !!}
                             </h3>
                             <p> <i class="bx bx-note"></i>
-                                {{ $project->details }}
+                                {!! $project->details !!}
                             </p>
                         </div>
 
@@ -130,7 +130,7 @@
                             <div class="room-details-slider owl-carousel owl-theme">
                                 <div class="room-details-content">
                                     <p>
-                                        {{ $project->propertie->details }}
+                                        {!! $project->propertie->details !!}
                                     </p>
                                 </div>
 
@@ -293,7 +293,7 @@
 
                                 <h2>تفاصيل الشقق الأمامية:</h2>
                                 <ul class="house-list">
-                                    <li>التفاصيل <b>{{ $project->front_apartment->details }}</b></li>
+                                    <li>التفاصيل <b>{!! $project->front_apartment->details !!}</b></li>
                                     <li>السعر<b>{{ $project->front_apartment->price }} ريال</b></li>
                                     <li> المساحة <b>{{ $project->front_apartment->area }} متر</b></li>
                                 </ul>
@@ -322,7 +322,7 @@
                             <div class="house-content house-margin">
                                 <h2>تفاصيل الشقق الخلفية</h2>
                                 <ul class="house-list">
-                                    <li>التفاصيل <b>{{ $project->back_apartment->details }}</b></li>
+                                    <li>التفاصيل <b>{!! $project->back_apartment->details !!}</b></li>
                                     <li>السعر<b>{{ $project->back_apartment->price }} ريال</b></li>
                                     <li> المساحة <b>{{ $project->back_apartment->area }} متر</b></li>
                                 </ul>
@@ -336,7 +336,7 @@
 
                                 <h2>تفاصيل الملاحق:</h2>
                                 <ul class="house-list">
-                                    <li>التفاصيل <b>{{ $project->appendix_apartment->details }}</b></li>
+                                    <li>التفاصيل <b>{!! $project->appendix_apartment->details !!}</b></li>
                                     <li>السعر<b>{{ $project->appendix_apartment->price }} ريال</b></li>
                                     <li> المساحة <b>{{ $project->appendix_apartment->area }} متر</b></li>
                                 </ul>

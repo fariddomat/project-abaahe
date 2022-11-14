@@ -11,13 +11,13 @@
         </div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active"><a href="{{ route('admin.home', ['id'=>1]) }}"><i class="ft-home"></i><span class="menu-title"
+                <li class=" {{ Request::is('admin/dashboard') ? 'active' : '' }} "><a href="{{ route('admin.home')}}"><i class="ft-home"></i><span class="menu-title"
                             data-i18n="">@lang('site.dashboard')</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.categories.index') }}"><i class="fa fa-building-o"></i><span class="menu-title"
+                <li class=" nav-item  {{ Request::is('admin/categories*') ? 'active' : '' }} "><a href="{{ route('admin.categories.index') }}"><i class="fa fa-building-o"></i><span class="menu-title"
                             data-i18n="">@lang('site.categories')</span></a>
                 </li>
-                <li class=" nav-item"><a href="{{ route('admin.projects.index') }}"><i class="fa fa-institution"></i><span class="menu-title"
+                <li class=" nav-item  {{ Request::is('admin/projects*') ? 'active' : '' }} "><a href="{{ route('admin.projects.index') }}"><i class="fa fa-institution"></i><span class="menu-title"
                             data-i18n="">@lang('site.projects')</span></a>
                 </li>
                 <li class=" nav-item"><a href=""><i class="ft-users"></i><span class="menu-title"

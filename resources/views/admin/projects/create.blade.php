@@ -41,7 +41,7 @@
                                     <input value="{{ old('scheme_name') }}" name="scheme_name" type="text"
                                         class="form-control" id="basicInput" required>
                                     <h5 class="mt-2">@lang('site.address')</h5>
-                                    <textarea name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address') }}</textarea>
+                                    <textarea id="summernote" name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address') }}</textarea>
                                     <h5 class="mt-2">@lang('site.image')</h5>
                                     <input value="{{ old('img[]') }}" name="img[]" multiple type="file" class="form-control" id="basicInput" required>
 
@@ -64,7 +64,7 @@
 
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
-                                    <textarea name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details') }}</textarea>
+                                    <textarea  id="summernote2"  name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details') }}</textarea>
                                 </div>
 
 
@@ -110,7 +110,7 @@
                                 <div class="col-lg-6 mt-3">
 
                                     <h5 class="mt-2"> التفاصيل</h5>
-                                    <textarea name="fdetails" class="form-control" id="">
+                                    <textarea id="summernote3"  name="fdetails" class="form-control" id="">
                                     {{ old('fdetails') }}
                                 </textarea>
                                     <h5 class="mt-2">@lang('site.image')</h5>
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="col-lg-6 mt-3">
                                     <h5 class="mt-2"> التفاصيل</h5>
-                                    <textarea name="bdetails" class="form-control" id="">
+                                    <textarea id="summernote4"  name="bdetails" class="form-control" id="">
                                     {{ old('bdetails') }}
                                 </textarea>
                                     <h5 class="mt-2">@lang('site.image')</h5>
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="col-lg-6 mt-3">
                                     <h5 class="mt-2"> التفاصيل</h5>
-                                    <textarea name="adetails" class="form-control" id="">
+                                    <textarea id="summernote5"  name="adetails" class="form-control" id="">
                                     {{ old('adetails') }}
                                 </textarea>
                                     <h5 class="mt-2">@lang('site.image')</h5>
@@ -235,7 +235,7 @@
                         <div class="card-body " style="text-align: right">
                             <fieldset class="form-group">
                                 <div class="col-lg-6 mt-3">
-                                    <textarea name="pdetails" class="form-control" id="">
+                                    <textarea id="summernote6"  name="pdetails" class="form-control" id="">
                                     {{ old('pdetails') }}
                                 </textarea>
                                 </div>
