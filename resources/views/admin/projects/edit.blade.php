@@ -44,29 +44,21 @@
                                         type="text" class="form-control" id="basicInput" required>
                                     <h5 class="mt-2">@lang('site.address')</h5>
                                     <textarea id="summernote"  name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address', $project->address) }}</textarea>
-                                    <h5 class="mt-2">@lang('site.image')</h5>
-                                    <input value="{{ old('img[]') }}" name="img[]" multiple type="file"
+                                    <h5 class="mt-2">@lang('site.image') رئيسية</h5>
+                                    <input value="{{ old('poster') }}" name="poster"  type="file"
                                         class="form-control" id="basicInput">
-                                    @if ($project->projectImages->count() > 0)
                                         <div class="row mt-1">
-                                            @foreach ($project->images_path as $item)
-                                                <img class="col-lg-3" src="{{ $item }}" alt="Images">
-                                            @endforeach
+                                                <img class="col-lg-3" src="{{ $project->poster_path }}" alt="Images">
                                         </div>
-                                    @endif
                                 </div>
                                 <div class="col-lg-6">
                                     <h5 class="mt-2">@lang('site.floors_count')</h5>
                                     <input value="{{ old('floors_count', $project->floors_count) }}" name="floors_count"
                                         type="number" min="1" class="form-control" id="basicInput" required>
 
-                                    <h5 class="mt-2">@lang('site.front_apartments_count')</h5>
-                                    <input value="{{ old('front_apartments_count', $project->front_apartments_count) }}"
-                                        name="front_apartments_count" type="number" min="1" class="form-control"
-                                        id="basicInput" required>
-                                    <h5 class="mt-2">@lang('site.back_apartments_count')</h5>
-                                    <input value="{{ old('back_apartments_count', $project->back_apartments_count) }}"
-                                        name="back_apartments_count" type="number" min="1" class="form-control"
+                                    <h5 class="mt-2">@lang('site.apartments_count')</h5>
+                                    <input value="{{ old('apartments_count', $project->apartments_count) }}"
+                                        name="apartments_count" type="number" min="1" class="form-control"
                                         id="basicInput" required>
 
                                     <h5 class="mt-2">@lang('site.appendix_count')</h5>
@@ -76,6 +68,16 @@
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
                                     <textarea id="summernote2"  name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details', $project->details) }}</textarea>
+                                    <h5 class="mt-2">صور المشروع</h5>
+                                    <input value="{{ old('img[]') }}" name="img[]" multiple type="file"
+                                        class="form-control" id="basicInput">
+                                    @if ($project->projectImages->count() > 0)
+                                        <div class="row mt-1">
+                                            @foreach ($project->images_path as $item)
+                                                <img class="col-lg-3" src="{{ $item }}" alt="Images">
+                                            @endforeach
+                                        </div>
+                                    @endif
                                 </div>
 
 
@@ -87,7 +89,7 @@
                 </div>
             </div>
         </div>
-
+{{--
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -99,7 +101,6 @@
                                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                 <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                {{-- <li><a data-action="close"><i class="ft-x"></i></a></li> --}}
                             </ul>
                         </div>
 
@@ -150,7 +151,6 @@
                                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                 <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                {{-- <li><a data-action="close"><i class="ft-x"></i></a></li> --}}
                             </ul>
                         </div>
 
@@ -198,7 +198,6 @@
                                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                 <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                {{-- <li><a data-action="close"><i class="ft-x"></i></a></li> --}}
                             </ul>
                         </div>
 
@@ -236,7 +235,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-12">

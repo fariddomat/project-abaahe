@@ -17,5 +17,7 @@ Route::prefix('admin')
         Route::resource('properties', 'PropertieController');
         Route::resource('apartments', 'ApartmentController');
         Route::resource('facilities', 'FacilityController');
+    Route::post('/check/{id}','ApartmentController@check')->name('apartments.check');
+
         }
     );

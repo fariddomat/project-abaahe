@@ -49,8 +49,10 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">نوع الشقة</th>
-                                        <th scope="col">المساحة</th>
-                                        <th scope="col">السعر</th>
+                                        <th scope="col">الرمز</th>
+                                        <th scope="col">العدد في الطابق</th>
+                                        <th scope="col">العدد الكلي</th>
+                                        <th scope="col">الحجز</th>
                                         <th scope="col">@lang('site.action')</th>
                                     </tr>
                                 </thead>
@@ -59,20 +61,23 @@
                                         <tr dir="rtl" style=" text-align: right;">
                                             <th scope="row">{{ $index + 1 }}</th>
                                             <td dir="rtl">
-                                                @if ($apartment->type == 1)
-                                                    شقة أمامية
-                                                @elseif ($apartment->type == 2)
-                                                    شقة خلفية
-                                                @elseif ($apartment->type == 3)
-                                                    ملحق
-                                                @endif
+                                                {{ $apartment->type }}
                                             </td>
-                                            <td>{{ $apartment->area }}</td>
-                                            <td>{{ $apartment->price }}</td>
+                                            <td>{{ $apartment->code }}</td>
+                                            <td>{{ $apartment->count }}</td>
+                                            <td>{{ $apartment->count * $apartment->project->floors_count }}</td>
+                                            <td>
+
+                                                <a href="{{ route('admin.apartments.show', $apartment->id) }}"
+                                                    type="button" class="btn btn-icon btn-primary"
+                                                    style="  min-width: 100px;">إدارة<i class="fa fa-edit"
+                                                        style="position: relative;"></i></a>
+
+                                            </td>
                                             <td class="form-group">
 
                                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"
-                                                    type="button" class="btn btn-icon btn-warning mr-1"
+                                                    type="button" class="btn btn-icon btn-warning"
                                                     style="  min-width: 100px;">@lang('site.edit') <i class="fa fa-edit"
                                                         style="position: relative;"></i></a>
 

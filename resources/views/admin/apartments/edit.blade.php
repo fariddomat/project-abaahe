@@ -20,14 +20,14 @@
                                     <input type="hidden" name="project_id" value="{{ $project->id }}">
                                     <div class="col-lg-6">
                                         <h5 class="mt-2">نوع الشقة</h5>
-                                        <select name="type" id="" class="form-control">
-                                            <option value="1" @if ($apartment->type == 1) selected @endif>شقة
-                                                أمامية</option>
-                                            <option value="2" @if ($apartment->type == 2) selected @endif>شقة
-                                                خلفية</option>
-                                            <option value="3" @if ($apartment->type == 3) selected @endif>ملحق
-                                            </option>
-                                        </select>
+                                        <input value="{{ old('type', $apartment->type) }}" name="type" type="text"
+                                            class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2">رمز الشقة</h5>
+                                        <input value="{{ old('code', $apartment->code) }}" name="code" type="text"
+                                            class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2">عدد هذا النوع في الطابق الواحد</h5>
+                                        <input value="{{ old('count', $apartment->count) }}" name="count" type="number" min="0"
+                                            class="form-control" id="basicInput" required>
                                         <h5 class="mt-2">المساحة</h5>
                                         <input value="{{ old('area', $apartment->area) }}" name="area" type="number" min="0"
                                             class="form-control" id="basicInput" required>
@@ -36,39 +36,21 @@
                                         <input value="{{ old('price', $apartment->price) }}" name="price" type="number" min="0"
                                             class="form-control" id="basicInput" required>
 
-                                        <h5 class="mt-2">غرف المعيشة</h5>
-                                        <input value="{{ old('living_rooms', $apartment->living_rooms) }}" name="living_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">غرف النوم</h5>
-                                        <input value="{{ old('bed_rooms', $apartment->bed_rooms) }}" name="bed_rooms" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">غرف الطعام</h5>
-                                        <input value="{{ old('dining_rooms', $apartment->dining_rooms) }}" name="dining_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2"> التفاصيل</h5>
+                                        <textarea id="summernote" name="details" class="form-control" id="" cols="30" rows="10">
+                                                {{ old('details', $apartment->details) }}
+                                            </textarea>
+                                        <h5 class="mt-2">@lang('site.image')</h5>
+                                        <input name="img" type="file" class="form-control" id="basicInput" >
 
                                     </div>
                                     <div class="col-lg-6">
-                                        <h5 class="mt-2">المطابخ</h5>
-                                        <input value="{{ old('kitchens', $apartment->kitchens) }}" name="kitchens" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
 
-                                        <h5 class="mt-2">غرف الخدم</h5>
-                                        <input value="{{ old('servant_rooms', $apartment->servant_rooms) }}" name="servant_rooms" type="number"
-                                            min="0" class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">دورات مياه</h5>
-                                        <input value="{{ old('bathrooms', $apartment->bathrooms) }}" name="bathrooms" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">موقف خاص</h5>
-                                        <input value="{{ old('parking', $apartment->parking) }}" name="parking" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
-
-                                        <h5 class="mt-2">@lang('site.image')</h5>
-                                        <input name="img" type="file" class="form-control" id="basicInput">
+                                        <div class="mt-2">
+                                            <img src="{{ $apartment->image_path }}" alt="">
+                                        </div>
                                     </div>
+
                                     <div class="col-lg-12">
 
                                         <button class="btn btn-icon btn-info mr-1 mt-2">@lang('site.update') <i

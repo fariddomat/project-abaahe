@@ -17,11 +17,14 @@ class CreateApartmentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->integer('type'); // 1 => front, 2 => back, 3 => appendix
+            $table->string('type');
+            $table->string('code');
+            $table->string('count');
             $table->integer('area');
             $table->integer('price');
             $table->text('details');
             $table->string('img');
+            $table->text('reservation');
             $table->timestamps();
         });
     }

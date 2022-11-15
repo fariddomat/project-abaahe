@@ -55,13 +55,11 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $try = Apartment::where('project_id', $request->project_id)->where('type', $request->type)->get();
 
-        if ($try->count() > 0) {
-            return Redirect::back()->withInput($request->input())->withErrors(['msg' => 'نوع الشقق هذا موجود مسبقا']);
-        }
         $request->validate([
-            'type' => 'required|numeric|min:0',
+            'type' => 'required',
+            'code' => 'required',
+            'count' => 'required',
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'details' => 'required',
@@ -75,8 +73,21 @@ class ApartmentController extends Controller
         })
             ->encode('jpg');
 
-        Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+        Storage::disk('local')->put('public/images/'.$request->project_id.'/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
+
+        $project=Project::find($request->project_id);
+
+        $reservation=null;
+        for ($i=0; $i < $request->count ; $i++) {
+            for ($j=0; $j < $project->floors_count ; $j++) {
+                $reservation[$i][$j]=0;
+            }
+        }
+        // $d=json_encode($reservation);
+        // dd(json_decode($d));
+        $request_data['reservation'] = json_encode($reservation);
+
 
         Apartment::create($request_data);
         Session::flash('success', 'Successfully Created !');
@@ -89,9 +100,29 @@ class ApartmentController extends Controller
      * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show($id)
     {
-        //
+
+        $apartment=Apartment::find($id);
+        // dd($apartment->reservation);
+        return view('admin.apartments.check',compact('apartment'));
+    }
+
+    public function check($id)
+    {
+
+
+        $apartment=Apartment::find($id);
+        $ar=json_decode($apartment->reservation);
+
+        $ar[request()->apartment-1][request()->floor-1]=request()->status;
+        // dd($ar);
+        $r=json_encode($ar);
+        $apartment->update([
+            'reservation'=>$r
+        ]);
+        return redirect()->back();
+
     }
 
     /**
@@ -129,7 +160,7 @@ class ApartmentController extends Controller
             return Redirect::back()->withInput($request->input())->withErrors(['msg' => 'نوع الشقق هذا موجود مسبقا']);
         }
         $request->validate([
-            'type' => 'required|numeric|min:0',
+            'type' => 'required',
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'details' => 'required',
@@ -138,14 +169,14 @@ class ApartmentController extends Controller
         $apartment = Apartment::find($id);
         $request_data = $request->except(['img']);
         if ($request->img) {
-            Storage::disk('local')->delete('public/images/' . $apartment->img);
+            Storage::disk('local')->delete('public/images/'.$request->project_id.'/' . $apartment->img);
 
             $img = Image::make($request->img)->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })
                 ->encode('jpg');
 
-            Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+            Storage::disk('local')->put('public/images/'.$request->project_id.'/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
         }
 

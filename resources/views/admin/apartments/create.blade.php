@@ -20,11 +20,14 @@
                                     <input type="hidden" name="project_id" value="{{ $project->id }}">
                                     <div class="col-lg-6">
                                         <h5 class="mt-2">نوع الشقة</h5>
-                                        <select name="type" id="" class="form-control">
-                                            <option value="1">شقة أمامية</option>
-                                            <option value="2">شقة خلفية</option>
-                                            <option value="3">ملحق</option>
-                                        </select>
+                                        <input value="{{ old('type') }}" name="type" type="text"
+                                            class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2">رمز الشقة</h5>
+                                        <input value="{{ old('code') }}" name="code" type="text"
+                                            class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2">عدد هذا النوع في الطابق الواحد</h5>
+                                        <input value="{{ old('count') }}" name="count" type="number" min="0"
+                                            class="form-control" id="basicInput" required>
                                         <h5 class="mt-2">المساحة</h5>
                                         <input value="{{ old('area') }}" name="area" type="number" min="0"
                                             class="form-control" id="basicInput" required>
@@ -33,12 +36,12 @@
                                         <input value="{{ old('price') }}" name="price" type="number" min="0"
                                             class="form-control" id="basicInput" required>
 
-                                            <h5 class="mt-2"> التفاصيل</h5>
-                                            <textarea name="details" class="form-control" id="" cols="30" rows="10">
+                                        <h5 class="mt-2"> التفاصيل</h5>
+                                        <textarea id="summernote" name="details" class="form-control" id="" cols="30" rows="10">
                                                 {{ old('details') }}
                                             </textarea>
-                                            <h5 class="mt-2">@lang('site.image')</h5>
-                                            <input name="img" type="file" class="form-control" id="basicInput" required>
+                                        <h5 class="mt-2">@lang('site.image')</h5>
+                                        <input name="img" type="file" class="form-control" id="basicInput" required>
 
                                     </div>
 

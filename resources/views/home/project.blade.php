@@ -84,21 +84,12 @@
                     <div class="single-counter">
                         <i class="bx bx-building counter-color"></i>
                         <div class="content">
-                            <h3 class="counter-color">{{ $project->front_apartments_count }}</h3>
-                            <span>الشقق الأمامية</span>
+                            <h3 class="counter-color">{{ $project->apartments_count }}</h3>
+                            <span>الشقق </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-sm-6 col-md-4 offset-md-4 offset-lg-0">
-                    <div class="single-counter">
-                        <i class="bx bx-building counter-color"></i>
-                        <div class="content">
-                            <h3 class="counter-color">{{ $project->back_apartments_count }}</h3>
-                            <span>الشقق الخلفية</span>
-                        </div>
-                    </div>
-                </div>
 
                 @if ($project->appendix_count > 0)
                     <div class="col-lg-3 col-sm-6 col-md-4 offset-md-4 offset-lg-0">
@@ -282,20 +273,22 @@
     </div>
     <!-- End -->
 
-    @if ($project->front_apartment || $project->back_apartment)
+    @foreach ($project->apartments as $index => $item)
+
         <!-- House Details Area -->
         <div class="house-details-area pt-5 pb-5">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    @if ($project->front_apartment)
+                    @if ($index%2==0)
                         <div class="col-lg-6">
                             <div class="house-content margin-left">
 
-                                <h2>تفاصيل الشقق الأمامية:</h2>
+                                <h2>تفاصيل  {{ $item->type }}:</h2>
                                 <ul class="house-list">
-                                    <li>التفاصيل <b>{!! $project->front_apartment->details !!}</b></li>
-                                    <li>السعر<b>{{ $project->front_apartment->price }} ريال</b></li>
-                                    <li> المساحة <b>{{ $project->front_apartment->area }} متر</b></li>
+                                    <li> الرمز <b>{{ $item->code }}</b></li>
+                                    <li>التفاصيل <b>{!! $item->details !!}</b></li>
+                                    <li>السعر<b>{{ $item->price }} ريال</b></li>
+                                    <li> المساحة <b>{{ $item->area }} متر</b></li>
                                 </ul>
                             </div>
                         </div>
@@ -303,16 +296,15 @@
                         <div class="col-lg-6 p-0 m-0" style="text-align: center">
                             <div class="">
                                 <div class="house-item">
-                                    <img src="{{ $project->front_apartment->image_path }}" alt="Images">
+                                    <img src="{{ $item->image_path }}" alt="Images">
                                 </div>
                             </div>
                         </div>
-                    @endif
-                    @if ($project->back_apartment)
+                    @else
                         <div class="col-lg-6 p-0 m-0 mt-3" style="  text-align: center;">
                             <div class="">
                                 <div class="house-details-item">
-                                    <img src="{{ $project->back_apartment->image_path }}" alt="Images">
+                                    <img src="{{ $item->image_path }}" alt="Images">
 
                                 </div>
                             </div>
@@ -322,38 +314,17 @@
                             <div class="house-content house-margin">
                                 <h2>تفاصيل الشقق الخلفية</h2>
                                 <ul class="house-list">
-                                    <li>التفاصيل <b>{!! $project->back_apartment->details !!}</b></li>
-                                    <li>السعر<b>{{ $project->back_apartment->price }} ريال</b></li>
-                                    <li> المساحة <b>{{ $project->back_apartment->area }} متر</b></li>
+                                    <li> الرمز <b>{{ $item->code }}</b></li>
+                                    <li>التفاصيل <b>{!! $item->details !!}</b></li>
+                                    <li>السعر<b>{{ $item->price }} ريال</b></li>
+                                    <li> المساحة <b>{{ $item->area }} متر</b></li>
                                 </ul>
-                            </div>
-                        </div>
-                    @endif
-                    {{-- appendix --}}
-                    @if ($project->appendix_apartment)
-                        <div class="col-lg-6">
-                            <div class="house-content margin-left">
-
-                                <h2>تفاصيل الملاحق:</h2>
-                                <ul class="house-list">
-                                    <li>التفاصيل <b>{!! $project->appendix_apartment->details !!}</b></li>
-                                    <li>السعر<b>{{ $project->appendix_apartment->price }} ريال</b></li>
-                                    <li> المساحة <b>{{ $project->appendix_apartment->area }} متر</b></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 p-0 m-0" style="text-align: center">
-                            <div class="">
-                                <div class="house-item">
-                                    <img src="{{ $project->appendix_apartment->image_path }}" alt="Images">
-                                </div>
                             </div>
                         </div>
                     @endif
                 </div>
             </div>
         </div>
-    @endif
+     @endforeach
     <!-- House Details Area End -->
 @endsection

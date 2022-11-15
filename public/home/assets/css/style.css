@@ -1177,8 +1177,8 @@ Inner Banner
 }
 
 .inner-banner .inner-title {
-  padding-top: 245px;
-  padding-bottom: 170px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   position: relative;
 }
 
@@ -1270,7 +1270,7 @@ Inner Banner
 }
 
 .inner-bg12 {
-  background-image: url(../img/inner-banner/12.jpg);
+  /* background-image: url(../img/inner-banner/12.jpg); */
 }
 
 /*=================================

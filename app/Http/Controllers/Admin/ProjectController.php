@@ -55,20 +55,22 @@ class ProjectController extends Controller
             'address' => 'required',
             'scheme_name' => 'required',
             'floors_count' => 'required|numeric|min:1',
-            'front_apartments_count' => 'required|numeric|min:1',
-            'back_apartments_count' => 'required|numeric|min:1',
+            'apartments_count' => 'required|numeric|min:1',
+            // 'front_apartments_count' => 'required|numeric|min:1',
+            // 'back_apartments_count' => 'required|numeric|min:1',
             'appendix_count' => 'required|numeric|min:0',
+            'poster' => 'required',
             'img' => 'required',
 
-            'farea' => 'required|numeric|min:0',
-            'fprice' => 'required|numeric|min:0',
-            'fdetails' => 'required',
-            'fimg' => 'required',
+            // 'farea' => 'required|numeric|min:0',
+            // 'fprice' => 'required|numeric|min:0',
+            // 'fdetails' => 'required',
+            // 'fimg' => 'required',
 
-            'barea' => 'required|numeric|min:0',
-            'bprice' => 'required|numeric|min:0',
-            'bdetails' => 'required',
-            'bimg' => 'required',
+            // 'barea' => 'required|numeric|min:0',
+            // 'bprice' => 'required|numeric|min:0',
+            // 'bdetails' => 'required',
+            // 'bimg' => 'required',
 
             'pdetails' => 'required',
 
@@ -79,20 +81,16 @@ class ProjectController extends Controller
 
         ]);
 
-        if ($request->appendix_count > 0) {
-            $request->validate([
-                'aarea' => 'required|numeric|min:0',
-                'aprice' => 'required|numeric|min:0',
-                'adetails' => 'required',
-                'aimg' => 'required',
-            ]);
-        }
+        // if ($request->appendix_count > 0) {
+        //     $request->validate([
+        //         'aarea' => 'required|numeric|min:0',
+        //         'aprice' => 'required|numeric|min:0',
+        //         'adetails' => 'required',
+        //         'aimg' => 'required',
+        //     ]);
+        // }
 
-        // $img = Image::make($request->img)
-        //     ->resize(570, 370)
-        //     ->encode('jpg');
 
-        // Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
 
         $project = Project::create([
             'category_id' => $request->category,
@@ -100,12 +98,19 @@ class ProjectController extends Controller
             'address' => $request->address,
             'scheme_name' => $request->scheme_name,
             'floors_count' => $request->floors_count,
-            'front_apartments_count' => $request->front_apartments_count,
-            'back_apartments_count' => $request->back_apartments_count,
+            'apartments_count' => $request->apartments_count,
+            // 'front_apartments_count' => $request->front_apartments_count,
+            // 'back_apartments_count' => $request->back_apartments_count,
             'appendix_count' => $request->appendix_count,
             'details' => $request->details,
-            // 'img' => $request->img->hashName()
+            'img' => $request->poster->hashName()
         ]);
+        $poster = Image::make($request->poster)
+            ->resize(570, 370)
+            ->encode('jpg');
+
+        Storage::disk('local')->put('public/images/' . $project->id . '/'  . $request->poster->hashName(), (string)$poster, 'public');
+
         foreach ($request->file('img') as $file) {
 
             $img = Image::make($file)
@@ -122,58 +127,58 @@ class ProjectController extends Controller
 
 
         // front apartment
-        $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })
-            ->encode('jpg');
-        Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
+        // $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
+        //     $constraint->aspectRatio();
+        // })
+        //     ->encode('jpg');
+        // Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
 
-        $frontA = Apartment::create([
-            'project_id' => $project->id,
-            'type' => 1,
-            'area' => $request->farea,
-            'price' => $request->fprice,
-            'details' => $request->fdetails,
-            'img' => $request->fimg->hashName(),
-        ]);
+        // $frontA = Apartment::create([
+        //     'project_id' => $project->id,
+        //     'type' => 1,
+        //     'area' => $request->farea,
+        //     'price' => $request->fprice,
+        //     'details' => $request->fdetails,
+        //     'img' => $request->fimg->hashName(),
+        // ]);
 
         // back apartment
-        // front appartment
-        $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })
-            ->encode('jpg');
-        Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
+        // $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
+        //     $constraint->aspectRatio();
+        // })
+        //     ->encode('jpg');
+        // Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
 
-        $backA = Apartment::create([
-            'project_id' => $project->id,
-            'type' => 2,
-            'area' => $request->barea,
-            'price' => $request->bprice,
-            'details' => $request->bdetails,
-            'img' => $request->bimg->hashName(),
-        ]);
+        // $backA = Apartment::create([
+        //     'project_id' => $project->id,
+        //     'type' => 2,
+        //     'area' => $request->barea,
+        //     'price' => $request->bprice,
+        //     'details' => $request->bdetails,
+        //     'img' => $request->bimg->hashName(),
+        // ]);
 
         // appendix apartment
-        if ($request->appendix_count > 0) {
-            $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })
-                ->encode('jpg');
-            Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
+        // if ($request->appendix_count > 0) {
+        //     $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     })
+        //         ->encode('jpg');
+        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
 
-            $apA = Apartment::create([
-                'project_id' => $project->id,
-                'type' => 3,
-                'area' => $request->aarea,
-                'price' => $request->aprice,
-                'details' => $request->adetails,
-                'img' => $request->aimg->hashName(),
-            ]);
-        }
-        // prpertie
+        //     $apA = Apartment::create([
+        //         'project_id' => $project->id,
+        //         'type' => 3,
+        //         'area' => $request->aarea,
+        //         'price' => $request->aprice,
+        //         'details' => $request->adetails,
+        //         'img' => $request->aimg->hashName(),
+        //     ]);
+        // }
 
-        $prpertie = Propertie::create([
+        // propertie
+
+        $propertie = Propertie::create([
             'project_id' => $project->id,
             'details' => $request->pdetails,
         ]);
@@ -189,7 +194,7 @@ class ProjectController extends Controller
         ]);
 
         Session::flash('success', 'Successfully Created !');
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.apartments.index', ['projectId'=>$project->id]);
     }
 
     /**
@@ -232,17 +237,18 @@ class ProjectController extends Controller
             'address' => 'required',
             'scheme_name' => 'required',
             'floors_count' => 'required|numeric|min:1',
-            'front_apartments_count' => 'required|numeric|min:1',
-            'back_apartments_count' => 'required|numeric|min:1',
+            'apartments_count' => 'required|numeric|min:1',
+            // 'front_apartments_count' => 'required|numeric|min:1',
+            // 'back_apartments_count' => 'required|numeric|min:1',
             'appendix_count' => 'required|numeric|min:0',
 
-            'farea' => 'required|numeric|min:0',
-            'fprice' => 'required|numeric|min:0',
-            'fdetails' => 'required',
+            // 'farea' => 'required|numeric|min:0',
+            // 'fprice' => 'required|numeric|min:0',
+            // 'fdetails' => 'required',
 
-            'barea' => 'required|numeric|min:0',
-            'bprice' => 'required|numeric|min:0',
-            'bdetails' => 'required',
+            // 'barea' => 'required|numeric|min:0',
+            // 'bprice' => 'required|numeric|min:0',
+            // 'bdetails' => 'required',
 
             'pdetails' => 'required',
 
@@ -252,16 +258,25 @@ class ProjectController extends Controller
             'f4' => 'required',
         ]);
 
-        if ($request->appendix_count > 0) {
-            $request->validate([
-                'aarea' => 'required|numeric|min:0',
-                'aprice' => 'required|numeric|min:0',
-                'adetails' => 'required',
-            ]);
-        }
+        // if ($request->appendix_count > 0) {
+        //     $request->validate([
+        //         'aarea' => 'required|numeric|min:0',
+        //         'aprice' => 'required|numeric|min:0',
+        //         'adetails' => 'required',
+        //     ]);
+        // }
 
         $project = Project::find($id);
 
+        if ($request->poster) {
+            Storage::disk('local')->delete('public/images/'.$project->id.'/' . $project->img);
+
+            $poster = Image::make($request->poster)
+            ->resize(570, 370)
+            ->encode('jpg');
+
+        Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->poster->hashName(), (string)$poster, 'public');
+        }
 
         if ($request->img) {
 
@@ -290,82 +305,84 @@ class ProjectController extends Controller
             'address' => $request->address,
             'scheme_name' => $request->scheme_name,
             'floors_count' => $request->floors_count,
-            'front_apartments_count' => $request->front_apartments_count,
-            'back_apartments_count' => $request->back_apartments_count,
+            'apartments_count' => $request->apartments_count,
+            // 'front_apartments_count' => $request->front_apartments_count,
+            // 'back_apartments_count' => $request->back_apartments_count,
             'appendix_count' => $request->appendix_count,
             'details' => $request->details,
+            'img'=>$request->poster->hashName()
         ]);
 
 
-        $fapartment = Apartment::where('project_id', $project->id)->where('type', 1);
-        // front apartment
-        if ($request->fimg) {
-            $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })
-                ->encode('jpg');
-            Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
-            $fapartment->update([
-                'img' => $request->fimg->hashName(),
-            ]);
-        }
-        $fapartment->update([
-            'area' => $request->farea,
-            'price' => $request->fprice,
-            'details' => $request->fdetails,
-        ]);
-        // back
-        $backA = Apartment::where('project_id', $project->id)->where('type', 2);
-        // front apartment
-        if ($request->bimg) {
-            $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })
-                ->encode('jpg');
-            Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
-            $backA->update([
-                'img' => $request->bimg->hashName(),
-            ]);
-        }
-        $backA->update([
-            'area' => $request->barea,
-            'price' => $request->bprice,
-            'details' => $request->bdetails,
-        ]);
+        // $fapartment = Apartment::where('project_id', $project->id)->where('type', 1);
+        // // front apartment
+        // if ($request->fimg) {
+        //     $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     })
+        //         ->encode('jpg');
+        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
+        //     $fapartment->update([
+        //         'img' => $request->fimg->hashName(),
+        //     ]);
+        // }
+        // $fapartment->update([
+        //     'area' => $request->farea,
+        //     'price' => $request->fprice,
+        //     'details' => $request->fdetails,
+        // ]);
+        // // back
+        // $backA = Apartment::where('project_id', $project->id)->where('type', 2);
+        // // front apartment
+        // if ($request->bimg) {
+        //     $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     })
+        //         ->encode('jpg');
+        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
+        //     $backA->update([
+        //         'img' => $request->bimg->hashName(),
+        //     ]);
+        // }
+        // $backA->update([
+        //     'area' => $request->barea,
+        //     'price' => $request->bprice,
+        //     'details' => $request->bdetails,
+        // ]);
 
 
-        // appendix apartment
-        if ($request->appendix_count > 0) {
-            $apA = Apartment::where('project_id', $project->id)->where('type', 3);
-            // dd($apA->count());
-            // front apartment
-            if ($request->aimg) {
-                $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                    ->encode('jpg');
-                Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
-                $apA->update([
-                    'img' => $request->aimg->hashName(),
-                ]);
-            }
-            if ($apA->count() > 0) {
-                $apA->update([
-                    'area' => $request->aarea,
-                    'price' => $request->aprice,
-                    'details' => $request->adetails,
-                ]);
-            } else {
-                $apA = Apartment::create([
-                    'project_id' => $project->id,
-                    'type' => 3,
-                    'area' => $request->aarea,
-                    'price' => $request->aprice,
-                    'details' => $request->adetails,
-                    'img' => $request->aimg->hashName(),
-                ]);
-            }
-        }
+        // // appendix apartment
+        // if ($request->appendix_count > 0) {
+        //     $apA = Apartment::where('project_id', $project->id)->where('type', 3);
+        //     // dd($apA->count());
+        //     // front apartment
+        //     if ($request->aimg) {
+        //         $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
+        //             $constraint->aspectRatio();
+        //         })
+        //             ->encode('jpg');
+        //         Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
+        //         $apA->update([
+        //             'img' => $request->aimg->hashName(),
+        //         ]);
+        //     }
+        //     if ($apA->count() > 0) {
+        //         $apA->update([
+        //             'area' => $request->aarea,
+        //             'price' => $request->aprice,
+        //             'details' => $request->adetails,
+        //         ]);
+        //     } else {
+        //         $apA = Apartment::create([
+        //             'project_id' => $project->id,
+        //             'type' => 3,
+        //             'area' => $request->aarea,
+        //             'price' => $request->aprice,
+        //             'details' => $request->adetails,
+        //             'img' => $request->aimg->hashName(),
+        //         ]);
+        //     }
+        // }
 
           // prpertie
 

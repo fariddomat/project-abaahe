@@ -74,6 +74,12 @@ class Project extends Model
         return $this->hasMany(ProjectImage::class);
     }
 
+    public function getPosterPathAttribute()
+    {
+                return Storage::url('images/' . $this->id . '/' . $this->img);
+
+
+    }
     public function getImagePathAttribute()
     {
         if ($this->projectImages()->exists()) {
