@@ -63,7 +63,7 @@
                                                     style="text-align: center;
                                        color: white;
                                        font-weight: bolder;
-                                       font-size: 16px; background-color: gold">
+                                       font-size: 16px; background-color: #fdb901">
                                                     متاح</td>
                                                 <td
                                                     style="text-align: center;
@@ -86,14 +86,14 @@
                                                 @for ($i = $apartment->project->floors_count - 1; $i >= 0; $i--)
                                                     <tr>
                                                         <td>الدور {{ $i + 1 }}</td>
-                                                        
+
                                                         @foreach (json_decode($apartment->reservation) as $index => $item)
                                                             @if ($item[$i] == 0)
                                                                 <td
                                                                     style="text-align: center;
                                                   color: white;
                                                   font-weight: bolder;
-                                                  font-size: 16px; background-color: gold">
+                                                  font-size: 16px; background-color: #fdb901">
                                                                 @elseif ($item[$i] == '1')
                                                                 <td
                                                                     style="text-align: center;
@@ -123,7 +123,7 @@
                                                                     style="text-align: center;
                                           color: white;
                                           font-weight: bolder;
-                                          font-size: 16px; background-color: gold">
+                                          font-size: 16px; background-color: #fdb901">
                                                                 @elseif ($item[$i] == '1')
                                                                 <td
                                                                     style="text-align: center;

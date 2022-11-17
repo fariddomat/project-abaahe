@@ -335,13 +335,13 @@
             </div>
             <div class="container" style="color: white">
                 <div class="">
-                    <table class="table table-striped table-scrollable mt-2">
+                    <table class="table table-striped table-scrollable mt-2" style="border-spacing: 0.5rem">
                         <tr>
                             <td
                                 style="text-align: center;
                    color: white;
                    font-weight: bolder;
-                   font-size: 16px; background-color: gold">
+                   font-size: 16px; background-color: #fdb901">
                                 متاح</td>
                             <td
                                 style="text-align: center;
@@ -358,7 +358,9 @@
                         </tr>
 
                     </table>
-                    <table class="table table-striped table-scrollable mt-2">
+                    <table class="table table-striped table-scrollable mt-2"  cellspacing="15" cellpadding="1" style="
+                    border-spacing: 10px;
+                    border-collapse: separate;">
                         @if ($project->appendix_apartment)
                             <tr>
                                 <td>
@@ -372,7 +374,7 @@
                                         style="text-align: center;
                   color: white;
                   font-weight: bolder;
-                  font-size: 16px; background-color: gold;border: solid;">
+                  font-size: 16px; background-color: #fdb901;border: solid;">
                                     @elseif ($item[$i] == '1')
                                     <td
                                         style="text-align: center;
@@ -404,7 +406,7 @@
                                         style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
-                  font-size: 16px; background-color: gold">
+                  font-size: 16px; background-color: #fdb901">
                                     @elseif ($item[$i] == '1')
                                     <td
                                         style="text-align: center;
