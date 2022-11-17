@@ -42,11 +42,11 @@ class Project extends Model
         return $this->hasOne(Facility::class);
     }
 
-    public function getFrontApartmentAttribute()
+    public function getAApartmentAttribute()
     {
-        $q = $this->apartments()->where('type', '1')->get();
+        $q = $this->apartments()->where('appendix','<>', 'on')->get();
         if ($q->count() > 0) {
-            return $q[0];
+            return $q;
         }
         return false;
     }
@@ -62,7 +62,7 @@ class Project extends Model
 
     public function getAppendixApartmentAttribute()
     {
-        $q = $this->apartments()->where('type', '3')->get();
+        $q = $this->apartments()->where('appendix', 'on')->get();
         if ($q->count() > 0) {
             return $q[0];
         }

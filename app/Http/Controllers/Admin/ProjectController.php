@@ -276,7 +276,10 @@ class ProjectController extends Controller
             ->encode('jpg');
 
         Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->poster->hashName(), (string)$poster, 'public');
-        }
+        $project->update([
+            'img'=>$request->poster->hashName()
+        ]);
+    }
 
         if ($request->img) {
 
@@ -310,7 +313,6 @@ class ProjectController extends Controller
             // 'back_apartments_count' => $request->back_apartments_count,
             'appendix_count' => $request->appendix_count,
             'details' => $request->details,
-            'img'=>$request->poster->hashName()
         ]);
 
 
@@ -414,7 +416,13 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
-        Storage::disk('local')->delete('public/images/' . $project->img);
+        $facility=Facility::where('project_id',$project->id);
+        $facility->delete();
+        $propertie=Propertie::where('project_id',$project->id);
+        $propertie->delete();
+        $apartments=Apartment::where('project_id',$project->id);
+        $apartments->delete();
+        Storage::disk('local')->delete('public/images/'.$project->id.'/' . $project->img);
         $project->delete();
 
         Session::flash('success', 'Successfully deleted !');

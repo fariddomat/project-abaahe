@@ -6,9 +6,9 @@ use App\Project;
 use App\Http\Controllers\Controller;
 use App\Category;
 use Illuminate\Http\Request;
-use Session;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+    use Session;
+    use Illuminate\Support\Facades\Storage;
+    use Intervention\Image\Facades\Image;
 use App\Propertie;
 
 use App\Apartment;
@@ -79,6 +79,12 @@ class ApartmentController extends Controller
         $project=Project::find($request->project_id);
 
         $reservation=null;
+        // appendix
+        if($request->appendix){
+            for ($j=0; $j < $project->appendix_count ; $j++) {
+                $reservation[0][$j]=0;
+            }
+        }else
         for ($i=0; $i < $request->count ; $i++) {
             for ($j=0; $j < $project->floors_count ; $j++) {
                 $reservation[$i][$j]=0;
@@ -167,7 +173,7 @@ class ApartmentController extends Controller
         ]);
 
         $apartment = Apartment::find($id);
-        $request_data = $request->except(['img']);
+        $request_data = $request->except(['img','appendix']);
         if ($request->img) {
             Storage::disk('local')->delete('public/images/'.$request->project_id.'/' . $apartment->img);
 
@@ -196,7 +202,7 @@ class ApartmentController extends Controller
     {
 
         $apartment = Apartment::find($id);
-        Storage::disk('local')->delete('public/images/' . $apartment->img);
+        Storage::disk('local')->delete('public/images/'.$apartment->project_id .'/' . $apartment->img);
         $apartment->delete();
 
         Session::flash('success', 'Successfully deleted !');

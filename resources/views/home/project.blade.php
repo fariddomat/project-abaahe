@@ -274,16 +274,15 @@
     <!-- End -->
 
     @foreach ($project->apartments as $index => $item)
-
         <!-- House Details Area -->
         <div class="house-details-area pt-5 pb-5">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    @if ($index%2==0)
+                    @if ($index % 2 == 0)
                         <div class="col-lg-6">
                             <div class="house-content margin-left">
 
-                                <h2>تفاصيل  {{ $item->type }}:</h2>
+                                <h2>تفاصيل {{ $item->type }}:</h2>
                                 <ul class="house-list">
                                     <li> الرمز <b>{{ $item->code }}</b></li>
                                     <li>التفاصيل <b>{!! $item->details !!}</b></li>
@@ -312,7 +311,7 @@
 
                         <div class="col-lg-6 mt-3">
                             <div class="house-content house-margin">
-                                <h2>تفاصيل الشقق الخلفية</h2>
+                                <h2>تفاصيل {{ $item->type }}</h2>
                                 <ul class="house-list">
                                     <li> الرمز <b>{{ $item->code }}</b></li>
                                     <li>التفاصيل <b>{!! $item->details !!}</b></li>
@@ -325,6 +324,113 @@
                 </div>
             </div>
         </div>
-     @endforeach
+    @endforeach
     <!-- House Details Area End -->
+
+    <!-- apartment check Area-->
+    <div class="room-details-area pt-100 pb-70" style="background-color: #e7eeee;">
+        <div class="container-fluid m-0 p-0">
+            <div class="section-title-two text-center">
+                <h2 class="margin-auto" style="color: #cc9933">حالة الشقق</h2>
+            </div>
+            <div class="container" style="color: white">
+                <div class="">
+                    <table class="table table-striped table-scrollable mt-2">
+                        <tr>
+                            <td
+                                style="text-align: center;
+                   color: white;
+                   font-weight: bolder;
+                   font-size: 16px; background-color: gold">
+                                متاح</td>
+                            <td
+                                style="text-align: center;
+                   color: white;
+                   font-weight: bolder;
+                   font-size: 16px; background-color: rgb(51, 233, 111)">
+                                محجوز</td>
+                            <td
+                                style="text-align: center;
+                   color: white;
+                   font-weight: bolder;
+                   font-size: 16px; background-color: #004848">
+                                مباع</td>
+                        </tr>
+
+                    </table>
+                    <table class="table table-striped table-scrollable mt-2">
+                        @if ($project->appendix_apartment)
+                            <tr>
+                                <td>
+                                    الملاحق
+                                </td>
+                                <td></td>
+                                @for ($i = $project->appendix_count - 1; $i >= 0; $i--)
+                                    @foreach (json_decode($project->appendix_apartment->reservation) as $index => $item)
+                                    @if ($item[$i] == 0)
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;
+                  font-size: 16px; background-color: gold;border: solid;">
+                                    @elseif ($item[$i] == '1')
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;border: solid;
+                  font-size: 16px; background-color: rgb(51, 233, 111)">
+                                    @else
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;border: solid;
+                  font-size: 16px; background-color: #004848">
+                                @endif
+                                            ملحق
+                                        </td>
+                                    @endforeach
+                                @endfor
+
+                            </tr>
+                        @endif
+                        @for ($i = $project->floors_count - 1; $i >= 0; $i--)
+                            <tr>
+                                <td>الدور {{ $i+1 }}</td>
+                                @foreach ($project->a_apartment as $apartment)
+
+                                        @foreach (json_decode($apartment->reservation) as $item)
+                                            @if ($item[$i] == 0)
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;border: solid;
+                  font-size: 16px; background-color: gold">
+                                    @elseif ($item[$i] == '1')
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;border: solid;
+                  font-size: 16px; background-color: rgb(51, 233, 111)">
+                                    @else
+                                    <td
+                                        style="text-align: center;
+                  color: white;
+                  font-weight: bolder;border: solid;
+                  font-size: 16px; background-color: #004848">
+                                @endif
+                                {{ $apartment->type}} - {{ $apartment->code }}
+                                </td>
+                        @endforeach
+
+                        @endforeach
+                        </tr>
+                        @endfor
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
 @endsection

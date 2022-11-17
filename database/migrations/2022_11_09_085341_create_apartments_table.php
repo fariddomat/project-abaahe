@@ -18,6 +18,7 @@ class CreateApartmentsTable extends Migration
             $table->bigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->string('type');
+            $table->string('appendix')->default(0);
             $table->string('code');
             $table->string('count');
             $table->integer('area');

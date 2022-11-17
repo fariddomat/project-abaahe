@@ -22,6 +22,7 @@
                                         <h5 class="mt-2">نوع الشقة</h5>
                                         <input value="{{ old('type') }}" name="type" type="text"
                                             class="form-control" id="basicInput" required>
+                                            ملحق؟ <input type="checkbox" name="appendix">
                                         <h5 class="mt-2">رمز الشقة</h5>
                                         <input value="{{ old('code') }}" name="code" type="text"
                                             class="form-control" id="basicInput" required>
