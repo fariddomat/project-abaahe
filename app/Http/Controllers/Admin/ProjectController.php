@@ -54,6 +54,8 @@ class ProjectController extends Controller
             'name' => 'required|unique:projects,name',
             'address' => 'required',
             'scheme_name' => 'required',
+            'status' => 'required',
+            'status_percent' => 'required|numeric|min:0|max:100',
             'floors_count' => 'required|numeric|min:1',
             'apartments_count' => 'required|numeric|min:1',
             // 'front_apartments_count' => 'required|numeric|min:1',
@@ -92,11 +94,17 @@ class ProjectController extends Controller
 
 
 
+        $percent=100;
+        if($request->status != 'complete'){
+            $percent=$request->status_percent;
+        }
         $project = Project::create([
             'category_id' => $request->category,
             'name' => $request->name,
             'address' => $request->address,
             'scheme_name' => $request->scheme_name,
+            'status' => $request->status,
+            'status_percent' => $percent,
             'floors_count' => $request->floors_count,
             'apartments_count' => $request->apartments_count,
             // 'front_apartments_count' => $request->front_apartments_count,
@@ -241,6 +249,8 @@ class ProjectController extends Controller
             // 'front_apartments_count' => 'required|numeric|min:1',
             // 'back_apartments_count' => 'required|numeric|min:1',
             'appendix_count' => 'required|numeric|min:0',
+            'status' => 'required',
+            'status_percent' => 'required|numeric|min:0|max:100',
 
             // 'farea' => 'required|numeric|min:0',
             // 'fprice' => 'required|numeric|min:0',
@@ -302,11 +312,17 @@ class ProjectController extends Controller
             }
         }
 
+        $percent=100;
+        if($request->status != 'complete'){
+            $percent=$request->status_percent;
+        }
         $project->update([
             'category_id' => $request->category,
             'name' => $request->name,
             'address' => $request->address,
             'scheme_name' => $request->scheme_name,
+            'status' => $request->status,
+            'status_percent' => $percent,
             'floors_count' => $request->floors_count,
             'apartments_count' => $request->apartments_count,
             // 'front_apartments_count' => $request->front_apartments_count,

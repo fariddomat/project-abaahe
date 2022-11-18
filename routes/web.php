@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([], function()
 {
 
-	Route::get('/', function()
-	{
-		return view('home.index');
-	})->name('home');
+	Route::get('/', 'Home\HomeController@index')->name('home');
     Route::get('/categories','Home\CategoryControlelr@index')->name('categories');
     Route::get('/category/{id}','Home\CategoryControlelr@show')->name('category');
     Route::get('/projects','Home\ProjectControlelr@index')->name('projects');

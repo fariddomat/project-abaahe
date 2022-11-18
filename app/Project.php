@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
-    //
+    
     protected $guarded = [];
     public function getNameAttribute($value)
     {

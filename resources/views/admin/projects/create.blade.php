@@ -40,11 +40,19 @@
                                     <h5 class="mt-2">@lang('site.scheme_name')</h5>
                                     <input value="{{ old('scheme_name') }}" name="scheme_name" type="text"
                                         class="form-control" id="basicInput" required>
+
                                     <h5 class="mt-2">@lang('site.address')</h5>
                                     <textarea id="summernote" name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address') }}</textarea>
-                                    <h5 class="mt-2">@lang('site.image') رئيسية</h5>
-                                    <input value="{{ old('poster') }}" name="poster" type="file" class="form-control"
-                                        id="basicInput" required>
+
+
+                                        <h5 class="mt-2">حالة المشروع</h5>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="complete">مكتمل</option>
+                                            <option value="pending">قيد التنفيذ</option>
+                                        </select>
+                                        <h5 class="mt-2">نسبة التنفيذ</h5>
+                                        <input value="{{ old('status_percent', 0) }}" name="status_percent" type="number" min="0" max="100"
+                                            class="form-control" id="basicInput" required>
 
 
                                 </div>
@@ -54,7 +62,7 @@
                                         min="1" class="form-control" id="basicInput" required>
 
                                     <h5 class="mt-2">@lang('site.apartments_count')</h5>
-                                    <input value="{{ old('apartments_count', 4) }}" name="apartments_count" type="number"
+                                    <input value="{{ old('apartments_count', 10) }}" name="apartments_count" type="number"
                                         min="1" class="form-control" id="basicInput" required>
 
                                     <h5 class="mt-2">@lang('site.appendix_count')</h5>
@@ -64,7 +72,9 @@
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
                                     <textarea id="summernote2" name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details') }}</textarea>
-
+                                    <h5 class="mt-2">@lang('site.image') رئيسية</h5>
+                                    <input value="{{ old('poster') }}" name="poster" type="file" class="form-control"
+                                        id="basicInput" required>
 
                                     <h5 class="mt-2">صور المشروع</h5>
                                     <input value="{{ old('img[]') }}" name="img[]" multiple type="file"

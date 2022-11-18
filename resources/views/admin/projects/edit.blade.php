@@ -44,12 +44,19 @@
                                         type="text" class="form-control" id="basicInput" required>
                                     <h5 class="mt-2">@lang('site.address')</h5>
                                     <textarea id="summernote"  name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address', $project->address) }}</textarea>
-                                    <h5 class="mt-2">@lang('site.image') رئيسية</h5>
-                                    <input value="{{ old('poster') }}" name="poster"  type="file"
-                                        class="form-control" id="basicInput">
-                                        <div class="row mt-1">
-                                                <img class="col-lg-3" src="{{ $project->poster_path }}" alt="Images">
-                                        </div>
+
+                                    <h5 class="mt-2">حالة المشروع</h5>
+                                    <select name="status" id="" class="form-control">
+                                        <option value="complete" selected>مكتمل</option>
+                                        <option value="pending" @if ($project->status =='pending')
+                                            selected
+                                        @endif>قيد التنفيذ</option>
+                                    </select>
+                                    <h5 class="mt-2">نسبة التنفيذ</h5>
+                                    <input value="{{ old('status_percent', $project->status_percent) }}" name="status_percent" type="number" min="0" max="100"
+                                        class="form-control" id="basicInput" required>
+
+
                                 </div>
                                 <div class="col-lg-6">
                                     <h5 class="mt-2">@lang('site.floors_count')</h5>
@@ -68,6 +75,12 @@
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
                                     <textarea id="summernote2"  name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details', $project->details) }}</textarea>
+                                    <h5 class="mt-2">@lang('site.image') رئيسية</h5>
+                                    <input value="{{ old('poster') }}" name="poster"  type="file"
+                                        class="form-control" id="basicInput">
+                                        <div class="row mt-1">
+                                                <img class="col-lg-3" src="{{ $project->poster_path }}" alt="Images">
+                                        </div>
                                     <h5 class="mt-2">صور المشروع</h5>
                                     <input value="{{ old('img[]') }}" name="img[]" multiple type="file"
                                         class="form-control" id="basicInput">

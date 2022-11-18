@@ -55,7 +55,6 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'type' => 'required',
             'code' => 'required',
@@ -65,21 +64,17 @@ class ApartmentController extends Controller
             'details' => 'required',
             'img' => 'required',
         ]);
-
         $request_data = $request->except(['img']);
-
         $img = Image::make($request->img)->resize(300, null, function ($constraint) {
             $constraint->aspectRatio();
         })
             ->encode('jpg');
-
         Storage::disk('local')->put('public/images/'.$request->project_id.'/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
-
         $project=Project::find($request->project_id);
 
         $reservation=null;
-        // appendix
+
         if($request->appendix){
             for ($j=0; $j < $project->appendix_count ; $j++) {
                 $reservation[0][$j]=0;
@@ -108,7 +103,6 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-
         $apartment=Apartment::find($id);
         // dd($apartment->reservation);
         return view('admin.apartments.check',compact('apartment'));
@@ -122,7 +116,6 @@ class ApartmentController extends Controller
         $ar=json_decode($apartment->reservation);
 
         $ar[request()->apartment-1][request()->floor-1]=request()->status;
-        // dd($ar);
         $r=json_encode($ar);
         $apartment->update([
             'reservation'=>$r

@@ -19,21 +19,11 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6 pl-0">
-                    @if ($project->projectImages->count() > 1)
-                        <div class="house-slider-three owl-carousel owl-theme">
-                            @foreach ($project->images_path as $item)
-                                <div class="house-three-item">
-                                    <img src="{{ $item }}" alt="Images">
-                                </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <div class="property-img-three">
-                            <a href="property-details.html">
-                                <img src="{{ $project->image_path }}" alt="Images">
-                            </a>
-                        </div>
-                    @endif
+                    <div class="property-img-three">
+                        <a href="property-details.html">
+                            <img src="{{ $project->poster_path }}" alt="Images">
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-lg-6">
@@ -104,10 +94,56 @@
                 @endif
 
             </div>
+
+
         </div>
     </div>
     <!-- Counter Area End -->
+    {{-- <div class="row">
+        <div class="col-lg-8 offset-md-4 ooffset-lg-0">
+            @if ($project->projectImages->count() > 1)
+                <div class="house-slider-three owl-carousel owl-theme">
+                    @foreach ($project->images_path as $item)
+                        <div class="house-three-item">
+                            <img src="{{ $item }}" alt="Images">
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="property-img-three">
+                    <a href="property-details.html">
+                        <img src="{{ $project->image_path }}" alt="Images">
+                    </a>
+                </div>
+            @endif
+        </div>
+    </div> --}}
 
+    <!-- Gallery Area -->
+    <div class="gallery-area pt-100 pb-70">
+        <div class="container">
+            <div class="section-title-two text-center">
+                <h2 class="margin-auto">معرض <b class="section-color2"> الصور</b></h2>
+            </div>
+
+            <div class="gallery-view pt-45">
+                <div class="row">
+                    @foreach ($project->images_path as $item)
+                        <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
+
+                            <div class="single-gallery">
+                                <img src="{{ $item }}" alt="Images">
+                                <a href="{{ $item }}" class="gallery-icon">
+                                    <i class='bx bx-plus'></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gallery Area End -->
     <!-- Propertie Area-->
     <div class="room-details-area pt-100 pb-70">
         <div class="container-fluid m-0 p-0">
@@ -273,60 +309,63 @@
     </div>
     <!-- End -->
 
-    @foreach ($project->apartments as $index => $item)
-        <!-- House Details Area -->
-        <div class="house-details-area pt-5 pb-5">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    @if ($index % 2 == 0)
-                        <div class="col-lg-6">
-                            <div class="house-content margin-left">
+    @if ($project->apartments->count() > 0)
+        @foreach ($project->apartments as $index => $item)
+            <!-- House Details Area -->
+            <div class="house-details-area pt-5 pb-5">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        @if ($index % 2 == 0)
+                            <div class="col-lg-6">
+                                <div class="house-content margin-left">
 
-                                <h2>تفاصيل {{ $item->type }}:</h2>
-                                <ul class="house-list">
-                                    <li> الرمز <b>{{ $item->code }}</b></li>
-                                    <li>التفاصيل <b>{!! $item->details !!}</b></li>
-                                    <li>السعر<b>{{ $item->price }} ريال</b></li>
-                                    <li> المساحة <b>{{ $item->area }} متر</b></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 p-0 m-0" style="text-align: center">
-                            <div class="">
-                                <div class="house-item">
-                                    <img src="{{ $item->image_path }}" alt="Images">
+                                    <h2>تفاصيل {{ $item->type }}:</h2>
+                                    <ul class="house-list">
+                                        <li> الرمز <b>{{ $item->code }}</b></li>
+                                        <li>التفاصيل <b>{!! $item->details !!}</b></li>
+                                        <li>السعر<b>{{ $item->price }} ريال</b></li>
+                                        <li> المساحة <b>{{ $item->area }} متر</b></li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                    @else
-                        <div class="col-lg-6 p-0 m-0 mt-3" style="  text-align: center;">
-                            <div class="">
-                                <div class="house-details-item">
-                                    <img src="{{ $item->image_path }}" alt="Images">
 
+                            <div class="col-lg-6 p-0 m-0" style="text-align: center">
+                                <div class="">
+                                    <div class="house-item">
+                                        <img src="{{ $item->image_path }}" alt="Images">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="col-lg-6 p-0 m-0 mt-3" style="  text-align: center;">
+                                <div class="">
+                                    <div class="house-details-item">
+                                        <img src="{{ $item->image_path }}" alt="Images">
 
-                        <div class="col-lg-6 mt-3">
-                            <div class="house-content house-margin">
-                                <h2>تفاصيل {{ $item->type }}</h2>
-                                <ul class="house-list">
-                                    <li> الرمز <b>{{ $item->code }}</b></li>
-                                    <li>التفاصيل <b>{!! $item->details !!}</b></li>
-                                    <li>السعر<b>{{ $item->price }} ريال</b></li>
-                                    <li> المساحة <b>{{ $item->area }} متر</b></li>
-                                </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+
+                            <div class="col-lg-6 mt-3">
+                                <div class="house-content house-margin">
+                                    <h2>تفاصيل {{ $item->type }}</h2>
+                                    <ul class="house-list">
+                                        <li> الرمز <b>{{ $item->code }}</b></li>
+                                        <li>التفاصيل <b>{!! $item->details !!}</b></li>
+                                        <li>السعر<b>{{ $item->price }} ريال</b></li>
+                                        <li> المساحة <b>{{ $item->area }} متر</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    @endif
     <!-- House Details Area End -->
 
+    @if ($project->apartments->count() > 0)
     <!-- apartment check Area-->
     <div class="room-details-area pt-100 pb-70" style="background-color: #e7eeee;">
         <div class="container-fluid m-0 p-0">
@@ -358,7 +397,8 @@
                         </tr>
 
                     </table>
-                    <table class="table table-striped table-scrollable mt-2"  cellspacing="15" cellpadding="1" style="
+                    <table class="table table-striped table-scrollable mt-2" cellspacing="15" cellpadding="1"
+                        style="
                     border-spacing: 10px;
                     border-collapse: separate;">
                         @if ($project->appendix_apartment)
@@ -369,26 +409,26 @@
                                 <td></td>
                                 @for ($i = $project->appendix_count - 1; $i >= 0; $i--)
                                     @foreach (json_decode($project->appendix_apartment->reservation) as $index => $item)
-                                    @if ($item[$i] == 0)
-                                    <td
-                                        style="text-align: center;
+                                        @if ($item[$i] == 0)
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;
                   font-size: 16px; background-color: #fdb901;border: solid;">
-                                    @elseif ($item[$i] == '1')
-                                    <td
-                                        style="text-align: center;
+                                            @elseif ($item[$i] == '1')
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
                   font-size: 16px; background-color: rgb(51, 233, 111)">
-                                    @else
-                                    <td
-                                        style="text-align: center;
+                                            @else
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
                   font-size: 16px; background-color: #004848">
-                                @endif
-                                            ملحق
+                                        @endif
+                                        ملحق
                                         </td>
                                     @endforeach
                                 @endfor
@@ -397,35 +437,33 @@
                         @endif
                         @for ($i = $project->floors_count - 1; $i >= 0; $i--)
                             <tr>
-                                <td>الدور {{ $i+1 }}</td>
+                                <td>الدور {{ $i + 1 }}</td>
                                 @foreach ($project->a_apartment as $apartment)
-
-                                        @foreach (json_decode($apartment->reservation) as $item)
-                                            @if ($item[$i] == 0)
-                                    <td
-                                        style="text-align: center;
+                                    @foreach (json_decode($apartment->reservation) as $item)
+                                        @if ($item[$i] == 0)
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
                   font-size: 16px; background-color: #fdb901">
-                                    @elseif ($item[$i] == '1')
-                                    <td
-                                        style="text-align: center;
+                                            @elseif ($item[$i] == '1')
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
                   font-size: 16px; background-color: rgb(51, 233, 111)">
-                                    @else
-                                    <td
-                                        style="text-align: center;
+                                            @else
+                                            <td
+                                                style="text-align: center;
                   color: white;
                   font-weight: bolder;border: solid;
                   font-size: 16px; background-color: #004848">
-                                @endif
-                                {{ $apartment->type}} - {{ $apartment->code }}
-                                </td>
-                        @endforeach
-
-                        @endforeach
-                        </tr>
+                                        @endif
+                                        {{ $apartment->type }} - {{ $apartment->code }}
+                                        </td>
+                                    @endforeach
+                                @endforeach
+                            </tr>
                         @endfor
 
 
@@ -435,4 +473,5 @@
         </div>
     </div>
     <!-- End -->
+    @endif
 @endsection

@@ -33,10 +33,14 @@
                             <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                                 <div class="property-card">
                                     <a href="{{ route('project', $item->id) }}">
-                                        <img src="{{ asset('home/assets/img/property/pr-3.jpg') }}" alt="Images">
+                                        <img src="{{$item->poster_path }}" alt="Images">
                                     </a>
                                     <div class="content">
-                                        <span>IN PROGRESS</span>
+                                        <span>@if ($item->status =='complete')
+                                            مكتمل
+                                        @else
+                                            قيد التنفيذ
+                                        @endif</span>
                                         <a href="{{ route('project', $item->id) }}">
                                             <h3>{{ $item->name }}</h3>
                                         </a>

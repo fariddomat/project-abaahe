@@ -25,6 +25,7 @@ class CreateProjectsTable extends Migration
             $table->text('details')->nullable();
             $table->string('img');
             $table->string('status')->default('pending');
+            $table->integer('status_percent')->default(0);
             $table->bigInteger('category_id');
             $table->timestamps();
 

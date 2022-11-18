@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="{{ asset('home/assets/css/rtl.css') }}">
 
     <!-- Title -->
-    <title>أباهي للتمليك</title>
+    <title>أباهي للتمليك العقاري</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('home/assets/img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('logo.PNG') }}">
 </head>

@@ -131,7 +131,6 @@ class CategoryController extends Controller
         $category=Category::find($id);
         Storage::disk('local')->delete('public/images/' . $category->img);
         $category->delete();
-
         Session::flash('success','Successfully deleted !');
         return redirect()->route('admin.categories.index');
     }
