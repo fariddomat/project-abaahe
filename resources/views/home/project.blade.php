@@ -127,12 +127,13 @@
             </div>
 
             <div class="gallery-view pt-45">
-                <div class="row">
+                <div class="row" style="display: flex;flex-wrap: wrap; ">
                     @foreach ($project->images_path as $item)
-                        <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0">
+                        <div class="col-lg-4 col-sm-6 offset-sm-3 offset-lg-0" >
 
-                            <div class="single-gallery">
-                                <img src="{{ $item }}" alt="Images">
+                            <div class="single-gallery"style="display: flex;
+                        flex-direction: column;">
+                                <img src="{{ $item }}" alt="Images" style="max-height: 300px">
                                 <a href="{{ $item }}" class="gallery-icon">
                                     <i class='bx bx-plus'></i>
                                 </a>

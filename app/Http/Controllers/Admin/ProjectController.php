@@ -8,6 +8,7 @@ use App\Project;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Facility;
+use App\LogSystem;
 use App\ProjectImage;
 use App\Propertie;
 use Illuminate\Http\Request;
@@ -94,9 +95,9 @@ class ProjectController extends Controller
 
 
 
-        $percent=100;
-        if($request->status != 'complete'){
-            $percent=$request->status_percent;
+        $percent = 100;
+        if ($request->status != 'complete') {
+            $percent = $request->status_percent;
         }
         $project = Project::create([
             'category_id' => $request->category,
@@ -122,7 +123,9 @@ class ProjectController extends Controller
         foreach ($request->file('img') as $file) {
 
             $img = Image::make($file)
-                ->resize(800, 550)
+                ->resize(800, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
                 ->encode('jpg');
 
             Storage::disk('local')->put('public/images/' . $project->id . '/' . $file->hashName(), (string)$img, 'public');
@@ -201,8 +204,10 @@ class ProjectController extends Controller
             'f5' => $request->f5,
         ]);
 
+        LogSystem::success('تم إضافة مشروع جديد بنجاح - اسم المشروع: ' . $request->name);
+
         Session::flash('success', 'Successfully Created !');
-        return redirect()->route('admin.apartments.index', ['projectId'=>$project->id]);
+        return redirect()->route('admin.apartments.index', ['projectId' => $project->id]);
     }
 
     /**
@@ -279,28 +284,32 @@ class ProjectController extends Controller
         $project = Project::find($id);
 
         if ($request->poster) {
-            Storage::disk('local')->delete('public/images/'.$project->id.'/' . $project->img);
-
+            Storage::disk('local')->delete('public/images/' . $project->id . '/' . $project->img);
             $poster = Image::make($request->poster)
-            ->resize(570, 370)
-            ->encode('jpg');
+                ->resize(570, 370)
+                ->encode('jpg');
 
-        Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->poster->hashName(), (string)$poster, 'public');
-        $project->update([
-            'img'=>$request->poster->hashName()
-        ]);
-    }
+            Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->poster->hashName(), (string)$poster, 'public');
+            $project->update([
+                'img' => $request->poster->hashName()
+            ]);
+        }
 
         if ($request->img) {
 
             $projectImages = ProjectImage::where('project_id', $project->id);
-            // Storage::disk('local')->delete('public/images/'.$project->id.'/' . $project->img);
-
+            // dd($projectImages);
+            foreach ($projectImages->get() as $key => $item) {
+                // dd($item->img);
+                Storage::disk('local')->delete('public/images/' . $project->id . '/' . $item->img);
+            }
             $projectImages->delete();
             foreach ($request->file('img') as $file) {
                 // dd(true);
                 $img = Image::make($file)
-                    ->resize(570, 370)
+                    ->resize(null, 800, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
                     ->encode('jpg');
 
                 Storage::disk('local')->put('public/images/' . $project->id . '/' . $file->hashName(), (string)$img, 'public');
@@ -312,9 +321,9 @@ class ProjectController extends Controller
             }
         }
 
-        $percent=100;
-        if($request->status != 'complete'){
-            $percent=$request->status_percent;
+        $percent = 100;
+        if ($request->status != 'complete') {
+            $percent = $request->status_percent;
         }
         $project->update([
             'category_id' => $request->category,
@@ -402,15 +411,15 @@ class ProjectController extends Controller
         //     }
         // }
 
-          // prpertie
+        // prpertie
 
-          $propertie = Propertie::where('project_id',$project->id);
-          $propertie->update([
+        $propertie = Propertie::where('project_id', $project->id);
+        $propertie->update([
             'details' => $request->pdetails,
         ]);
 
         // facility
-        $facility = Facility::where('project_id',$project->id);
+        $facility = Facility::where('project_id', $project->id);
         $facility->update([
             'f1' => $request->f1,
             'f2' => $request->f2,
@@ -432,13 +441,20 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
-        $facility=Facility::where('project_id',$project->id);
+        $facility = Facility::where('project_id', $project->id);
         $facility->delete();
-        $propertie=Propertie::where('project_id',$project->id);
+        $propertie = Propertie::where('project_id', $project->id);
         $propertie->delete();
-        $apartments=Apartment::where('project_id',$project->id);
+        $apartments = Apartment::where('project_id', $project->id);
         $apartments->delete();
-        Storage::disk('local')->delete('public/images/'.$project->id.'/' . $project->img);
+        $projectImages = ProjectImage::where('project_id', $project->id);
+        // dd($projectImages);
+        foreach ($projectImages->get() as $key => $item) {
+            // dd($item->img);
+            Storage::disk('local')->delete('public/images/' . $project->id . '/' . $item->img);
+        }
+        $projectImages->delete();
+        Storage::disk('local')->delete('public/images/' . $project->id . '/' . $project->img);
         $project->delete();
 
         Session::flash('success', 'Successfully deleted !');
