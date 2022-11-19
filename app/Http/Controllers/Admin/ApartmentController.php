@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Propertie;
 
 use App\Apartment;
+use App\LogSystem;
 use Illuminate\Support\Facades\Redirect;
 
 class ApartmentController extends Controller
@@ -62,7 +63,7 @@ class ApartmentController extends Controller
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'details' => 'required',
-            'img' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         $request_data = $request->except(['img']);
         $img = Image::make($request->img)->resize(300, null, function ($constraint) {
@@ -91,6 +92,9 @@ class ApartmentController extends Controller
 
 
         Apartment::create($request_data);
+
+        LogSystem::success('تم إضافة '.$request->type.' بنجاح - اسم المشروع: ' . $project->name);
+
         Session::flash('success', 'Successfully Created !');
         return redirect()->route('admin.apartments.index', ['projectId' => $request->project_id]);
     }
@@ -163,6 +167,8 @@ class ApartmentController extends Controller
             'area' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'details' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+
         ]);
 
         $apartment = Apartment::find($id);
@@ -180,6 +186,9 @@ class ApartmentController extends Controller
         }
 
         $apartment->update($request_data);
+        $project=Project::find($apartment->project_id);
+
+        LogSystem::info('تم تعديل '.$apartment->type.' بنجاح - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully updated !');
         return redirect()->route('admin.apartments.index', ['projectId' => $apartment->project_id]);
@@ -197,6 +206,9 @@ class ApartmentController extends Controller
         $apartment = Apartment::find($id);
         Storage::disk('local')->delete('public/images/'.$apartment->project_id .'/' . $apartment->img);
         $apartment->delete();
+
+        $project=Project::find($apartment->project_id);
+        LogSystem::warning('تم حذف '.$apartment->type.' بنجاح - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully deleted !');
         return redirect()->route('admin.apartments.index', ['projectId' => $apartment->project_id]);

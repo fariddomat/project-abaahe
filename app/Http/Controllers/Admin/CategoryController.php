@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Category;
+use App\LogSystem;
 use Illuminate\Http\Request;
 use Session;
 
@@ -45,7 +46,9 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:categories,name',
-            'description' => 'required'
+            'description' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+
         ]);
 
         $request_data = $request->except(['img']);
@@ -58,6 +61,7 @@ class CategoryController extends Controller
         $request_data['img'] = $request->img->hashName();
 
         Category::create($request_data);
+        LogSystem::success('تم إضافة تصنيف جديد بنجاح : ' . $request->name);
         Session::flash('success', 'Successfully Created !');
         return redirect()->route('admin.categories.index');
     }
@@ -98,6 +102,8 @@ class CategoryController extends Controller
         $request->validate([
             'name'=>'required|unique:categories,name,' . $id,
             'description' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+
         ]);
 
         $category=Category::find($id);
@@ -115,6 +121,7 @@ class CategoryController extends Controller
         }
 
         $category->update($request_data);
+        LogSystem::info('تم تعديل تصنيف بنجاح : ' . $request->name);
 
         Session::flash('success','Successfully updated !');
         return redirect()->route('admin.categories.index');
@@ -131,6 +138,7 @@ class CategoryController extends Controller
         $category=Category::find($id);
         Storage::disk('local')->delete('public/images/' . $category->img);
         $category->delete();
+        LogSystem::info('تم حذف تصنيف بنجاح : ' . $category->name);
         Session::flash('success','Successfully deleted !');
         return redirect()->route('admin.categories.index');
     }

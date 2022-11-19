@@ -59,21 +59,11 @@ class ProjectController extends Controller
             'status_percent' => 'required|numeric|min:0|max:100',
             'floors_count' => 'required|numeric|min:1',
             'apartments_count' => 'required|numeric|min:1',
-            // 'front_apartments_count' => 'required|numeric|min:1',
-            // 'back_apartments_count' => 'required|numeric|min:1',
+
             'appendix_count' => 'required|numeric|min:0',
-            'poster' => 'required',
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'img' => 'required',
-
-            // 'farea' => 'required|numeric|min:0',
-            // 'fprice' => 'required|numeric|min:0',
-            // 'fdetails' => 'required',
-            // 'fimg' => 'required',
-
-            // 'barea' => 'required|numeric|min:0',
-            // 'bprice' => 'required|numeric|min:0',
-            // 'bdetails' => 'required',
-            // 'bimg' => 'required',
+            'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
 
             'pdetails' => 'required',
 
@@ -84,18 +74,7 @@ class ProjectController extends Controller
 
         ]);
 
-        // if ($request->appendix_count > 0) {
-        //     $request->validate([
-        //         'aarea' => 'required|numeric|min:0',
-        //         'aprice' => 'required|numeric|min:0',
-        //         'adetails' => 'required',
-        //         'aimg' => 'required',
-        //     ]);
-        // }
-
-
-
-        $percent = 100;
+      $percent = 100;
         if ($request->status != 'complete') {
             $percent = $request->status_percent;
         }
@@ -108,8 +87,6 @@ class ProjectController extends Controller
             'status_percent' => $percent,
             'floors_count' => $request->floors_count,
             'apartments_count' => $request->apartments_count,
-            // 'front_apartments_count' => $request->front_apartments_count,
-            // 'back_apartments_count' => $request->back_apartments_count,
             'appendix_count' => $request->appendix_count,
             'details' => $request->details,
             'img' => $request->poster->hashName()
@@ -136,56 +113,6 @@ class ProjectController extends Controller
             ]);
         }
 
-
-        // front apartment
-        // $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // })
-        //     ->encode('jpg');
-        // Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
-
-        // $frontA = Apartment::create([
-        //     'project_id' => $project->id,
-        //     'type' => 1,
-        //     'area' => $request->farea,
-        //     'price' => $request->fprice,
-        //     'details' => $request->fdetails,
-        //     'img' => $request->fimg->hashName(),
-        // ]);
-
-        // back apartment
-        // $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // })
-        //     ->encode('jpg');
-        // Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
-
-        // $backA = Apartment::create([
-        //     'project_id' => $project->id,
-        //     'type' => 2,
-        //     'area' => $request->barea,
-        //     'price' => $request->bprice,
-        //     'details' => $request->bdetails,
-        //     'img' => $request->bimg->hashName(),
-        // ]);
-
-        // appendix apartment
-        // if ($request->appendix_count > 0) {
-        //     $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     })
-        //         ->encode('jpg');
-        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
-
-        //     $apA = Apartment::create([
-        //         'project_id' => $project->id,
-        //         'type' => 3,
-        //         'area' => $request->aarea,
-        //         'price' => $request->aprice,
-        //         'details' => $request->adetails,
-        //         'img' => $request->aimg->hashName(),
-        //     ]);
-        // }
 
         // propertie
 
@@ -251,19 +178,15 @@ class ProjectController extends Controller
             'scheme_name' => 'required',
             'floors_count' => 'required|numeric|min:1',
             'apartments_count' => 'required|numeric|min:1',
-            // 'front_apartments_count' => 'required|numeric|min:1',
-            // 'back_apartments_count' => 'required|numeric|min:1',
+
             'appendix_count' => 'required|numeric|min:0',
             'status' => 'required',
             'status_percent' => 'required|numeric|min:0|max:100',
 
-            // 'farea' => 'required|numeric|min:0',
-            // 'fprice' => 'required|numeric|min:0',
-            // 'fdetails' => 'required',
 
-            // 'barea' => 'required|numeric|min:0',
-            // 'bprice' => 'required|numeric|min:0',
-            // 'bdetails' => 'required',
+            'poster' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            // 'img' => 'required',
+            'img.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
 
             'pdetails' => 'required',
 
@@ -273,13 +196,8 @@ class ProjectController extends Controller
             'f4' => 'required',
         ]);
 
-        // if ($request->appendix_count > 0) {
-        //     $request->validate([
-        //         'aarea' => 'required|numeric|min:0',
-        //         'aprice' => 'required|numeric|min:0',
-        //         'adetails' => 'required',
-        //     ]);
-        // }
+
+
 
         $project = Project::find($id);
 
@@ -334,82 +252,10 @@ class ProjectController extends Controller
             'status_percent' => $percent,
             'floors_count' => $request->floors_count,
             'apartments_count' => $request->apartments_count,
-            // 'front_apartments_count' => $request->front_apartments_count,
-            // 'back_apartments_count' => $request->back_apartments_count,
+
             'appendix_count' => $request->appendix_count,
             'details' => $request->details,
         ]);
-
-
-        // $fapartment = Apartment::where('project_id', $project->id)->where('type', 1);
-        // // front apartment
-        // if ($request->fimg) {
-        //     $fimg = Image::make($request->fimg)->resize(300, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     })
-        //         ->encode('jpg');
-        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->fimg->hashName(), (string)$fimg, 'public');
-        //     $fapartment->update([
-        //         'img' => $request->fimg->hashName(),
-        //     ]);
-        // }
-        // $fapartment->update([
-        //     'area' => $request->farea,
-        //     'price' => $request->fprice,
-        //     'details' => $request->fdetails,
-        // ]);
-        // // back
-        // $backA = Apartment::where('project_id', $project->id)->where('type', 2);
-        // // front apartment
-        // if ($request->bimg) {
-        //     $bimg = Image::make($request->bimg)->resize(300, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     })
-        //         ->encode('jpg');
-        //     Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->bimg->hashName(), (string)$bimg, 'public');
-        //     $backA->update([
-        //         'img' => $request->bimg->hashName(),
-        //     ]);
-        // }
-        // $backA->update([
-        //     'area' => $request->barea,
-        //     'price' => $request->bprice,
-        //     'details' => $request->bdetails,
-        // ]);
-
-
-        // // appendix apartment
-        // if ($request->appendix_count > 0) {
-        //     $apA = Apartment::where('project_id', $project->id)->where('type', 3);
-        //     // dd($apA->count());
-        //     // front apartment
-        //     if ($request->aimg) {
-        //         $aimg = Image::make($request->aimg)->resize(300, null, function ($constraint) {
-        //             $constraint->aspectRatio();
-        //         })
-        //             ->encode('jpg');
-        //         Storage::disk('local')->put('public/images/' . $project->id . '/' . $request->aimg->hashName(), (string)$aimg, 'public');
-        //         $apA->update([
-        //             'img' => $request->aimg->hashName(),
-        //         ]);
-        //     }
-        //     if ($apA->count() > 0) {
-        //         $apA->update([
-        //             'area' => $request->aarea,
-        //             'price' => $request->aprice,
-        //             'details' => $request->adetails,
-        //         ]);
-        //     } else {
-        //         $apA = Apartment::create([
-        //             'project_id' => $project->id,
-        //             'type' => 3,
-        //             'area' => $request->aarea,
-        //             'price' => $request->aprice,
-        //             'details' => $request->adetails,
-        //             'img' => $request->aimg->hashName(),
-        //         ]);
-        //     }
-        // }
 
         // prpertie
 
@@ -427,6 +273,7 @@ class ProjectController extends Controller
             'f4' => $request->f4,
             'f5' => $request->f5,
         ]);
+        LogSystem::info('تم تعديل مشروع - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully updated !');
         return redirect()->route('admin.projects.index');
@@ -456,6 +303,8 @@ class ProjectController extends Controller
         $projectImages->delete();
         Storage::disk('local')->delete('public/images/' . $project->id . '/' . $project->img);
         $project->delete();
+
+        LogSystem::warning('تم حذف المشروع - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully deleted !');
         return redirect()->route('admin.projects.index');
