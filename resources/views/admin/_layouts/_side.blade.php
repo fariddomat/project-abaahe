@@ -24,9 +24,13 @@
                 <li class=" nav-item"><a href="{{ route('admin.setting.logs') }}"><i class="fa fa-history"></i><span class="menu-title"
                     data-i18n="">سجل العمليات</span></a>
         </li>
-                <li class=" nav-item"><a href="{{ route('admin.setting.cover') }}"><i class="fa fa-cogs"></i><span class="menu-title"
-                            data-i18n="">الاعدادات</span></a>
+                <li class=" nav-item"><a href="{{ route('admin.setting.cover') }}"><i class="fa fa-image"></i><span class="menu-title"
+                            data-i18n="">الصور</span></a>
                 </li>
+
+                <li class=" nav-item"><a href="{{ route('admin.setting.settingsText') }}"><i class="fa fa-cogs"></i><span class="menu-title"
+                    data-i18n="">اعدادات المحتوى</span></a>
+        </li>
             </ul>
         </div><a class="btn btn-danger btn-block btn-glow btn-upgrade-pro mx-1" href="/"
             target="_blank">@lang('site.home')!</a>
