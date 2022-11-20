@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\LogSystem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-
+use Session;
 class SettingController extends Controller
 {
 
@@ -49,5 +49,18 @@ class SettingController extends Controller
     {
         $logs=LogSystem::latest()->paginate(5);
         return view('admin.settings.logs', compact('logs'));
+    }
+
+    public function settingsText()
+    {
+        return view('admin.settings.settings');
+    }
+
+    public function settings(Request $request)
+    {
+        setting($request->all())->save();
+
+        Session::flash('success','Successfully added !');
+        return redirect()->back();
     }
 }

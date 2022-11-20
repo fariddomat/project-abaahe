@@ -14,8 +14,7 @@
                    <div class="col-lg-3 col-md-6">
                        <div class="single-footer-widget">
                            <p>
-                               Lorem ipsum dolor sit ame consectetur adisicing elitsed do eiusmod
-                               tempor labet dolore magna aliquaUt
+                               {{ setting('site_name') }}
                            </p>
                            <ul class="social-link">
                                <li>
@@ -80,11 +79,12 @@
                                    <span>السبت - الاحد :</span> 9 am to 2 pm
                                </li>
                                <li>
-                                   <span>هاتف :</span> <a href="tel:2151234567"> 215 - 123 - 4567</a>
+                                   <span>هاتف :</span> <a href="tel:2151234567"> {{ setting('site_phone') }}</a>
                                </li>
                                <li>
                                    <span>بريد إلكتروني :</span> <a href="mailto:info@Oftopinc.com">
-                                       info@abahee.com</a>
+                                    {{ setting('site_email')}}
+                                </a>
                                </li>
                            </ul>
                        </div>

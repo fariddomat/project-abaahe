@@ -18,7 +18,7 @@
                                     </a>
                                     <a href="tel:+1(778)453221" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
-                                        +1 (778) 453 221
+                                        {{ setting('site_phone') }}
                                     </a>
                                 </div>
                             </div>
@@ -43,7 +43,8 @@
                                     </a>
                                     <a href="tel:+1(778)453221" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
-                                        +1 (778) 453 221
+
+                                        {{ setting('site_phone') }}
                                     </a>
                                 </div>
                             </div>
@@ -67,7 +68,8 @@
                                     </a>
                                     <a href="tel:+1(778)453221" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
-                                        +1 (778) 453 221
+
+                                        {{ setting('site_phone') }}
                                     </a>
                                 </div>
                             </div>
@@ -140,12 +142,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 pl-0">
                     <div class="property-img">
-                            <img src="{{ asset('home/assets/img/property/p-1.jpg') }}" alt="Images">
+                            <img src="{{ asset('home.PNG') }}" alt="Images">
 
                     </div>
                 </div>
 
-                <div class="col-lg-7   wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
+                <div id="about" class="col-lg-7   wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
                     <div class="property-item ml-50">
                         <div class="section-title">
                             <h2>
@@ -153,9 +155,7 @@
 
                             </h2>
                             <p>
-                                Lorem ipsum dolor sit ame consectetur adipisicing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliquaUt enim
-                                ad minim veniaquis nostrud exercitation
+                                {{ setting('site_about')}}
                             </p>
                         </div>
 
@@ -252,31 +252,36 @@
                 </div>
 
                 <div class="row pt-45">
-                    @foreach ($projects as $project)
-                        <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                            <div class="single-property">
-                                <div class="images">
-                                    <a href="{{ route('project', $project->id) }}">
-                                        <img src="{{ $project->poster_path }}" alt="Images">
-                                    </a>
-                                    <div class="property-content">
-                                        <a href={{ route('project', $project->id) }}">
-                                            <h3>{{ $project->name }}</h3>
-                                        </a>
-                                        <p>{!! $project->details !!}</p>
-                                        <a href="{{ route('project', $project->id) }}" class="learn-more-btn">
-                                            <i class='bx bx-right-arrow-alt'></i>
-                                            تفاصيل
-                                        </a>
-                                        <div class="plus-dots">
-                                            <img src="{{ asset('home/assets/img/property/plus-dots.png') }}"
-                                                alt="Images">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+                   @if ($projects->count() > 0)
+                   @foreach ($projects as $project)
+                   <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+                       <div class="single-property">
+                           <div class="images">
+                               <a href="{{ route('project', $project->id) }}">
+                                   <img src="{{ $project->poster_path }}" alt="Images">
+                               </a>
+                               <div class="property-content">
+                                   <a href={{ route('project', $project->id) }}">
+                                       <h3>{{ $project->name }}</h3>
+                                   </a>
+                                   <p>{!! $project->details !!}</p>
+                                   <a href="{{ route('project', $project->id) }}" class="learn-more-btn">
+                                       <i class='bx bx-right-arrow-alt'></i>
+                                       تفاصيل
+                                   </a>
+                                   <div class="plus-dots">
+                                       <img src="{{ asset('home/assets/img/property/plus-dots.png') }}"
+                                           alt="Images">
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               @endforeach
+                   @else
+                   <h3 class=" offset-md-4 offset-lg-0">لايوجد مشاريع مكتملة بعد</h3>
+
+                   @endif
                 </div>
             </div>
         </div>
@@ -293,13 +298,13 @@
                     <div class="section-title wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
                         <h2> مشاريع <b> قادمة</b> </h2>
                         <p>
-                            Lorem ipsum dolor sit ame consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliquaUt enim ad minim veniaquis nostrud exercitation
+                            المشاريع المستقبلية أو التي لم تكتمل بعد
                         </p>
                     </div>
                 </div>
 
                 <div class="row pt-45">
+                    @if ($pending_projects->count()>0)
                     @foreach ($pending_projects as $project)
 
                     <div class="col-lg-3 col-sm-6  offset-md-4 offset-lg-0">
@@ -312,6 +317,10 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+
+                    <h3 class=" offset-md-4 offset-lg-0">لايوجد مشاريع مستقبلية بعد</h3>
+                    @endif
                 </div>
             </div>
         </div>
@@ -444,7 +453,7 @@
     </div>
     <!-- Apartment Offer Area End -->
     <!-- Forward Area -->
-    <div class="forward-area mt-5 mb-5">
+    {{-- <div class="forward-area mt-5 mb-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -484,22 +493,22 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Forward Area End -->
 
 
 
     <!-- Map Area -->
-    <div class="map-area">
+    <div id="contact" class="map-area">
         <div class="container-fluid m-0 p-0">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1887.3734131639715!2d-96.95588917878352!3d18.89830951964275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85c4e51eb45eacad%3A0x465ac54aa2735573!2zUmluY29uIGRlbCBCb3NxdWUsIOCmleCmsOCnjeCmoeCni-CmrOCmviwg4Kat4KeH4Kaw4Ka-4KaV4KeN4Kaw4KeB4KacLCDgpq7gp4fgppXgp43gprjgpr_gppXgp4s!5e0!3m2!1sbn!2sbd!4v1594641366896!5m2!1sbn!2sbd"
+                src="https://www.google.com/maps/d/embed?mid=1Dt0DAlVYal47pNOXy20K08p3qpE&hl=en&ehbc=2E312"
                 allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             <div class="map-content">
                 <h2>هل ترغب بالاستفادة من <b> خدماتنا؟ </b></h2>
                 <div class="map-content-left">
                     <span>اتصل بنا</span>
-                    <h3><a href="tel:+5678555178">+9000000000</a></h3>
+                    <h3><a href="tel:+5678555178">{{ setting('site_phone') }}</a></h3>
                 </div>
                 <div class="map-content-right">
                     <span>تواصل عبر البريد الإلكتروني</span>

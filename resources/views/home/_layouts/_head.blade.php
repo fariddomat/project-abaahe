@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('home/assets/css/rtl.css') }}">
 
     <!-- Title -->
-    <title>أباهي للتمليك العقاري</title>
+    <title>{{ setting('site_title')}} </title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('logo.PNG') }}">

@@ -53,13 +53,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="about.html" class="nav-link">
+                                    <a href="{{ route('home') }}#about" class="nav-link">
                                        من نحن؟
                                        <i class="bx bx-edit"></i>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="about.html" class="nav-link">
+                                    <a href="{{ route('home') }}#contact" class="nav-link">
                                         اتصل بنا
                                         <i class="bx bx-phone"></i>
                                     </a>
