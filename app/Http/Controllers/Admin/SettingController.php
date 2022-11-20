@@ -63,4 +63,10 @@ class SettingController extends Controller
         Session::flash('success','Successfully added !');
         return redirect()->back();
     }
+
+    public function social()
+    {
+        return view('admin.settings.social');
+    }
+
 }

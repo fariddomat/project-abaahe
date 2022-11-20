@@ -192,21 +192,21 @@
                     <div class="service-card service-card-bg">
                         <i class='flaticon-bankrupt'></i>
                         <a href="">
-                            <h3>إدارة العقارات</h3>
+                            <h3>الجودة </h3>
                         </a>
-                        <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
+                        <p class="text-break">نوفر الدعم الفني للإجابة على أي استفسار يخص العقار بعد البيع
                         </p>
 
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
-                    <div class="service-card service-card-bg active">
+                    <div class="service-card service-card-bg ">
                         <i class='flaticon-value'></i>
                         <a href="">
-                            <h3>التطوير العقاري</h3>
+                            <h3>الالهام </h3>
                         </a>
-                        <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
+                        <p class="text-break">لأن أهدافنا وطموحاتنا كبيرة , فلا بد للحلم أن تكون خطواته أكبر, وللحلم بقية
                         </p>
 
                     </div>
@@ -216,9 +216,9 @@
                     <div class="service-card service-card-bg">
                         <i class='flaticon-time-management'></i>
                         <a href="">
-                            <h3>الدقة والالتزام</h3>
+                            <h3>الدقة</h3>
                         </a>
-                        <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
+                        <p class="text-break"> أكثر ما يميز شركة أباهي الدقة في تأمين ما يطلبه العميل بالوقت المحدد
                         </p>
                     </div>
                 </div>
@@ -227,9 +227,9 @@
                     <div class="service-card service-card-bg">
                         <i class='flaticon-house'></i>
                         <a href="">
-                            <h3>تشيّد العقارات</h3>
+                            <h3>المصداقية </h3>
                         </a>
-                        <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
+                        <p class="text-break">نتعامل بشفافية كاملة وبصدق وأمانة مع عملائنا مما جعل لسمعتنا صدى قبل اسمنا
                         </p>
                     </div>
                 </div>
@@ -291,13 +291,13 @@
 
 
     <!-- Orgin Area -->
-    <div class="orgin-area pt-100 pb-70" style="  background-color: #fbf3e9;">
+    <div class="orgin-area pt-100 pb-70" style="  background-color: #234467;">
         <div class="container-fluid">
             <div class="container-max">
                 <div class="orgin-title">
                     <div class="section-title wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
-                        <h2> مشاريع <b> قادمة</b> </h2>
-                        <p>
+                        <h2 style="color: white"> مشاريع <b> قادمة</b> </h2>
+                        <p style="color: white">
                             المشاريع المستقبلية أو التي لم تكتمل بعد
                         </p>
                     </div>
@@ -337,17 +337,13 @@
                 <div class="col-lg-7">
                     <div class="innovation-content wow slideInRight" data-wow-delay="0.5s" data-wow-duration="1s">
                         <div class="section-title">
-                            <span>DELIVERING INNOVATION</span>
-                            <h2>Sustainability Property <b>Goals As Expected</b></h2>
-                            <p>
-                                Lorem ipsum dolor sit ame consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliquaUt enim ad minim vequis nostrud exercitation
-                            </p>
+                            <h2>أهدافنا
+                                <br>
+                                <b>السعي دائماً نحو الأفضل</b>
+                            </h2>
+
                         </div>
-                        <div class="innovation-btn">
-                            <a href="#" class="default-btn default-bg-buttercup">View Details <i
-                                    class='bx bx-right-arrow-alt'></i></a>
-                        </div>
+
                     </div>
                 </div>
 
@@ -356,29 +352,18 @@
                         <div class="innovation-slider owl-carousel owl-theme">
                             <div class="innovation-item">
                                 <i class='flaticon-smartphone'></i>
-                                <h3>Quality Management</h3>
-                                <p>
-                                    Lorem ipsum doconsectetur adipisicing elit sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.Ut eveniam
-                                </p>
+                                <h3>نسعى دائما لمواكبة احتياجات وتطلعات عملائنا المتجددة والمتزايدة بتقديم المزيد من الخدمات العقارية   المتنوعة والأكثر تطورا وحداثة تواكب عصر السرعة والتطور الذي نعيشه</h3>
+
                             </div>
 
                             <div class="innovation-item">
                                 <i class='flaticon-growth'></i>
-                                <h3>Designed Marvel</h3>
-                                <p>
-                                    Lorem ipsum doconsectetur adipisicing elit sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.Ut eveniam
-                                </p>
+                                <h3>حرصنا الشديد على خدمة المجتمع وأبنائه وبأن نكون يد تساهم في ارتقائه وتقدمه</h3>
                             </div>
 
                             <div class="innovation-item">
                                 <i class='flaticon-smartphone'></i>
-                                <h3>Quality Management</h3>
-                                <p>
-                                    Lorem ipsum doconsectetur adipisicing elit sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.Ut eveniam
-                                </p>
+                                <h3>السعي المتواصل للارتقاء بمستوى الخدمات العقارية في جدة والسعودية كاملة</h3>
                             </div>
                         </div>
                     </div>
@@ -390,7 +375,7 @@
 
 
     <!-- Apartment Offer two -->
-    <div class="apartment-offer-two pt-100 pb-70">
+    <div class="apartment-offer-two pt-100 pb-70"  style="  background-color: #234467 !important;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
@@ -403,48 +388,42 @@
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2 active">
-                        <h3>Comfortable Flat</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>شقق مريحة</h3>
                         <i class="flaticon-bankrupt"></i>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2">
-                        <h3>Sophisticated Door</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>أقفال متطورة</h3>
                         <i class="flaticon-key"></i>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2">
-                        <h3>Private Security</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>حماية عالية</h3>
                         <i class="flaticon-padlock"></i>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2 active">
-                        <h3>Parking Space</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>مواقف سيارات</h3>
                         <i class="flaticon-garage"></i>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2">
-                        <h3>Fitness Center</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>مساحة للنشاطات</h3>
                         <i class="flaticon-exercise"></i>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="offer-item offer-item-bg2 active">
-                        <h3>Good Location</h3>
-                        <p>Lorem ipsum dolor sitameem adipiscing cnsectetur adimod tur adipiscing</p>
+                        <h3>مواقع جميلة</h3>
                         <i class="flaticon-route"></i>
                     </div>
                 </div>
@@ -500,10 +479,10 @@
 
     <!-- Map Area -->
     <div id="contact" class="map-area">
-        <div class="container-fluid m-0 p-0">
+        <div class="container-fluid m-0 p-0 maps">
             <iframe
                 src="https://www.google.com/maps/d/embed?mid=1Dt0DAlVYal47pNOXy20K08p3qpE&hl=en&ehbc=2E312"
-                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                allowfullscreen="" aria-hidden="false" tabindex="0" style="pointer-events: none;"></iframe>
             <div class="map-content">
                 <h2>هل ترغب بالاستفادة من <b> خدماتنا؟ </b></h2>
                 <div class="map-content-left">

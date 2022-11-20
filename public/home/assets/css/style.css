@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .d-table-cell {
   display: table-cell;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 
 img {
@@ -1254,7 +1254,7 @@ Inner Banner
 }
 
 .inner-bg8 {
-  background-image: url(../img/inner-banner/8.jpg);
+  /* background-image: url(../img/inner-banner/8.jpg); */
 }
 
 .inner-bg9 {
@@ -1344,7 +1344,7 @@ Property Details End
 Service Area
 ====================================*/
 .service-area {
-  background-color: #fbf3e9;
+  background-color: #234467;
 }
 
 .service-area-two {
@@ -4497,7 +4497,7 @@ Apartment Offer
 ====================================*/
 .apartment-offer-two {
   position: relative;
-  background-image: url(../img/apartment/apartment-bg.jpg);
+  /* background-image: url(../img/apartment/apartment-bg.jpg); */
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

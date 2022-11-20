@@ -31,5 +31,5 @@
     <title>{{ setting('site_title')}} </title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('logo.PNG') }}">
+    <link rel="icon" type="image/png" href="{{ asset('abahee.png') }}">
 </head>

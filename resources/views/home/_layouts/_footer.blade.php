@@ -5,8 +5,8 @@
                <div class="row">
                    <div class="col-lg-4 col-md-6">
                        <div class="single-footer-widget">
-                           <a href="index.htm" class="logo">
-                               <img src="{{ asset('logo.PNG') }}" alt="Logo">
+                           <a href="{{ route('home') }}" class="logo">
+                               <img src="{{ asset('abahee.png') }}" style="max-width: 150px" alt="Logo">
                            </a>
 
                        </div>
@@ -17,26 +17,38 @@
                                {{ setting('site_name') }}
                            </p>
                            <ul class="social-link">
+                               @if (setting('facebook_link'))
                                <li>
-                                   <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
-                               </li>
+                                <a href="{{ setting('facebook_link') }}" target="_blank"><i class='bx bxl-facebook'></i></a>
+                            </li>
+                               @endif
+                               @if (setting('twitter_link'))
                                <li>
-                                   <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                                   <a href="{{ setting('twitter_link') }}" target="_blank"><i class='bx bxl-twitter'></i></a>
                                </li>
+
+                               @endif
+
+                               @if (setting('linkedin_link'))
                                <li>
-                                   <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+                                   <a href="{{ setting('linkedin_link') }}" target="_blank"><i class='bx bxl-linkedin'></i></a>
                                </li>
+                               @endif
+                               @if (setting('instagram_link'))
                                <li>
-                                   <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
+                                   <a href="{{ setting('instagram_link') }}" target="_blank"><i class='bx bxl-instagram'></i></a>
                                </li>
+                               @endif
+                               @if (setting('whatsapp_link'))
                                <li>
-                                   <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
+                                   <a style="background-color: #18d93f;" href="{{ setting('whatsapp_link') }}" target="_blank"><i class='bx bxl-whatsapp'></i></a>
                                </li>
+                               @endif
                            </ul>
                        </div>
                    </div>
 
-                   <div class="col-lg-2 col-md-6">
+                   {{-- <div class="col-lg-2 col-md-6">
                        <div class="single-footer-widget">
                            <h3>الخدمات</h3>
                            <ul class="footer-list">
@@ -66,17 +78,17 @@
                                </li>
                            </ul>
                        </div>
-                   </div>
+                   </div> --}}
 
                    <div class="col-lg-3 col-md-6">
                        <div class="single-footer-widget pl-3">
                            <h3>معلومات التواصل</h3>
                            <ul class="footer-contact-list">
                                <li>
-                                   <span>الاثنين - الجمعة :</span> 9 am to 6 pm
+                                   <span>الاثنين - الجمعة :</span>9  صباحا - 6 مساء
                                </li>
                                <li>
-                                   <span>السبت - الاحد :</span> 9 am to 2 pm
+                                   <span>السبت - الاحد :</span> 9 صباحا - 2 مساء
                                </li>
                                <li>
                                    <span>هاتف :</span> <a href="tel:2151234567"> {{ setting('site_phone') }}</a>
@@ -176,3 +188,13 @@
    <script>
        new WOW().init();
    </script>
+
+<script>
+    $('.maps').click(function () {
+    $('.maps iframe').css("pointer-events", "auto");
+});
+
+$( ".maps" ).mouseleave(function() {
+  $('.maps iframe').css("pointer-events", "none");
+});
+</script>

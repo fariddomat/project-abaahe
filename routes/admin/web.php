@@ -29,5 +29,6 @@ Route::prefix('admin')
             Route::get('/settings/logs', 'SettingController@logs')->name('setting.logs');
             Route::get('/settings/settings', 'SettingController@settingsText')->name('setting.settingsText');
             Route::post('/settings/setting', 'SettingController@settings')->name('setting.settings');
+            Route::get('/settings/social', 'SettingController@social')->name('setting.social');
         }
     );

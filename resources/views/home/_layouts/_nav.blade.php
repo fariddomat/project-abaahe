@@ -1,5 +1,9 @@
 <!-- Preloader -->
         <div class="preloader">
+            <div class=" offset-md-3 offset-lg-0" style="text-align: center; padding-top: 150px">
+                    <img src="{{ asset('abahee.png') }}" style="max-width: 250px;" alt="">
+
+            </div>
             <div class="d-table">
                 <div class="d-table-cell">
                     <div class="spinner">
@@ -17,7 +21,7 @@
             <!-- Menu For Mobile Device -->
             <div class="mobile-nav">
                 <a href="{{ route('home') }}" class="logo">
-                    <img src="{{ asset('logo.png') }}" alt="Logo">
+                    <img src="{{ asset('logo.PNG') }}" alt="Logo">
                 </a>
             </div>
 
@@ -26,7 +30,7 @@
                 <div class="container-fluid">
                     <nav class="container-max navbar navbar-expand-md navbar-light ">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img src="{{ asset('logo.png') }}" alt="Logo" style="max-height: 60px">
+                            <img src="{{ asset('abahee.png') }}" alt="Logo" style="max-height: 60px">
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
