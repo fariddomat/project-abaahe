@@ -14,6 +14,7 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('address');
@@ -26,7 +27,7 @@ class CreateProjectsTable extends Migration
             $table->string('img');
             $table->string('status')->default('pending');
             $table->integer('status_percent')->default(0);
-            $table->bigInteger('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

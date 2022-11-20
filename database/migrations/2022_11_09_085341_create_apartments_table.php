@@ -14,8 +14,9 @@ class CreateApartmentsTable extends Migration
     public function up()
     {
         Schema::create('apartments', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
-            $table->bigInteger('project_id');
+            $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->string('type');
             $table->string('appendix')->default(0);

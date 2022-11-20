@@ -5,7 +5,7 @@
     <div class="inner-banner inner-bg8">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="inner-title">
+                <div class="inner-title wow slideInRight"  data-wow-delay="0.2s" data-wow-duration="0.5s">
                     <span>@lang('site.categories')</span>
                     <h2>@lang('site.all_categories')</h2>
                 </div>
@@ -18,7 +18,7 @@
     <section class="property-section-two pt-100 pb-70">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="property-section-title-two">
+                <div class="property-section-title-two wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
                     <div class="section-title-two text-center">
                         <h2>
                             تصفح تصنيفات المشاريع المنفذة <b class="section-color2">والتي قيد الإنشاء</b>
@@ -33,7 +33,7 @@
                             <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                                 <div class="property-card">
                                     <a href="{{ route('category', $item->id) }}">
-                                        <img src="{{ asset('home/assets/img/property/pr-3.jpg') }}" alt="Images">
+                                        <img src="{{ $item->image_path }}" alt="Images">
                                     </a>
                                     <div class="content">
                                         <span>عدد المشاريع {{ $item->projects->count() }}</span>

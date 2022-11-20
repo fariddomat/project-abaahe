@@ -6,9 +6,9 @@ use App\Project;
 use App\Http\Controllers\Controller;
 use App\Category;
 use Illuminate\Http\Request;
-    use Session;
-    use Illuminate\Support\Facades\Storage;
-    use Intervention\Image\Facades\Image;
+use Session;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Propertie;
 
 use App\Apartment;
@@ -70,22 +70,22 @@ class ApartmentController extends Controller
             $constraint->aspectRatio();
         })
             ->encode('jpg');
-        Storage::disk('local')->put('public/images/'.$request->project_id.'/' . $request->img->hashName(), (string)$img, 'public');
+        Storage::disk('local')->put('public/images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
-        $project=Project::find($request->project_id);
+        $project = Project::find($request->project_id);
 
-        $reservation=null;
+        $reservation = null;
 
-        if($request->appendix){
-            for ($j=0; $j < $project->appendix_count ; $j++) {
-                $reservation[0][$j]=0;
+        if ($request->appendix) {
+            for ($j = 0; $j < $project->appendix_count; $j++) {
+                $reservation[0][$j] = 0;
             }
-        }else
-        for ($i=0; $i < $request->count ; $i++) {
-            for ($j=0; $j < $project->floors_count ; $j++) {
-                $reservation[$i][$j]=0;
+        } else
+            for ($i = 0; $i < $request->count; $i++) {
+                for ($j = 0; $j < $project->floors_count; $j++) {
+                    $reservation[$i][$j] = 0;
+                }
             }
-        }
         // $d=json_encode($reservation);
         // dd(json_decode($d));
         $request_data['reservation'] = json_encode($reservation);
@@ -93,7 +93,7 @@ class ApartmentController extends Controller
 
         Apartment::create($request_data);
 
-        LogSystem::success('تم إضافة '.$request->type.' بنجاح - اسم المشروع: ' . $project->name);
+        LogSystem::success('تم إضافة ' . $request->type . ' بنجاح - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully Created !');
         return redirect()->route('admin.apartments.index', ['projectId' => $request->project_id]);
@@ -107,25 +107,26 @@ class ApartmentController extends Controller
      */
     public function show($id)
     {
-        $apartment=Apartment::find($id);
+        $apartment = Apartment::find($id);
         // dd($apartment->reservation);
-        return view('admin.apartments.check',compact('apartment'));
+        return view('admin.apartments.check', compact('apartment'));
     }
 
     public function check($id)
     {
 
 
-        $apartment=Apartment::find($id);
-        $ar=json_decode($apartment->reservation);
+        $apartment = Apartment::find($id);
+        $ar = json_decode($apartment->reservation);
 
-        $ar[request()->apartment-1][request()->floor-1]=request()->status;
-        $r=json_encode($ar);
+        $ar[request()->apartment - 1][request()->floor - 1] = request()->status;
+        $r = json_encode($ar);
         $apartment->update([
-            'reservation'=>$r
+            'reservation' => $r
         ]);
-        return redirect()->back();
+        LogSystem::success('تم تعديل حالة شقة إلى ' . request()->status . ' بنجاح - اسم المشروع: ' . $apartment->project->name);
 
+        return redirect()->back();
     }
 
     /**
@@ -172,23 +173,23 @@ class ApartmentController extends Controller
         ]);
 
         $apartment = Apartment::find($id);
-        $request_data = $request->except(['img','appendix']);
+        $request_data = $request->except(['img', 'appendix']);
         if ($request->img) {
-            Storage::disk('local')->delete('public/images/'.$request->project_id.'/' . $apartment->img);
+            Storage::disk('local')->delete('public/images/' . $request->project_id . '/' . $apartment->img);
 
             $img = Image::make($request->img)->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             })
                 ->encode('jpg');
 
-            Storage::disk('local')->put('public/images/'.$request->project_id.'/' . $request->img->hashName(), (string)$img, 'public');
+            Storage::disk('local')->put('public/images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
         }
 
         $apartment->update($request_data);
-        $project=Project::find($apartment->project_id);
+        $project = Project::find($apartment->project_id);
 
-        LogSystem::info('تم تعديل '.$apartment->type.' بنجاح - اسم المشروع: ' . $project->name);
+        LogSystem::info('تم تعديل ' . $apartment->type . ' بنجاح - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully updated !');
         return redirect()->route('admin.apartments.index', ['projectId' => $apartment->project_id]);
@@ -204,11 +205,11 @@ class ApartmentController extends Controller
     {
 
         $apartment = Apartment::find($id);
-        Storage::disk('local')->delete('public/images/'.$apartment->project_id .'/' . $apartment->img);
+        Storage::disk('local')->delete('public/images/' . $apartment->project_id . '/' . $apartment->img);
         $apartment->delete();
 
-        $project=Project::find($apartment->project_id);
-        LogSystem::warning('تم حذف '.$apartment->type.' بنجاح - اسم المشروع: ' . $project->name);
+        $project = Project::find($apartment->project_id);
+        LogSystem::warning('تم حذف ' . $apartment->type . ' بنجاح - اسم المشروع: ' . $project->name);
 
         Session::flash('success', 'Successfully deleted !');
         return redirect()->route('admin.apartments.index', ['projectId' => $apartment->project_id]);

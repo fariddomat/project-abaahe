@@ -14,6 +14,7 @@ class CreateLogSystemsTable extends Migration
     public function up()
     {
         Schema::create('log_systems', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('content');

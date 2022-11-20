@@ -170,3 +170,9 @@
    <script src="{{ asset('home/assets/js/contact-form-script.js') }}"></script>
    <!-- Custom JS -->
    <script src="{{ asset('home/assets/js/custom.js') }}"></script>
+
+   <!-- wow js -->
+   {{-- <script src="{{ asset('home/js/wow.min.js') }}"></script> --}}
+   <script>
+       new WOW().init();
+   </script>

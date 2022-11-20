@@ -8,7 +8,7 @@
                 <div class="d-table-cell">
                     <div class="container-fluid">
                         <div class="container-max">
-                            <div class="slider-content">
+                            <div class="slider-content  wow slideInRight" data-wow-duration="1s">
                                 <h1>أباهي.. <b>بمسكنك تُباهي</b></h1>
                                 <p></p>
                                 <div class="slider-btn-area">
@@ -94,7 +94,7 @@
                                         تصفح المشاريع
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
-                                    <a href="contact.html" class="default-btn active">
+                                    <a href="#contact" class="default-btn active">
                                         اتصل بنا
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
@@ -135,24 +135,22 @@
 
 
     <!-- Property Area -->
-    <div class="property-area pt-100 pb-70">
+    <div class="property-area pt-100 pb-70 ">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-5 pl-0">
                     <div class="property-img">
-                        <a href="property-details.html">
                             <img src="{{ asset('home/assets/img/property/p-1.jpg') }}" alt="Images">
-                        </a>
+
                     </div>
                 </div>
 
-                <div class="col-lg-7">
+                <div class="col-lg-7   wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
                     <div class="property-item ml-50">
                         <div class="section-title">
                             <h2>
-                                <a href="property-details.html">
                                     عن الشركة
-                                </a>
+
                             </h2>
                             <p>
                                 Lorem ipsum dolor sit ame consectetur adipisicing elit, sed do
@@ -189,11 +187,11 @@
     <!-- Service Area -->
     <div class="service-area pt-100 pb-70">
         <div class="container">
-            <div class="row">
+            <div class="row wow bounceInUp" data-wow-delay="0.5s" data-wow-duration="1s">
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-bankrupt'></i>
-                        <a href="service-details.html">
+                        <a href="">
                             <h3>إدارة العقارات</h3>
                         </a>
                         <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
@@ -205,7 +203,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg active">
                         <i class='flaticon-value'></i>
-                        <a href="service-details.html">
+                        <a href="">
                             <h3>التطوير العقاري</h3>
                         </a>
                         <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
@@ -217,7 +215,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-time-management'></i>
-                        <a href="service-details.html">
+                        <a href="">
                             <h3>الدقة والالتزام</h3>
                         </a>
                         <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
@@ -228,7 +226,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-house'></i>
-                        <a href="service-details.html">
+                        <a href="">
                             <h3>تشيّد العقارات</h3>
                         </a>
                         <p class="text-break">Lorem ipsum dolor sitameem adipiscing cnsectetur adisci- mod tur adipiscing
@@ -244,7 +242,7 @@
     <section class="property-section pb-70 mt-5">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="property-section-text">
+                <div class="property-section-text   wow slideInRight" data-wow-delay="0.5s" data-wow-duration="1s">
                     <div class="section-title">
                         <h2>
                             المشاريع
@@ -258,11 +256,11 @@
                         <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                             <div class="single-property">
                                 <div class="images">
-                                    <a href="project-details.html">
+                                    <a href="{{ route('project', $project->id) }}">
                                         <img src="{{ $project->poster_path }}" alt="Images">
                                     </a>
                                     <div class="property-content">
-                                        <a href="project-details.html">
+                                        <a href={{ route('project', $project->id) }}">
                                             <h3>{{ $project->name }}</h3>
                                         </a>
                                         <p>{!! $project->details !!}</p>
@@ -292,7 +290,7 @@
         <div class="container-fluid">
             <div class="container-max">
                 <div class="orgin-title">
-                    <div class="section-title">
+                    <div class="section-title wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
                         <h2> مشاريع <b> قادمة</b> </h2>
                         <p>
                             Lorem ipsum dolor sit ame consectetur adipisicing elit, sed do eiusmod tempor incididunt
@@ -328,7 +326,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <div class="innovation-content">
+                    <div class="innovation-content wow slideInRight" data-wow-delay="0.5s" data-wow-duration="1s">
                         <div class="section-title">
                             <span>DELIVERING INNOVATION</span>
                             <h2>Sustainability Property <b>Goals As Expected</b></h2>
@@ -456,7 +454,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="forward-content">
+                    <div class="forward-content  wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
                         <div class="section-title">
                             <span>Message FRom Company</span>
                             <h2>Go Forward With <b>Us</b></h2>

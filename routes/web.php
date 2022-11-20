@@ -22,6 +22,8 @@ Route::group([], function()
     Route::get('/projects','Home\ProjectControlelr@index')->name('projects');
     Route::get('/project/{id}','Home\ProjectControlelr@show')->name('project');
 
+    // Route::get('/admin', 'Admin\DashboardController@index')->name('home');
+
 
 });
 

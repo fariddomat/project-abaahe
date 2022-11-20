@@ -5,7 +5,7 @@
     <div class="inner-banner inner-bg12">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="inner-title">
+                <div class="inner-title  wow slideInRight"  data-wow-delay="0.1s" data-wow-duration="1s">
                     <span>تفاصيل المشروع</span>
                     <h2>مشروع {{ $project->name }}</h2>
                 </div>
@@ -15,7 +15,7 @@
     <!-- Inner Banner End -->
 
     <!-- Property Area Three -->
-    <div class="property-area-three pt-100 pb-70">
+    <div class="property-area-three pb-70" style="  padding-top: 25px;">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6 pl-0">
@@ -27,19 +27,28 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="property-item property-item-two">
+                    <div class="property-item property-item-two  wow slideInLeft"  data-wow-delay="0.2s" data-wow-duration="1s">
                         <div class="section-title-two">
 
                             <h2>مشروع
                                 {{ $project->name }} <br>
                                 <b class="section-color2">مخطط {{ $project->scheme_name }}</b>
                             </h2>
-                            <h3>
-                                <i class="bx bx-map"></i>{!! $project->address !!}
+                            <h3 class="row">
+                                <div class="col-lg-1" style="  padding-top: 15px;">
+                                    <i class="bx bx-map"></i>
+                                </div>
+                                <div class="col-lg-11">
+                                    {!! $project->address !!}
+                                </div>
                             </h3>
-                            <p> <i class="bx bx-note"></i>
+                            <h4 class="row">
+                                <div class="col-lg-1" style="  padding-top: 5px;"> <i class="bx bx-note"></i></div>
+                                <div class="col-lg-11">
+
                                 {!! $project->details !!}
-                            </p>
+                                </div>
+                            </h4>
                         </div>
 
                         <div class="property-btn">
@@ -56,15 +65,15 @@
     <!-- Property Area Three End -->
 
     <!-- Counter Area -->
-    <div class="counter-area counter-bg2" id="cca">
+    <div class="counter-area counter-bg1  wow bounceInDown"  data-wow-delay="0.2s" data-wow-duration="1s" id="cca">
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-3 col-sm-6 col-md-4 offset-md-4 offset-lg-0">
                     <div class="single-counter pl-2">
-                        <i class="flaticon-carpet counter-color"></i>
+                        <i class="flaticon-carpet"></i>
                         <div class="content">
-                            <h3 class="counter-color">{{ $project->floors_count }}</h3>
+                            <h3 class="">{{ $project->floors_count }}</h3>
                             <span>الأدوار</span>
                         </div>
                     </div>
@@ -72,9 +81,9 @@
 
                 <div class="col-lg-3 col-sm-6 col-md-4 offset-md-4 offset-lg-0">
                     <div class="single-counter">
-                        <i class="bx bx-building counter-color"></i>
+                        <i class="bx bx-building "></i>
                         <div class="content">
-                            <h3 class="counter-color">{{ $project->apartments_count }}</h3>
+                            <h3 class="">{{ $project->apartments_count }}</h3>
                             <span>الشقق </span>
                         </div>
                     </div>
@@ -84,9 +93,9 @@
                 @if ($project->appendix_count > 0)
                     <div class="col-lg-3 col-sm-6 col-md-4 offset-md-4 offset-lg-0">
                         <div class="single-counter pl-5">
-                            <i class="bx bx-chevron-up counter-color"></i>
+                            <i class="bx bx-chevron-up "></i>
                             <div class="content">
-                                <h3 class="counter-color">{{ $project->appendix_count }}</h3>
+                                <h3 class="">{{ $project->appendix_count }}</h3>
                                 <span>الملاحق</span>
                             </div>
                         </div>
@@ -99,28 +108,10 @@
         </div>
     </div>
     <!-- Counter Area End -->
-    {{-- <div class="row">
-        <div class="col-lg-8 offset-md-4 ooffset-lg-0">
-            @if ($project->projectImages->count() > 1)
-                <div class="house-slider-three owl-carousel owl-theme">
-                    @foreach ($project->images_path as $item)
-                        <div class="house-three-item">
-                            <img src="{{ $item }}" alt="Images">
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="property-img-three">
-                    <a href="property-details.html">
-                        <img src="{{ $project->image_path }}" alt="Images">
-                    </a>
-                </div>
-            @endif
-        </div>
-    </div> --}}
+
 
     <!-- Gallery Area -->
-    <div class="gallery-area pt-100 pb-70">
+    <div class="gallery-area pt-100 pb-70  wow bounceInUp"  data-wow-delay="0.2s" data-wow-duration="1s">
         <div class="container">
             <div class="section-title-two text-center">
                 <h2 class="margin-auto">معرض <b class="section-color2"> الصور</b></h2>
@@ -148,10 +139,10 @@
     <!-- Propertie Area-->
     <div class="room-details-area pt-100 pb-70">
         <div class="container-fluid m-0 p-0">
-            <div class="section-title-two text-center">
+            <div class="section-title-two text-center  wow slideInRight"  data-wow-delay="0.2s" data-wow-duration="1s">
                 <h2 class="margin-auto">مميزات <b class="section-color">المشروع</b></h2>
             </div>
-            <div class="tab room-details-tab tab-color">
+            <div class="tab room-details-tab tab-color  wow slideInLeft"  data-wow-delay="0.2s" data-wow-duration="1s">
                 <div class="tab_content current active pt-45">
                     <div class="tabs_item current">
                         <div class="room-details-item">
@@ -175,10 +166,10 @@
     <!-- Facility Area-->
     <div class="room-details-area pt-100 pb-70" style="background-color: #004848;">
         <div class="container-fluid m-0 p-0">
-            <div class="section-title-two text-center">
+            <div class="section-title-two text-center  wow slideInLeft"  data-wow-delay="0.2s" data-wow-duration="1s">
                 <h2 class="margin-auto" style="color: #cc9933">الضمانات</h2>
             </div>
-            <div class="tab room-details-tab tab-color">
+            <div class="tab room-details-tab tab-color  wow slideInRight"  data-wow-delay="0.2s" data-wow-duration="1s">
                 <div class="tab_content current active pt-45" style="  margin-left: 50px;">
                     <div class="tabs_item current">
                         <div class="room-details-item">
@@ -313,7 +304,7 @@
     @if ($project->apartments->count() > 0)
         @foreach ($project->apartments as $index => $item)
             <!-- House Details Area -->
-            <div class="house-details-area pt-5 pb-5">
+            <div class="house-details-area pt-5 pb-5  wow bounceInDown"  data-wow-delay="0.2s" data-wow-duration="1s">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         @if ($index % 2 == 0)
@@ -368,7 +359,7 @@
 
     @if ($project->apartments->count() > 0)
     <!-- apartment check Area-->
-    <div class="room-details-area pt-100 pb-70" style="background-color: #e7eeee;">
+    <div class="room-details-area pt-100 pb-70  wow bounceInUp"  data-wow-delay="0.2s" data-wow-duration="1s" style="background-color: #e7eeee;">
         <div class="container-fluid m-0 p-0">
             <div class="section-title-two text-center">
                 <h2 class="margin-auto" style="color: #cc9933">حالة الشقق</h2>

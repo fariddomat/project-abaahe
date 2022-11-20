@@ -14,6 +14,7 @@ class CreateProjectImagesTable extends Migration
     public function up()
     {
         Schema::create('project_images', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
             $table->string('img');

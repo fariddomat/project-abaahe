@@ -20,8 +20,12 @@
                 <li class=" nav-item  {{ Request::is('admin/projects*') ? 'active' : '' }} "><a href="{{ route('admin.projects.index') }}"><i class="fa fa-institution"></i><span class="menu-title"
                             data-i18n="">@lang('site.projects')</span></a>
                 </li>
-                <li class=" nav-item"><a href=""><i class="ft-users"></i><span class="menu-title"
-                            data-i18n="">@lang('site.users')</span></a>
+
+                <li class=" nav-item"><a href="{{ route('admin.setting.logs') }}"><i class="fa fa-history"></i><span class="menu-title"
+                    data-i18n="">سجل العمليات</span></a>
+        </li>
+                <li class=" nav-item"><a href="{{ route('admin.setting.cover') }}"><i class="fa fa-cogs"></i><span class="menu-title"
+                            data-i18n="">الاعدادات</span></a>
                 </li>
             </ul>
         </div><a class="btn btn-danger btn-block btn-glow btn-upgrade-pro mx-1" href="/"

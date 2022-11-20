@@ -906,15 +906,15 @@ Home Slider Area
 }
 
 .item-bg1 {
-  background-image: url(../img/home2/3.jpg);
+  background-image: url(../../images/1.jpg);
 }
 
 .item-bg2 {
-  background-image: url(../img/home2/2.jpg);
+  background-image: url(../../images/2.jpg);
 }
 
 .item-bg3 {
-  background-image: url(../img/home2/1.jpg);
+  background-image: url(../../images/3.jpg);
 }
 
 .oftop-slider-area {
@@ -4752,7 +4752,7 @@ House Details Area
   padding: 5px 0;
   margin-bottom: 10px;
   border-top: 1px dashed #d7b1a2;
-  border-bottom: 1px dashed #d7b1a2;
+  /* border-bottom: 1px dashed #d7b1a2; */
   font-family: "Cormorant", serif;
 }
 

@@ -5,7 +5,7 @@
     <div class="inner-banner inner-bg8">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="inner-title">
+                <div class="inner-title wow slideInRight"  data-wow-delay="0.2s" data-wow-duration="0.5s">
                     <span>{{ $category->name }}</span>
                     <h2>@lang('site.all_projects')</h2>
                 </div>
@@ -18,7 +18,7 @@
     <section class="property-section-two pt-100 pb-70">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="property-section-title-two">
+                <div class="property-section-title-two wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
                     <div class="section-title-two text-center">
                         <h2>
                             تصفح المشاريع الخاصة بـ <b class="section-color2">{{ $category->name }}</b>
