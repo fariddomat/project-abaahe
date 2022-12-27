@@ -6,20 +6,19 @@
         <div class="col-xl-3 col-lg-6 col-md-12">
             <div class="card pull-up ecom-card-1 bg-white">
                 <div class="card-content ecom-card2 height-180">
-                    <h5 class="text-muted success position-absolute p-1">@lang('site.categories')</h5>
-                    <div>
-                        <i class="fa fa-building-o success font-large-1 float-right p-1"></i>
-                    </div>
-                    <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
-                        <div id="">
-                            <h3 style="padding: 40px 15px;">{{ $categories }}</h3>
-                        </div>
+                    <h5 class="text-muted success  p-1">@lang('site.categories') {{ $categories }} <i
+                            class="fa fa-building-o success font-large-1 float-right pl-1"></i></h5>
 
-                    </div>
+                    <h5 class="text-muted info  p-1">@lang('site.projects') {{ $projects }}
+                        <i class="fa fa-institution info font-large-1 float-right pl-1"></i>
+                    </h5>
+                    <h5 class="text-muted danger p-1"> مرات تحميل البروفايل {{ $counter }}
+                        <i class="fa fa-save danger font-large-1 float-right pl-1"></i></h5>
+
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-12">
+        {{-- <div class="col-xl-3 col-lg-6 col-md-12">
             <div class="card pull-up ecom-card-1 bg-white">
                 <div class="card-content ecom-card2 height-180">
                     <h5 class="text-muted info position-absolute p-1">@lang('site.projects')</h5>
@@ -34,7 +33,24 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+        {{-- <div class="col-xl-3 col-lg-6 col-md-12">
+            <div class="card pull-up ecom-card-1 bg-white">
+                <div class="card-content ecom-card2 height-180">
+                    <h5 class="text-muted danger position-absolute p-1"> مرات تحميل البروفايل</h5>
+                    <div>
+                        <i class="fa fa-save danger font-large-1 float-right p-1"></i>
+                    </div>
+                    <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
+                        <div id="">
+                            <h3 style="padding: 40px 15px;">{{ $counter }}</h3>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> --}}
     </div>
     <!-- Striped rows start -->
     <div class="row">

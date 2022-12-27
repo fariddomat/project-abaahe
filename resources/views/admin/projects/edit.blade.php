@@ -45,12 +45,24 @@
                                     <h5 class="mt-2">@lang('site.address')</h5>
                                     <textarea id="summernote"  name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address', $project->address) }}</textarea>
 
+                                    {{-- address_location --}}
+                                    <h5 class="mt-2">الموقع على الخريطة - iframe (اختياري)</h5>
+                                    <textarea name="address_location" class="form-control" id="basicTextarea" rows="3" >{{ old('address_location', $project->address_location) }}</textarea>
                                     <h5 class="mt-2">حالة المشروع</h5>
                                     <select name="status" id="" class="form-control">
-                                        <option value="complete" selected>مكتمل</option>
-                                        <option value="pending" @if ($project->status =='pending')
+                                        <option value="مكتمل" selected>مكتمل</option>
+                                        <option value="قيد الانشاء" @if ($project->status == 'قيد الانشاء')
                                             selected
-                                        @endif>قيد التنفيذ</option>
+                                        @endif>قيد الانشاء</option>
+                                        <option value="تحت الانشاء"@if ($project->status == 'تحت الانشاء')
+                                            selected
+                                        @endif>تحت الانشاء</option>
+                                        <option value="تحت التشطيب"@if ($project->status == 'تحت التشطيب')
+                                            selected
+                                        @endif>تحت التشطيب</option>
+                                        <option value="على وشك الانتهاء"@if ($project->status == 'على وشك الانتهاء')
+                                            selected
+                                        @endif>على وشك الانتهاء</option>
                                     </select>
                                     <h5 class="mt-2">نسبة التنفيذ</h5>
                                     <input value="{{ old('status_percent', $project->status_percent) }}" name="status_percent" type="number" min="0" max="100"
@@ -61,20 +73,11 @@
                                 <div class="col-lg-6">
                                     <h5 class="mt-2">@lang('site.floors_count')</h5>
                                     <input value="{{ old('floors_count', $project->floors_count) }}" name="floors_count"
-                                        type="number" min="1" class="form-control" id="basicInput" required>
-
-                                    <h5 class="mt-2">@lang('site.apartments_count')</h5>
-                                    <input value="{{ old('apartments_count', $project->apartments_count) }}"
-                                        name="apartments_count" type="number" min="1" class="form-control"
-                                        id="basicInput" required>
-
-                                    <h5 class="mt-2">@lang('site.appendix_count')</h5>
-                                    <input value="{{ old('appendix_count', $project->appendix_count) }}" min="0"
-                                        name="appendix_count" type="number" class="form-control" id="basicInput" required>
+                                        type="number" min="1" class="form-control" id="basicInput"  required>
 
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
-                                    <textarea id="summernote2"  name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details', $project->details) }}</textarea>
+                                    <textarea id="summernote2"  name="details" class="form-control" id="basicTextarea" rows="3" required>{{ old('details', $project->details) }}</textarea>
                                     <h5 class="mt-2">@lang('site.image') رئيسية</h5>
                                     <input value="{{ old('poster') }}" name="poster"  type="file"
                                         class="form-control" id="basicInput">
@@ -270,7 +273,7 @@
                         <div class="card-body " style="text-align: right">
                             <fieldset class="form-group">
                                 <div class="col-lg-6 mt-3">
-                                    <textarea id="summernote6"  name="pdetails" class="form-control" id="">
+                                    <textarea id="summernote6"  name="pdetails" class="form-control" id="" required>
                                     {{ old('pdetails', $project->propertie->details) }}
                                 </textarea>
                                 </div>
@@ -318,7 +321,7 @@
                                     <h5 class="mt-2">اتحاد الملاك مجاناَ</h5>
                                     <input value="{{ old('f4', $project->facility->f4) }}" name="f4" type="text"
                                         class="form-control" id="basicInput" required>
-                                    <h5 class="mt-2">ضمانات إضافية</h5>
+                                    <h5 class="mt-2">ضمانات إضافية (اختياري)</h5>
                                     <input value="{{ old('f5', $project->facility->f5) }}" name="f5" type="text"
                                         class="form-control" id="basicInput">
                                 </div>

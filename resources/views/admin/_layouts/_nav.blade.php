@@ -15,10 +15,11 @@
 
                         <li class="dropdown dropdown-user nav-item"><a
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <span class="avatar avatar-online"><img src="{{ asset('admin/assets/images/') }}" alt=""><i class=""></i></span></a>
+                                <span class=""><i class="fa fa-user"></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right"><a class="dropdown-item" href="#"><span
-                                            class="avatar avatar-online"><span class="user-name text-bold-700 ml-1">{{Auth::user()->name}}</span></span></a>
+                                            class="avatar avatar-online">
+                                            <span class="user-name text-bold-700 ml-1">{{Auth::user()->name}}</span></span></a>
                                     <div class="dropdown-divider"></div>
 
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([], function()
 {
+    Route::get('/clear', function() {
 
-	Route::get('/', 'Home\HomeController@index')->name('home');
-    Route::get('/categories','Home\CategoryControlelr@index')->name('categories');
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+
+        return "Cleared!";
+
+     });
+	// Route::get('/', 'Home\HomeController@index')->name('home');
+    Route::get('/profileDownload', 'Home\HomeController@profileDownload')->name('profileDownload');
+    // Route::get('/fileDownload', '../../../'.asset('download/profile.pdf'))->name('fileDownload');
+
+	Route::post('/contact', 'Home\HomeController@contact')->name('contact');
+	Route::get('/contactPage', 'Home\HomeController@contactPage')->name('contactPage');
+	Route::post('/promoters', 'Home\HomeController@promoters')->name('promoters');
+    Route::get('/','Home\CategoryControlelr@index')->name('home');
     Route::get('/category/{id}','Home\CategoryControlelr@show')->name('category');
     Route::get('/projects','Home\ProjectControlelr@index')->name('projects');
     Route::get('/project/{id}','Home\ProjectControlelr@show')->name('project');
@@ -29,5 +45,5 @@ Route::group([], function()
 
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 

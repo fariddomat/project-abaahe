@@ -62,6 +62,11 @@
                                     <input type="text" class="form-control" name="site_phone" id="site_phone"
                                         value="{{setting('site_phone')}}" aria-describedby="helpId" placeholder="">
                                 </div>
+                                <div class="form-group">
+                                    <label for="site_phone" class="text-capitalize">الهاتف 2</label>
+                                    <input type="text" class="form-control" name="site_phone2" id="site_phone"
+                                        value="{{setting('site_phone2')}}" aria-describedby="helpId" placeholder="">
+                                </div>
                                 {{-- Site location --}}
                                 <div class="form-group">
                                     <label for="site_location" class="text-capitalize">الموقع</label>

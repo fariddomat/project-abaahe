@@ -5,7 +5,7 @@
     <div class="inner-banner inner-bg8">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="inner-title wow slideInRight"  data-wow-delay="0.2s" data-wow-duration="0.5s">
+                <div class="inner-title">
                     <span>{{ $category->name }}</span>
                     <h2>@lang('site.all_projects')</h2>
                 </div>
@@ -18,7 +18,7 @@
     <section class="property-section-two pt-100 pb-70">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="property-section-title-two wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
+                <div class="property-section-title-two ">
                     <div class="section-title-two text-center">
                         <h2>
                             تصفح المشاريع الخاصة بـ <b class="section-color2">{{ $category->name }}</b>
@@ -32,15 +32,21 @@
                         @foreach ($projects as $item)
                             <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                                 <div class="property-card">
+                                    <span
+                                        class="badge @if ($item->status == 'مكتمل') badge-success
+                                    @elseif($item->status == 'على وشك الانتهاء')
+                                    badge-secondary
+                                    @else
+                                    badge-warning text-white @endif"
+                                        style="padding: 5px 15px; font-size: 14px;  top: 26px;
+                                    position: relative;">{{ $item->status }} @if ($item->status == 'على وشك الانتهاء') <i class="bx bx-lock"></i> @endif</span>
+
+
                                     <a href="{{ route('project', $item->id) }}">
-                                        <img src="{{$item->poster_path }}" alt="Images">
+                                        <img src="{{ $item->poster_path }}" alt="Images">
                                     </a>
                                     <div class="content">
-                                        <span>@if ($item->status =='complete')
-                                            مكتمل
-                                        @else
-                                            قيد التنفيذ
-                                        @endif</span>
+                                        {{-- <span>{{ $item->status }}</span> --}}
                                         <a href="{{ route('project', $item->id) }}">
                                             <h3>{{ $item->name }}</h3>
                                         </a>
@@ -53,7 +59,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        @else
+                    @else
                         <h4>لايوجد مشاريع في هذا القسم</h4>
                     @endif
 

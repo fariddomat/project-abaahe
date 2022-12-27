@@ -64,7 +64,7 @@ class FacilityController extends Controller
             ->resize(50, 50)
             ->encode('jpg');
 
-        Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+        Storage::disk('public')->put('images/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
 
         Facility::create($request_data);
@@ -120,13 +120,13 @@ class FacilityController extends Controller
         $facility=Facility::find($id);
         $request_data = $request->except(['img']);
         if ($request->img) {
-            Storage::disk('local')->delete('public/images/' . $facility->img);
+            Storage::disk('public')->delete('images/' . $facility->img);
 
             $img = Image::make($request->img)
                 ->resize(570, 370)
                 ->encode('jpg');
 
-            Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+            Storage::disk('public')->put('images/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
 
         }
@@ -147,7 +147,10 @@ class FacilityController extends Controller
     {
 
         $facility = Facility::find($id);
-        Storage::disk('local')->delete('public/images/' . $facility->img);
+        if(!$facility){
+            abort(404);
+        }
+        Storage::disk('public')->delete('images/' . $facility->img);
         $facility->delete();
 
         Session::flash('success', 'Successfully deleted !');

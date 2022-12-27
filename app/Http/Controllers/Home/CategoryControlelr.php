@@ -13,7 +13,7 @@ class CategoryControlelr extends Controller
     public function index()
     {
 
-        $categories=Category::paginate(6);
+        $categories=Category::paginate(24);
         return view('home.categories', compact('categories'));
     }
 
@@ -23,7 +23,7 @@ class CategoryControlelr extends Controller
     $category=Category::find($id);
     if ($category) {
         # code...
-    $projects=Project::where('category_id',$id)->paginate(6);
+    $projects=Project::where('category_id',$id)->paginate(30);
     return view('home.category',compact('category','projects'));
 
     } else {

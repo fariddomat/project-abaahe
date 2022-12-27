@@ -1,0 +1,25 @@
+edit log
+
+<!-- edit -->
+
+admin.apartments.create
+admin.apartments.edit
+admin.apartments.index
+
+home.index
+home.project
+home.category
+home.categories
+home._layouts._head
+home._layouts.nav
+
+Project.php
+
+
+database migrations
+admin controllers
+
+project => apartments type
+project floor   apartments      counts
+1       1       a               2
+

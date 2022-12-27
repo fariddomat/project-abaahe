@@ -20,22 +20,28 @@
                                     <input type="hidden" name="project_id" value="{{ $project->id }}">
                                     <div class="col-lg-6">
                                         <h5 class="mt-2">نوع الشقة</h5>
-                                        <input value="{{ old('type') }}" name="type" type="text"
-                                            class="form-control" id="basicInput" required>
-                                            ملحق؟ <input type="checkbox" name="appendix">
+                                        <select name="type" id="" class="form-control">
+                                            <option value="أمامية">أمامية</option>
+                                            <option value="خلفية">خلفية</option>
+                                            <option value="ملحق">ملحق</option>
+                                        </select>
                                         <h5 class="mt-2">رمز الشقة</h5>
                                         <input value="{{ old('code') }}" name="code" type="text"
                                             class="form-control" id="basicInput" required>
-                                        <h5 class="mt-2">عدد هذا النوع في الطابق الواحد</h5>
-                                        <input value="{{ old('count') }}" name="count" type="number" min="0"
+
+                                        <h5 class="mt-2">عدد الغرف</h5>
+                                        <input value="{{ old('room_count') }}" min="0" name="room_count" type="number"
                                             class="form-control" id="basicInput" required>
+                                        {{-- <h5 class="mt-2">عدد هذا النوع في الطابق الواحد</h5>
+                                        <input value="{{ old('count') }}" name="count" type="number" min="1" max="{{ $project->floor_apartments_count }}"
+                                            class="form-control" id="basicInput" required> --}}
                                         <h5 class="mt-2">المساحة</h5>
                                         <input value="{{ old('area') }}" name="area" type="number" min="0"
                                             class="form-control" id="basicInput" required>
 
-                                        <h5 class="mt-2">السعر</h5>
+                                        <h5 class="mt-2">السعر (اختياري)</h5>
                                         <input value="{{ old('price') }}" name="price" type="number" min="0"
-                                            class="form-control" id="basicInput" required>
+                                            class="form-control" id="basicInput" >
 
                                         <h5 class="mt-2"> التفاصيل</h5>
                                         <textarea id="summernote" name="details" class="form-control" id="" cols="30" rows="10">

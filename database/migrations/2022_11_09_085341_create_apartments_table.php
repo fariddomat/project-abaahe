@@ -21,12 +21,12 @@ class CreateApartmentsTable extends Migration
             $table->string('type');
             $table->string('appendix')->default(0);
             $table->string('code');
-            $table->string('count');
+            $table->integer('room_count');
             $table->integer('area');
-            $table->integer('price');
+            $table->integer('price')->nullable();
             $table->text('details');
             $table->string('img');
-            $table->text('reservation');
+            // $table->text('reservation');
             $table->timestamps();
         });
     }

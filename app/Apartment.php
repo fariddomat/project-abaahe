@@ -19,12 +19,19 @@ class Apartment extends Model
 
     public function getImagePathAttribute()
     {
-        return Storage::url('images/' . $this->project->id . '/' .$this->img);
+        return asset('uploads/images/' . $this->project->id . '/' . $this->img);
+
+        // return Storage::url('images/' . $this->project->id . '/' .$this->img);
 
     }
 
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function floors()
+    {
+        return $this->hasMany(Floor::class);
     }
 }

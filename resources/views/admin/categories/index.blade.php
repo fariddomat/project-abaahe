@@ -71,7 +71,7 @@
                                                 @csrf
                                                 @method('delete')
 
-                                                <button type="submit" class="btn btn-icon btn-danger mr-1"
+                                                <button type="submit" class="btn btn-icon btn-danger mr-1 delete"
                                                     style="  min-width: 102px;">@lang('site.delete') <i class="fa fa-trash"
                                                         style="position: relative;"></i></button>
                                             </form>

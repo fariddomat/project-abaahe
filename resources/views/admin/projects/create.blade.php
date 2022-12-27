@@ -44,34 +44,43 @@
                                     <h5 class="mt-2">@lang('site.address')</h5>
                                     <textarea id="summernote" name="address" class="form-control" id="basicTextarea" rows="3" required>{{ old('address') }}</textarea>
 
+                                    {{-- address_location --}}
+                                    <h5 class="mt-2">الموقع على الخريطة - iframe (اختياري)</h5>
+                                    <textarea name="address_location" class="form-control" id="basicTextarea" rows="3">{{ old('address_location') }}</textarea>
 
-                                        <h5 class="mt-2">حالة المشروع</h5>
-                                        <select name="status" id="" class="form-control">
-                                            <option value="complete">مكتمل</option>
-                                            <option value="pending">قيد التنفيذ</option>
-                                        </select>
-                                        <h5 class="mt-2">نسبة التنفيذ</h5>
-                                        <input value="{{ old('status_percent', 0) }}" name="status_percent" type="number" min="0" max="100"
-                                            class="form-control" id="basicInput" required>
+                                    <h5 class="mt-2">حالة المشروع</h5>
+                                    <select name="status" id="" class="form-control">
+                                        <option value="مكتمل">مكتمل</option>
+                                        <option value="قيد الانشاء">قيد الانشاء</option>
+                                        <option value="تحت الانشاء">تحت الانشاء</option>
+                                        <option value="تحت التشطيب">تحت التشطيب</option>
+                                        <option value="على وشك الانتهاء">على وشك الانتهاء</option>
+                                    </select>
+                                    <h5 class="mt-2">نسبة التنفيذ</h5>
+                                    <input value="{{ old('status_percent', 0) }}" name="status_percent" type="number"
+                                        min="0" max="100" class="form-control" id="basicInput" required>
 
 
                                 </div>
                                 <div class="col-lg-6">
-                                    <h5 class="mt-2">@lang('site.floors_count')</h5>
+                                    <h5 class="mt-2">@lang('site.floors_count') </h5>
                                     <input value="{{ old('floors_count', 5) }}" name="floors_count" type="number"
                                         min="1" class="form-control" id="basicInput" required>
 
-                                    <h5 class="mt-2">@lang('site.apartments_count')</h5>
-                                    <input value="{{ old('apartments_count', 10) }}" name="apartments_count" type="number"
-                                        min="1" class="form-control" id="basicInput" required>
+                                    {{-- <h5 class="mt-2">@lang('site.apartments_count') في الطابق</h5>
+                                    <select name="floor_apartments_count" id="" class="form-control">
+                                        <option value="2">شقتين</option>
+                                        <option value="3">ثلاث شقق (2 أمامي - 1 خلفي)</option>
+                                        <option value="4">أربع شقق (2 أمامي - 2 خلفي)</option>
+                                    </select> --}}
 
-                                    <h5 class="mt-2">@lang('site.appendix_count')</h5>
-                                    <input value="{{ old('appendix_count', 2) }}" min="0" name="appendix_count"
-                                        type="number" class="form-control" id="basicInput" required>
+                                    {{-- <h5 class="mt-2">@lang('site.appendix_count')</h5>
+                                    <input value="2" disabled min="0" name="appendix_count"
+                                        type="number" class="form-control" id="basicInput" required> --}}
 
 
                                     <h5 class="mt-2">@lang('site.description')</h5>
-                                    <textarea id="summernote2" name="details" class="form-control" id="basicTextarea" rows="3">{{ old('details') }}</textarea>
+                                    <textarea id="summernote2" name="details" class="form-control" id="basicTextarea" rows="3" required>{{ old('details') }}</textarea>
                                     <h5 class="mt-2">@lang('site.image') رئيسية</h5>
                                     <input value="{{ old('poster') }}" name="poster" type="file" class="form-control"
                                         id="basicInput" required>
@@ -90,7 +99,7 @@
                 </div>
             </div>
         </div>
-{{--
+        {{--
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -249,7 +258,7 @@
                         <div class="card-body " style="text-align: right">
                             <fieldset class="form-group">
                                 <div class="col-lg-6 mt-3">
-                                    <textarea id="summernote6" name="pdetails" class="form-control" id="">
+                                    <textarea id="summernote6" name="pdetails" class="form-control" id="" required>
                                     {{ old('pdetails') }}
                                 </textarea>
                                 </div>
@@ -297,7 +306,7 @@
                                     <h5 class="mt-2">اتحاد الملاك مجاناَ</h5>
                                     <input value="{{ old('f4') }}" name="f4" type="text"
                                         class="form-control" id="basicInput" required>
-                                    <h5 class="mt-2">ضمانات إضافية</h5>
+                                    <h5 class="mt-2">ضمانات إضافية (اختياري)</h5>
                                     <input value="{{ old('f5') }}" name="f5" type="text"
                                         class="form-control" id="basicInput">
                                 </div>

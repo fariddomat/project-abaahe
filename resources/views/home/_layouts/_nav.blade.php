@@ -19,11 +19,11 @@
         <!-- Start Navbar Area -->
         <div class="navbar-area">
             <!-- Menu For Mobile Device -->
-            <div class="mobile-nav">
+            {{-- <div class="mobile-nav">
                 <a href="{{ route('home') }}" class="logo">
                     <img src="{{ asset('logo.PNG') }}" alt="Logo">
                 </a>
-            </div>
+            </div> --}}
 
             <!-- Menu For Desktop Device -->
             <div class="main-nav">
@@ -33,37 +33,37 @@
                             <img src="{{ asset('abahee.png') }}" alt="Logo" style="max-height: 60px">
                         </a>
 
-                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                        <div class=" navbar-collapse mean-menu" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">
                                 <li class="nav-item">
                                     <a href="{{ route('home') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }} ">
-                                        @lang('site.home')
+                                        تحديثات المشاريع
                                         <i class='bx bx-home'></i>
                                     </a>
 
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('categories') }}" class="nav-link  {{ Request::is('categories') ? 'active' : '' }} ">
                                         @lang('site.categories')
                                         <i class='bx bx-buildings'></i>
 
                                     </a>
-                                </li>
+                                </li> --}}
 
-                                <li class="nav-item">
-                                    <a href="{{ route('projects') }}" class="nav-link  {{ Request::is('project*') ? 'active' : '' }}  {{ Request::is('projects') ? 'active' : '' }} ">
+                                {{-- <li class="nav-item">
+                                    <a href="{{ route('categories') }}" class="nav-link  {{ Request::is('project*') ? 'active' : '' }}  {{ Request::is('projects') ? 'active' : '' }} ">
                                         @lang('site.projects')
                                         <i class="bx bx-building"></i>
                                     </a>
-                                </li>
-                                <li class="nav-item">
+                                </li> --}}
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('home') }}#about" class="nav-link">
                                        من نحن؟
                                        <i class="bx bx-edit"></i>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{ route('home') }}#contact" class="nav-link">
+                                    <a href="{{ route('contactPage') }}" class="nav-link">
                                         اتصل بنا
                                         <i class="bx bx-phone"></i>
                                     </a>

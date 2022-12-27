@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Storage;
+use PhpParser\ErrorHandler\Collecting;
 
 class Project extends Model
 {
-    
+
     protected $guarded = [];
     public function getNameAttribute($value)
     {
@@ -44,7 +45,17 @@ class Project extends Model
 
     public function getAApartmentAttribute()
     {
-        $q = $this->apartments()->where('appendix','<>', 'on')->get();
+        $q = $this->apartments()->where('appendix', '<>', 'on')->get();
+        if ($q->count() > 0) {
+            return $q;
+        }
+        return false;
+    }
+
+    public function getFrontApartmentAttribute()
+    {
+        $q = $this->apartments()->where('appendix', '<>', 'on')->where('type', 'شقة أمامية')->get();
+
         if ($q->count() > 0) {
             return $q;
         }
@@ -53,7 +64,8 @@ class Project extends Model
 
     public function getBackApartmentAttribute()
     {
-        $q = $this->apartments()->where('type', '2')->get();
+        $q = $this->apartments()->where('appendix', '<>', 'on')->where('type', 'شقة خلفية')->get();
+
         if ($q->count() > 0) {
             return $q[0];
         }
@@ -76,7 +88,8 @@ class Project extends Model
 
     public function getPosterPathAttribute()
     {
-                return Storage::url('images/' . $this->id . '/' . $this->img);
+        return asset('uploads/images/' . $this->id . '/' . $this->img);
+        // return Storage::url('images/' . $this->id . '/' . $this->img);
 
 
     }
@@ -84,7 +97,9 @@ class Project extends Model
     {
         if ($this->projectImages()->exists()) {
             foreach ($this->projectImages as $key => $value) {
-                return Storage::url('images/' . $this->id . '/' . $value->img);
+                return asset('uploads/images/' . $this->id . '/' . $value->img);
+
+                // return Storage::url('images/' . $this->id . '/' . $value->img);
             }
         }
     }
@@ -93,9 +108,59 @@ class Project extends Model
         $array = [];
         if ($this->projectImages()->exists()) {
             foreach ($this->projectImages as $key => $value) {
-                    array_push($array, Storage::url('images/' . $this->id . '/' . $value->img));
+                array_push(
+                    $array,
+                    asset('uploads/images/' . $this->id . '/' . $value->img)
+                );
             }
         }
         return $array;
+    }
+
+    public function floors()
+    {
+        return $this->hasMany(Floor::class);
+    }
+
+    public function FloorRow($id)
+    {
+        $q = $this->floors->where('floor_id', $id)->where('apartment_id');
+        $q1 = collect();
+        $b = false;
+        $item=null;
+        foreach ($q as $key => $floor) {
+            if ($floor->apartment->type=="أمامية") {
+                if ($b) {
+                    $item=$floor;
+                } else {
+                    $b = true;
+                    $q1->push($floor);
+                }
+            } else {
+                $q1->push($floor);
+            }
+        }
+            if($item){
+
+                $q1->push($item);
+            }
+        return $q1;
+    }
+
+    public function backCount($id,$a_id)
+    {
+        // dd($this->FloorRow($id)->where("apartment_id",$a_id)->count());
+        return $this->FloorRow($id)->where("apartment_id",$a_id)->count();
+
+    }
+
+    public function backCount2($id)
+    {
+        $back=$this->apartments->where('type', 'خلفية');
+        // dd($back->pluck('id'));
+        // dd($this->FloorRow($id)->whereIn("apartment_id",$back->pluck('id'))->count());
+        return $this->FloorRow($id)->whereIn("apartment_id",$back->pluck('id'))->count();
+
+
     }
 }

@@ -42,14 +42,14 @@
                             <h3 class="mr-3 mb-3" dir="rtl" style="text-align: right">@lang('site.no_data_found')</h3>
                         </div>
                     @else
-                        <div class="table-responsive">
+                        <div class="project table-responsive">
                             <table class="table table-striped table-scrollable">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">@lang('site.category')</th>
                                         <th scope="col">@lang('site.name')</th>
-                                        <th scope="col">@lang('site.address')</th>
+                                        {{-- <th scope="col">@lang('site.address')</th> --}}
                                         <th scope="col">الشقق</th>
                                         <th scope="col">@lang('site.action')</th>
                                     </tr>
@@ -60,12 +60,12 @@
                                             <th scope="row">{{ $index + 1 }}</th>
                                             <td dir="rtl">{{ $project->category->name }}</td>
                                             <td dir="rtl">{{ $project->name }}</td>
-                                            <td>{!! $project->address !!}</td>
-                                            <td><a href="{{ route('admin.apartments.index', ['projectId'=>$project->id]) }}" type="button"
-                                                class="btn btn-icon btn-primary mr-1"
-                                                style="  min-width: 100px;"> إدارة <i class="fa fa-edit"
-                                                    style="position: relative;"></i></a>
-</td>
+                                            {{-- <td>{!! $project->address !!}</td> --}}
+                                            <td><a href="{{ route('admin.apartments.index', ['projectId' => $project->id]) }}"
+                                                    type="button" class="btn btn-icon btn-primary mr-1"
+                                                    style="  min-width: 100px;"> إدارة <i class="fa fa-edit"
+                                                        style="position: relative;"></i></a>
+                                            </td>
                                             <td class="form-group">
 
                                                 <a href="{{ route('admin.projects.edit', $project->id) }}" type="button"
@@ -78,7 +78,7 @@
                                                     @csrf
                                                     @method('delete')
 
-                                                    <button type="submit" class="btn btn-icon btn-danger mr-1"
+                                                    <button type="submit" class="btn btn-icon btn-danger mr-1 delete"
                                                         style="  min-width: 102px;">@lang('site.delete') <i
                                                             class="fa fa-trash" style="position: relative;"></i></button>
                                                 </form>

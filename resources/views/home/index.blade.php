@@ -2,13 +2,13 @@
 
 @section('content')
     <!-- Home Slider Area -->
-    <div class="home-slider-two owl-carousel owl-theme">
+    <div class="home-slider-two owl-carousel owl-theme" style="">
         <div class="home-slider-item item-bg1">
             <div class="d-table">
                 <div class="d-table-cell">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="min-height: 100vh;">
                         <div class="container-max">
-                            <div class="slider-content  wow slideInRight" data-wow-duration="1s">
+                            <div class="slider-content ">
                                 <h1>أباهي.. <b>بمسكنك تُباهي</b></h1>
                                 <p></p>
                                 <div class="slider-btn-area">
@@ -16,7 +16,7 @@
                                         المشاريع
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
-                                    <a href="tel:+1(778)453221" class="slider-cell-btn">
+                                    <a href="tel:{{ setting('site_phone') }}" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
                                         {{ setting('site_phone') }}
                                     </a>
@@ -31,7 +31,7 @@
         <div class="home-slider-item item-bg2">
             <div class="d-table">
                 <div class="d-table-cell">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="min-height: 100vh;">
                         <div class="container-max">
                             <div class="slider-content">
                                 <h1>بناء عصري <b>وأنيق</b></h1>
@@ -41,7 +41,7 @@
                                         المشاريع
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
-                                    <a href="tel:+1(778)453221" class="slider-cell-btn">
+                                    <a href="tel:{{ setting('site_phone') }}" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
 
                                         {{ setting('site_phone') }}
@@ -57,7 +57,7 @@
         <div class="home-slider-item item-bg3">
             <div class="d-table">
                 <div class="d-table-cell">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="min-height: 100vh;">
                         <div class="container-max">
                             <div class="slider-content">
                                 <h1>منازل الأحلام</h1>
@@ -66,7 +66,7 @@
                                         المشاريع
                                         <i class='bx bx-right-arrow-alt'></i>
                                     </a>
-                                    <a href="tel:+1(778)453221" class="slider-cell-btn">
+                                    <a href="tel:{{ setting('site_phone') }}" class="slider-cell-btn">
                                         <i class='flaticon-phone'></i>
 
                                         {{ setting('site_phone') }}
@@ -79,60 +79,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="home-slider-area">
-        <div class="container-fluid m-0 p-0">
-            <div class="home-slider owl-carousel owl-theme" data-slider-id="1">
 
-                <div class="slider-item">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5">
-                            <div class="home-slider-content">
-                                <span>أباهي للتمليك</span>
-                                <h1>اختيارك لمنزلك هو <b>اختيار مكان راحتك</b></h1>
-                                <p>Lorem ipsum dolor sit ame consectetur adipisicing elit sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna </p>
-                                <div class="home-slider-btn">
-                                    <a href="{{ route('projects') }}" class="default-btn">
-                                        تصفح المشاريع
-                                        <i class='bx bx-right-arrow-alt'></i>
-                                    </a>
-                                    <a href="#contact" class="default-btn active">
-                                        اتصل بنا
-                                        <i class='bx bx-right-arrow-alt'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7 pl-0">
-                            <div class="home-slider-img">
-                                <img src="{{ asset('home.PNG') }}" alt="Images">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Start Carousel Thumbs -->
-        <div class="thumbs-wrap">
-            <div class="owl-thumbs home-slider-thumb" data-slider-id="1">
-                <div class="owl-thumb-item">
-                    <span>01</span>
-                </div>
-
-                <div class="owl-thumb-item">
-                    <span>02</span>
-                </div>
-
-                <div class="owl-thumb-item">
-                    <span>03</span>
-                </div>
-            </div>
-        </div>
-        <!-- End Carousel Thumbs -->
-    </div> --}}
     <!-- Home Slider Area End -->
 
 
@@ -147,7 +94,7 @@
                     </div>
                 </div>
 
-                <div id="about" class="col-lg-7   wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
+                <div id="about" class="col-lg-7  ">
                     <div class="property-item ml-50">
                         <div class="section-title">
                             <h2>
@@ -161,7 +108,7 @@
 
                         <div class="property-counter">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6 col-md-3  offset-md-4 offset-lg-0">
+                                <div class="col-lg-6 col-sm-6 col-md-6  offset-md-4 offset-lg-0">
                                     <div class="counter-card">
                                         <h2>{{ $projects->count() }}</h2><br>
                                         <h3>مشاريع مكتملة</h3>
@@ -169,11 +116,12 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-3 col-sm-6 col-md-3  offset-md-4 offset-lg-0">
+                                <div class="col-lg-6 col-sm-6 col-md-6  offset-md-4 offset-lg-0">
                                     <div class="counter-card">
-                                        <h2>{{ $pending_projects->count() }}</h2><br>
-                                        <h3>مشاريع قيد التنفيذ</h3>
-
+                                        <a href="{{ route('profileDownload') }}" target="_blank" class="default-btn default-hot-toddy text-white">
+                                            تحميل البروفايل
+                                            <i class='bx bx-save'></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -185,16 +133,16 @@
     </div>
     <!-- Property Area End -->
     <!-- Service Area -->
-    <div class="service-area pt-100 pb-70">
+    {{-- <div class="service-area pt-100 pb-70">
         <div class="container">
-            <div class="row wow bounceInUp" data-wow-delay="0.5s" data-wow-duration="1s">
+            <div class="row ">
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-bankrupt'></i>
-                        <a href="">
+                        <a>
                             <h3>الجودة </h3>
                         </a>
-                        <p class="text-break">نوفر الدعم الفني للإجابة على أي استفسار يخص العقار بعد البيع
+                        <p class="text-break">نوفر الدعم الفني للإجابة على أي استفسار يخص العقار بعد البيع<br><br>
                         </p>
 
                     </div>
@@ -203,7 +151,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg ">
                         <i class='flaticon-value'></i>
-                        <a href="">
+                        <a>
                             <h3>الالهام </h3>
                         </a>
                         <p class="text-break">لأن أهدافنا وطموحاتنا كبيرة , فلا بد للحلم أن تكون خطواته أكبر, وللحلم بقية
@@ -215,7 +163,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-time-management'></i>
-                        <a href="">
+                        <a>
                             <h3>الدقة</h3>
                         </a>
                         <p class="text-break"> أكثر ما يميز شركة أباهي الدقة في تأمين ما يطلبه العميل بالوقت المحدد
@@ -226,7 +174,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="service-card service-card-bg">
                         <i class='flaticon-house'></i>
-                        <a href="">
+                        <a>
                             <h3>المصداقية </h3>
                         </a>
                         <p class="text-break">نتعامل بشفافية كاملة وبصدق وأمانة مع عملائنا مما جعل لسمعتنا صدى قبل اسمنا
@@ -235,14 +183,15 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Service Area End -->
-
-    <!-- Property Section -->
+ <div class="orgin-area pt-100 " style="  background-color: #234467;">
+    </div>
+    <!-- Project Section -->
     <section class="property-section pb-70 mt-5">
         <div class="container-fluid">
             <div class="container-max">
-                <div class="property-section-text   wow slideInRight" data-wow-delay="0.5s" data-wow-duration="1s">
+                <div class="property-section-text ">
                     <div class="section-title">
                         <h2>
                             المشاريع
@@ -257,6 +206,14 @@
                    <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                        <div class="single-property">
                            <div class="images">
+                            <span
+                                        class="badge @if ($project->status == 'مكتمل') badge-secondary
+                                    @elseif($project->status == 'جاهز')
+                                    badge-success
+                                    @else
+                                    badge-warning text-white @endif"
+                                        style="padding: 5px 15px; font-size: 14px;  top: 26px;
+                                    position: relative;">{{ $project->status }} @if ($project->status == 'مكتمل') <i class="bx bx-lock"></i> @endif</span>
                                <a href="{{ route('project', $project->id) }}">
                                    <img src="{{ $project->poster_path }}" alt="Images">
                                </a>
@@ -289,13 +246,12 @@
     <!-- Property Section End -->
 
 
-
-    <!-- Orgin Area -->
-    <div class="orgin-area pt-100 pb-70" style="  background-color: #234467;">
+    <!-- Feature Project Area -->
+    {{-- <div class="orgin-area pt-100 pb-70" style="  background-color: #234467;">
         <div class="container-fluid">
             <div class="container-max">
                 <div class="orgin-title">
-                    <div class="section-title wow bounceInDown"  data-wow-delay="0.5s" data-wow-duration="1s">
+                    <div class="section-title ">
                         <h2 style="color: white"> مشاريع <b> قادمة</b> </h2>
                         <p style="color: white">
                             المشاريع المستقبلية أو التي لم تكتمل بعد
@@ -309,11 +265,13 @@
 
                     <div class="col-lg-3 col-sm-6  offset-md-4 offset-lg-0">
                         <div class="orgin-card">
-                            <h2>{{ $project->status_percent }}%</h2>
-                            <h3>{{ $project->name }}</h3>
+                            <a href="{{ route('project', $project->id) }}">
+                                <h2 style="color:#f4d52e">{{ $project->status_percent }}%</h2>
+                            <h3 style="color:#f4d52e">{{ $project->name }}</h3>
                             <p>
                                {!! $project->details !!}
                             </p>
+                            </a>
                         </div>
                     </div>
                     @endforeach
@@ -324,18 +282,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Orgin Area End -->
 
 
 
 
     <!-- Innovation Area -->
-    <div class="innovation-area pb-70 mt-5">
+    {{-- <div class="innovation-area pb-70 mt-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <div class="innovation-content wow slideInRight" data-wow-delay="0.5s" data-wow-duration="1s">
+                    <div class="innovation-content ">
                         <div class="section-title">
                             <h2>أهدافنا
                                 <br>
@@ -352,7 +310,7 @@
                         <div class="innovation-slider owl-carousel owl-theme">
                             <div class="innovation-item">
                                 <i class='flaticon-smartphone'></i>
-                                <h3>نسعى دائما لمواكبة احتياجات وتطلعات عملائنا المتجددة والمتزايدة بتقديم المزيد من الخدمات العقارية   المتنوعة والأكثر تطورا وحداثة تواكب عصر السرعة والتطور الذي نعيشه</h3>
+                                <h5>نسعى دائما لمواكبة احتياجات وتطلعات عملائنا المتجددة والمتزايدة بتقديم المزيد من الخدمات العقارية   المتنوعة والأكثر تطورا وحداثة تواكب عصر السرعة والتطور الذي نعيشه</h5>
 
                             </div>
 
@@ -370,12 +328,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Innovation Area End -->
 
 
     <!-- Apartment Offer two -->
-    <div class="apartment-offer-two pt-100 pb-70"  style="  background-color: #234467 !important;">
+    {{-- <div class="apartment-offer-two pt-100 pb-70"  style="  background-color: #234467 !important;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
@@ -429,7 +387,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Apartment Offer Area End -->
     <!-- Forward Area -->
     {{-- <div class="forward-area mt-5 mb-5">
@@ -442,7 +400,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="forward-content  wow slideInLeft" data-wow-delay="0.5s" data-wow-duration="1s">
+                    <div class="forward-content ">
                         <div class="section-title">
                             <span>Message FRom Company</span>
                             <h2>Go Forward With <b>Us</b></h2>
@@ -478,20 +436,57 @@
 
 
     <!-- Map Area -->
-    <div id="contact" class="map-area">
+    <div id="contact" class="map-area-two">
         <div class="container-fluid m-0 p-0 maps">
-            <iframe
+            {{-- <iframe
                 src="https://www.google.com/maps/d/embed?mid=1Dt0DAlVYal47pNOXy20K08p3qpE&hl=en&ehbc=2E312"
-                allowfullscreen="" aria-hidden="false" tabindex="0" style="pointer-events: none;"></iframe>
-            <div class="map-content">
-                <h2>هل ترغب بالاستفادة من <b> خدماتنا؟ </b></h2>
-                <div class="map-content-left">
-                    <span>اتصل بنا</span>
-                    <h3><a href="tel:+5678555178">{{ setting('site_phone') }}</a></h3>
-                </div>
-                <div class="map-content-right">
-                    <span>تواصل عبر البريد الإلكتروني</span>
-                    <h3><a href="mailto:info@oftop.com">info@abahee.com</a></h3>
+                allowfullscreen="" aria-hidden="false" tabindex="0" style="pointer-events: none;"></iframe> --}}
+                <img src="{{ asset('w.jpg') }}" style="width: 100%; min-height: 700px" alt="">
+
+            <div class="contact-wrap">
+                <div class="contact-form">
+                    <h2>هل ترغب <b> بالتواصل معنا </b></h2>
+                    <form id="contactForm" action="{{ route('contact') }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            @extends('admin._layouts._error')
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <i class='bx bx-user'></i>
+                                    <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="اسمك بالكامل*">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group">
+                                    <i class='bx bx-user'></i>
+                                    <input type="email" name="email" id="email" class="form-control"  data-error="Please enter your email" placeholder="البريد الإلكتروني">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="form-group">
+                                    <i class='bx bx-phone'></i>
+                                    <input type="text" name="phone" id="phone" required data-error="Please enter your number" class="form-control" placeholder="رقم الهاتف*" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <i class='bx bx-envelope'></i>
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="8" required data-error="Write your message" placeholder="رسالتك هنا"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn default-hot-toddy">
+                                    إرسال
+                                    <i class='bx bx-right-arrow-alt'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

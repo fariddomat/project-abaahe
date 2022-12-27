@@ -42,7 +42,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']]
             ],
-            placeholder: 'Type Your Post here',
+            placeholder: 'Type here',
             tabsize: 2,
             height: 100,
             focus: true
@@ -57,7 +57,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']]
             ],
-            placeholder: 'Type Your Post here',
+            placeholder: 'Type here',
             tabsize: 2,
             height: 100,
             focus: true
@@ -72,7 +72,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']]
             ],
-            placeholder: 'Type Your Post here',
+            placeholder: 'Type here',
             tabsize: 2,
             height: 100,
             focus: true
@@ -122,5 +122,22 @@
             height: 100,
             focus: true
         });
+    });
+</script>
+
+<script>
+     $(document).ready(function() {
+        $(document).on('click', '.delete', function(e) {
+            e.preventDefault();
+            var that = $(this);
+            var n = confirm('هل أنت متأكد من الحذف؟');
+            if (n) {
+                that.closest('form').submit();
+            } else {
+
+            }
+        });
+
+
     });
 </script>

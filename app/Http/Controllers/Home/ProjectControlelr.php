@@ -23,7 +23,7 @@ class ProjectControlelr extends Controller
     {
 
         $project=Project::find($id);
-        // dd($project->image_path);
+        
         if ($project) {
             # code...
         return view('home.project',compact('project'));

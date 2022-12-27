@@ -22,7 +22,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('name', 'asc')->whenSearch(request()->search)
-            ->paginate(5);
+            ->paginate(20);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -57,7 +57,7 @@ class CategoryController extends Controller
             ->resize(570, 370)
             ->encode('jpg');
 
-        Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+        Storage::disk('public')->put('images/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
 
         Category::create($request_data);
@@ -86,6 +86,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category=Category::find($id);
+        if(!$category){
+            abort(404);
+        }
         return view('admin.categories.edit',compact('category'));
 
     }
@@ -109,13 +112,13 @@ class CategoryController extends Controller
         $category=Category::find($id);
         $request_data = $request->except(['img']);
         if ($request->img) {
-            Storage::disk('local')->delete('public/images/' . $category->img);
+            Storage::disk('public')->delete('images/' . $category->img);
 
             $img = Image::make($request->img)
                 ->resize(570, 370)
                 ->encode('jpg');
 
-            Storage::disk('local')->put('public/images/' . $request->img->hashName(), (string)$img, 'public');
+            Storage::disk('public')->put('images/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
 
         }
@@ -136,7 +139,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category=Category::find($id);
-        Storage::disk('local')->delete('public/images/' . $category->img);
+        if(!$category){
+            abort(404);
+        }
+        Storage::disk('public')->delete('images/' . $category->img);
         $category->delete();
         LogSystem::info('تم حذف تصنيف بنجاح : ' . $category->name);
         Session::flash('success','Successfully deleted !');

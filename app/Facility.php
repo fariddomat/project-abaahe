@@ -19,7 +19,9 @@ class Facility extends Model
 
     public function getImagePathAttribute()
     {
-        return Storage::url('images/'.$this->img);
+        return asset('uploads/images/'. $this->img);
+
+        // return Storage::url('images/'.$this->img);
 
     }
 

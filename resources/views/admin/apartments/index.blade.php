@@ -23,6 +23,16 @@
                         <a href="{{ route('admin.apartments.create', ['projectId' => $project->id]) }}"
                             class="btn btn-icon btn-info mr-1">@lang('site.create') <i class="fa fa-plus"
                                 style="position: relative"></i></a>
+                        <a href="{{ route('admin.floors.index', $project->id) }}" type="button"
+                            class="btn btn-icon btn-primary" style="  min-width: 100px;">إدارة الشقق قي الأدوار<i
+                                class="fa fa-edit" style="position: relative;"></i></a>
+                                @if ($project->floors)
+
+                        <a href="{{ route('admin.floors.show', $project->id) }}" type="button"
+                            class="btn btn-icon btn-success" style="  min-width: 100px;">تعديل حالة الشقق<i
+                                class="fa fa-edit" style="position: relative;"></i></a>
+
+                                @endif
 
                     </div>
                     <form action="" class="col-md-12">
@@ -50,9 +60,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">نوع الشقة</th>
                                         <th scope="col">الرمز</th>
-                                        <th scope="col">العدد في الطابق</th>
                                         <th scope="col">العدد الكلي</th>
-                                        <th scope="col">الحجز</th>
                                         <th scope="col">@lang('site.action')</th>
                                     </tr>
                                 </thead>
@@ -61,19 +69,22 @@
                                         <tr dir="rtl" style=" text-align: right;">
                                             <th scope="row">{{ $index + 1 }}</th>
                                             <td dir="rtl">
-                                                {{ $apartment->type }}
+                                                @if ($apartment->appendix)
+                                                    ملحق
+                                                @else
+                                                    {{ $apartment->type }}
+                                                @endif
                                             </td>
                                             <td>{{ $apartment->code }}</td>
-                                            <td>{{ $apartment->count }}</td>
-                                            <td>{{ $apartment->count * $apartment->project->floors_count }}</td>
-                                            <td>
+                                            <td>{{ $apartment->floors->count() }}</td>
+                                            {{-- <td>
 
                                                 <a href="{{ route('admin.apartments.show', $apartment->id) }}"
                                                     type="button" class="btn btn-icon btn-primary"
                                                     style="  min-width: 100px;">إدارة<i class="fa fa-edit"
                                                         style="position: relative;"></i></a>
 
-                                            </td>
+                                            </td> --}}
                                             <td class="form-group">
 
                                                 <a href="{{ route('admin.apartments.edit', $apartment->id) }}"
@@ -86,7 +97,7 @@
                                                     @csrf
                                                     @method('delete')
 
-                                                    <button type="submit" class="btn btn-icon btn-danger mr-1"
+                                                    <button type="submit" class="btn btn-icon btn-danger mr-1 delete"
                                                         style="  min-width: 102px;">@lang('site.delete') <i class="fa fa-trash"
                                                             style="position: relative;"></i></button>
                                                 </form>

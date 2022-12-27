@@ -26,7 +26,7 @@ class ApartmentController extends Controller
     {
         $project = Project::find($request->projectId);
         if ($project) {
-            $apartments = Apartment::where('project_id', $project->id)->paginate(5);
+            $apartments = Apartment::where('project_id', $project->id)->paginate(10);
             return view('admin.apartments.index', compact('project', 'apartments'));
         } else {
             abort(404);
@@ -59,38 +59,43 @@ class ApartmentController extends Controller
         $request->validate([
             'type' => 'required',
             'code' => 'required',
-            'count' => 'required',
+            'room_count' => 'required|numeric|min:0',
             'area' => 'required|numeric|min:0',
-            'price' => 'required|numeric|min:0',
+            'price' => 'nullable|numeric|min:0',
             'details' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+
         $request_data = $request->except(['img']);
-        $img = Image::make($request->img)->resize(300, null, function ($constraint) {
+        $img = Image::make($request->img)->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         })
             ->encode('jpg');
-        Storage::disk('local')->put('public/images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
+        Storage::disk('public')->put('images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
         $request_data['img'] = $request->img->hashName();
         $project = Project::find($request->project_id);
 
-        $reservation = null;
+        // $reservation = null;
 
-        if ($request->appendix) {
-            for ($j = 0; $j < $project->appendix_count; $j++) {
-                $reservation[0][$j] = 0;
-            }
-        } else
-            for ($i = 0; $i < $request->count; $i++) {
-                for ($j = 0; $j < $project->floors_count; $j++) {
-                    $reservation[$i][$j] = 0;
-                }
-            }
-        // $d=json_encode($reservation);
-        // dd(json_decode($d));
-        $request_data['reservation'] = json_encode($reservation);
+        // if ($request->appendix) {
+        //     for ($j = 0; $j < $project->appendix_count; $j++) {
+        //         $reservation[0][$j] = 0;
+        //     }
+        // } else
+        //     for ($i = 0; $i < $request->count; $i++) {
+        //         for ($j = 0; $j < $project->floors_count; $j++) {
+        //             $reservation[$i][$j] = 0;
+        //         }
+        //     }
+        // // $d=json_encode($reservation);
+        // // dd(json_decode($d));
+        // $request_data['reservation'] = json_encode($reservation);
 
+        if($request->type == "ملحق"){
 
+            $request_data['appendix'] = 'on';
+
+        }
         Apartment::create($request_data);
 
         LogSystem::success('تم إضافة ' . $request->type . ' بنجاح - اسم المشروع: ' . $project->name);
@@ -108,6 +113,9 @@ class ApartmentController extends Controller
     public function show($id)
     {
         $apartment = Apartment::find($id);
+        if(!$apartment){
+            abort(404);
+        }
         // dd($apartment->reservation);
         return view('admin.apartments.check', compact('apartment'));
     }
@@ -157,16 +165,17 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $try = Apartment::where('project_id', $request->project_id)->where('type', $request->type)->get();
+        // $try = Apartment::where('project_id', $request->project_id)->where('type', $request->type)->get();
 
-        $apartment = Apartment::find($id);
-        if ($try->count() > 0 && $try[0]->id != $apartment->id) {
-            return Redirect::back()->withInput($request->input())->withErrors(['msg' => 'نوع الشقق هذا موجود مسبقا']);
-        }
+        // $apartment = Apartment::find($id);
+        // if ($try->count() > 0 && $try[0]->id != $apartment->id) {
+        //     return Redirect::back()->withInput($request->input())->withErrors(['msg' => 'نوع الشقق هذا موجود مسبقا']);
+        // }
         $request->validate([
             'type' => 'required',
             'area' => 'required|numeric|min:0',
-            'price' => 'required|numeric|min:0',
+            'room_count' => 'required|numeric|min:0',
+            'price' => 'nullable|numeric|min:0',
             'details' => 'required',
             'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
 
@@ -175,15 +184,23 @@ class ApartmentController extends Controller
         $apartment = Apartment::find($id);
         $request_data = $request->except(['img', 'appendix']);
         if ($request->img) {
-            Storage::disk('local')->delete('public/images/' . $request->project_id . '/' . $apartment->img);
+            Storage::disk('public')->delete('images/' . $request->project_id . '/' . $apartment->img);
 
-            $img = Image::make($request->img)->resize(300, null, function ($constraint) {
+            $img = Image::make($request->img)->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             })
                 ->encode('jpg');
 
-            Storage::disk('local')->put('public/images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
+            Storage::disk('public')->put('images/' . $request->project_id . '/' . $request->img->hashName(), (string)$img, 'public');
             $request_data['img'] = $request->img->hashName();
+        }
+        if($request->type == "ملحق"){
+
+            $request_data['appendix'] = 'on';
+
+        }else{
+            $request_data['appendix'] = '';
+
         }
 
         $apartment->update($request_data);
@@ -205,7 +222,10 @@ class ApartmentController extends Controller
     {
 
         $apartment = Apartment::find($id);
-        Storage::disk('local')->delete('public/images/' . $apartment->project_id . '/' . $apartment->img);
+        if(!$apartment){
+            abort(404);
+        }
+        Storage::disk('public')->delete('images/' . $apartment->project_id . '/' . $apartment->img);
         $apartment->delete();
 
         $project = Project::find($apartment->project_id);
