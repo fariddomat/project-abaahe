@@ -68,6 +68,10 @@
                                         <i class="bx bx-phone"></i>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('login') }}">
+                                    <i class="fa fa-sign-in "></i></a>
+                                </li>
                             </ul>
 
 

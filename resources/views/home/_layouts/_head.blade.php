@@ -198,6 +198,20 @@
             .map-area-two iframe {
             max-height: 30vh !important;
         }
+
+        }
+
+        @media only screen and (max-width: 995px){
+
+        .project-desktop{
+            display: none;
+        }
+        }
+
+        @media only screen and (min-width: 995px){
+            .project-mobile{
+            display: none;
+        }
         }
     </style>
 </head>

@@ -476,7 +476,29 @@
                                 </div>
                             </div>
                         @else
-                            <div class="col-lg-6 p-0 m-0 mt-3" style="  text-align: center;">
+                        <div class="col-lg-6 project-mobile">
+                            <div class="house-content margin-left">
+
+                                <h2>تفاصيل {{ $item->type }} ({{ $item->code }}):</h2>
+                                <ul class="house-list">
+                                    {!! $item->details !!}
+                                    @if ($item->price)
+                                        <li>السعر : <b>{{ $item->price }} ريال</b></li>
+                                    @endif
+                                    <li> المساحة : <b>{{ $item->area }} متر</b></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 p-0 m-0 project-mobile" style="text-align: center">
+                            <div class="">
+                                <div class="house-item">
+                                    <img src="{{ $item->image_path }}" alt="Images">
+                                </div>
+                            </div>
+                        </div>
+                        {{-- hidden --}}
+                            <div class="col-lg-6 p-0 m-0 mt-3 project-desktop" style="  text-align: center;">
                                 <div class="">
                                     <div class="house-details-item">
                                         <img src="{{ $item->image_path }}" alt="Images">
@@ -485,7 +507,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 mt-3">
+                            <div class="col-lg-6 mt-3 project-desktop">
                                 <div class="house-content house-margin">
                                     <h2>تفاصيل {{ $item->type }} ({{ $item->code }}):</h2>
                                     <ul class="house-list">
