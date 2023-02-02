@@ -30,7 +30,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('name', 'asc')->whenSearch(request()->search)
+        $projects = Project::orderBy('sort_id', 'asc')->whenSearch(request()->search)
             ->paginate(30);
         return view('admin.projects.index', compact('projects'));
     }
@@ -330,5 +330,19 @@ class ProjectController extends Controller
 
         Session::flash('success', 'Successfully deleted !');
         return redirect()->route('admin.projects.index');
+    }
+
+    public function sort(Request $request)
+    {
+        // dd($request->order);
+        $projects = Project::all();
+        foreach ($projects as $project) {
+            foreach ($request->order as $order) {
+                if ($order['id'] == $project->id) {
+                    $project->update(['sort_id' => $order['position']]);
+                }
+            }
+        }
+        return response('Update Successfully.', 200);
     }
 }

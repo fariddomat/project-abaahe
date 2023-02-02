@@ -29,6 +29,7 @@ class CreateProjectsTable extends Migration
             $table->string('status')->default('مكتمل');
             $table->integer('status_percent')->default(0);
             $table->unsignedBigInteger('category_id');
+            $table->integer('sort_id')->default(1);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

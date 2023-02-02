@@ -60,7 +60,7 @@ class SettingController extends Controller
     public function settingsText()
     {
         return view('admin.settings.settings');
-    }
+    } 
 
     public function settings(Request $request)
     {

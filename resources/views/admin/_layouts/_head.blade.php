@@ -191,5 +191,5 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="{{ asset('abahee.png') }}">
-
+    @yield('head')
 </head>

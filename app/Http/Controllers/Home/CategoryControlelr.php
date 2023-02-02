@@ -23,7 +23,7 @@ class CategoryControlelr extends Controller
     $category=Category::find($id);
     if ($category) {
         # code...
-    $projects=Project::where('category_id',$id)->paginate(30);
+    $projects=Project::where('category_id',$id)->orderBy('sort_id', 'asc')->paginate(30);
     return view('home.category',compact('category','projects'));
 
     } else {

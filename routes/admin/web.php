@@ -16,7 +16,8 @@ Route::prefix('admin')
             Route::resource('categories', 'CategoryController');
 
             Route::resource('projects', 'ProjectController');
-
+            Route::post('projects/sortable','ProjectController@sort');
+            
             Route::resource('properties', 'PropertieController');
             Route::resource('promoters', 'PromoterController');
             Route::get('/notify', 'PromoterController@notify')->name('promoters.notify');
